@@ -24,4 +24,14 @@ private Logger logger = Logger.getLogger(UserController.class);
 		return "welcome-page";
 	}
 	
+	@GetMapping("/register-page")
+	public String register() {
+		return "register-page";
+	}
+	
+	@GetMapping("/cart-page") 
+	public String viewCart() {
+		return "cart-page";
+	}
+	
 }

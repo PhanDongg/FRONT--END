@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+
+.body-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.banner-container {
+    background-image: url("https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c2hvZXMlMjBmYXNoaW9ufGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.register-form-container {
+    padding: 5% 7%;
+}
+
+.register-form-container h1 {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 -15px;
+}
+
+.input-container-item {
+    width: 50%;
+    margin: 0 15px;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.eye-icon {
+    margin-right: 15px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.eye-icon .hide-eye {
+    display: none;
+}
+
+
+.register-btns {
+    margin-top: 10%;
+}
+
+.register-btns button {
+    margin: 10px 0;
+    cursor: pointer;
+    /* box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.sign-up-btn {
+    width: 100%;
+    background-color: #B99B6B;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-size: 16px;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.sign-up-btn:hover {
+    background-color: #F1DBBF;
+    color: black !important;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.google-sign-up-btn, .facebook-sign-up-btn {
+    width: 100%;
+    border: 1px solid #B99B6B;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background-color: white;
+}
+
+.google-sign-up-btn:hover, .facebook-sign-up-btn:hover {
+    background-color: #F1DBBF;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.sign-in {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.sign-in a {
+    color: #B99B6B !important;
+}
+
+.sign-in a:hover {
+    text-decoration: underline !important;
+}
+
