@@ -34,4 +34,13 @@ private Logger logger = Logger.getLogger(UserController.class);
 		return "cart-page";
 	}
 	
+	@GetMapping("/product-detail-page")
+	public String viewProductDetail() {
+		return "product-detail-page";
+	}
+	
+	@GetMapping("/customer-detail-page")
+	public String updateCustomerInfo() {
+		return "customer-detail-page";
+	}
 }

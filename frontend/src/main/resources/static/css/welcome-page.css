@@ -1,10 +1,10 @@
-@charset "UTF-8";
 
-@font-face {
+
+/* @font-face {
     font-family: myFirstFont;
     src: url(/font-family/Ubuntu/Ubuntu-Light.ttf) format('truetype');
     font-style: normal;
-}
+} */
 
 * {
     box-sizing: border-box !important;
@@ -44,14 +44,18 @@ main img {
 
 .one-banner button {
     position: absolute;
-    top: 80%;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 10px 30px;
+    color: white !important;
 }
 
 
 .article-product {
-    margin: 20px 40px;
+    margin: 20px 10%;
     /* border: 0.5px solid black; */
 }
 .article-product section {
@@ -170,6 +174,30 @@ main img {
     /* border: 0.5px solid rgba(0, 0, 0, 0.6); */
 }
 
+.new-arrival img {
+    width: 100%;
+}
+
+.new-arrival .new-arrival-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px 0;
+    height: 330px;
+    cursor: pointer;
+}
+
+.new-arrival .new-arrival-item:hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.new-arrival .new-arrival-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
 .new-arrival .name-brand,
 .product-highlight .name-brand{
     font-size: 18px;
@@ -180,6 +208,27 @@ main img {
 .product-highlight .name-prod{
     font-size: 14px;
 
+}
+
+.product-highlight .product-highlight-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px 0;
+    height: 330px;
+    cursor: pointer;
+}
+
+.product-highlight .product-highlight-item:hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.product-highlight .product-highlight-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
 .view-all a:hover{
@@ -202,6 +251,10 @@ main img {
     position: relative;
 }
 
+.two-banner .box-title {
+    width: 200px;
+}
+
 .content-two-banner{
     position: relative;
 }
@@ -217,6 +270,12 @@ main img {
     /* user-select: none;
     cursor: pointer; */
 }
+
+.content-two-banner>div button {
+    border: none;
+    background-color: transparent;
+}
+
 .content-two-banner>div p{
     color: white !important;
     font-size: 45px;
@@ -229,8 +288,9 @@ main img {
 .content-two-banner>div a>i{
     margin-left: 5px;
 }
-.content-two-banner>div a:hover{
+.content-two-banner>div button:hover {
     background-color: rgba(255, 255, 255, 0.7);
+    color: red !important;
 }
 
 .fashion-news img{

@@ -4,12 +4,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.top-bar {
-    background-color: #B99B6B;
+.top-bar i, .navbar i {
+    color: black !important;
 }
 
-.navbar {
-    background-color: #F1DBBF;
+.top-bar {
+    background-color: white;
+}
+
+nav a {
+    color: white !important;
 }
 
 .cart-btn {
@@ -97,68 +101,6 @@ a:not(.article-product a){text-decoration: none !important}
 
 i{margin-right: 5px;}
 
-main img{
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-/* .one-banner button{
-    position: absolute;
-    right: 620px;
-    top: 580px;
-} */
-
-.one-banner {
-    position: relative;
-  }
-  
-  /* .one-banner img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  } */
-  
-  .one-banner button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-.article-product{
-    margin: 20px 50px;
-    border: 0.5px solid red;
-}
-
-
-
-.brands img{
-   
-}
-
-.new-arrival{
-   /* border: 0.5px solid red; */
-}
-
-.new-arrival img{
-    width: 100%;
-}
-
-.two-banner{
-    border: 0.5px solid yellow;
-}
-
-.two-banner>.row{
-    border: 0.5px solid red;
-}
-
-.two-banner button{
-    position: absolute;
-    right: 46%;
-    top: 80%;
-}
-
 .popup-form {
     background-color: white;
     width: 500px;
@@ -190,4 +132,49 @@ main img{
     text-align: center;
     display: block;
     margin-top: 30px;
+}
+
+/* ------------------ footer ------------------- */
+
+footer .p-2 {
+    /* border: 0.5px solid blue; */
+}
+
+.footer-content {
+    margin: 0 50px;
+    padding: 45px 0;
+}
+
+footer {
+    background-color: black;
+}
+
+footer a,
+footer h5,
+footer i,
+footer span {
+    color: white !important;
+}
+
+footer h5 {
+    font-size: 24px;
+}
+
+footer li {
+    padding: 3px 0;
+    /* box-sizing: content-box; */
+}
+
+.footer-content-one>:nth-child(3) img {
+    width: 180px;
+    margin-top: 30px;
+}
+
+.footer-content-two i {
+    font-size: 30px;
+    margin-left: 8px;
+}
+
+.footer-content-two {
+    border-top: 0.5px solid white;
 }
