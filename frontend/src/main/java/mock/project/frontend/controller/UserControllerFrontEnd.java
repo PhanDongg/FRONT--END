@@ -26,7 +26,7 @@ private Logger logger = Logger.getLogger(UserController.class);
 	
 	@GetMapping("/register-page")
 	public String register() {
-		return "register-page";
+		return "register-2";
 	}
 	
 	@GetMapping("/cart-page") 
