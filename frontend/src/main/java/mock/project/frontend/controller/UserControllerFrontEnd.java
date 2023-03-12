@@ -43,4 +43,9 @@ private Logger logger = Logger.getLogger(UserController.class);
 	public String updateCustomerInfo() {
 		return "customer-detail-page";
 	}
+	
+	@GetMapping("/check-order-page")
+	public String checkOrder() {
+		return "check-order";
+	}
 }
