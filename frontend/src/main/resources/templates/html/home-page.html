@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home-page.css}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <title>Trang chủ</title>
+</head>
+
+<body>
+    <form th:action="@{/cart-page}" method="post">
+        <div>
+            <div class="top-bar sticky-top">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <ul class="topbar-left p-2">
+                                <li>
+                                    <span><i class="fa-solid fa-phone-volume"></i>Hotline: 19009191</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="topbar-right d-flex justify-content-end">
+                                <li class="p-2">
+                                    <a href="#"><span>Tra cứu đơn hàng</span></a>
+                                </li>
+                                <li class="p-2">
+                                    <a href="#"><i class="fa-solid fa-user"></i><span>Sign in</span></a>
+                                </li>
+                                <li class="p-2">
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar bg-body-tertiary navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">LOGO</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">SẢN PHẨM MỚI</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">ADIDAS</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">NIKE</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">JORDAN</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">PUMA</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">CONVERSE</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">SALE</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <form class="d-flex" role="search">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <button type="button" class="btn btn-secondary"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <main>
+                <div id="oneBanner" class="carousel slide one-banner" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#oneBanner" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#oneBanner" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#oneBanner" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="3000">
+                            <img src="https://www.stadiumgoods.com/BWStaticContent/54000/d5979083-2d66-4b44-95c7-f147065761b6_230306-dz1382-001-desktop-02.jpg"
+                                alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="https://cdn.shopify.com/s/files/1/0408/9909/files/Untitled-1_93bde367-8510-418d-b6f2-b6532dd59f6d.jpg?v=1675972770&width=1280"
+                                alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="https://images.dsw.com/is/image/DSWShoes/P230254_ft_sneakers-75?impolicy=qlt-medium&imwidth=1400&imdensity=1"
+                                alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#oneBanner"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#oneBanner"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="article-product">
+                    <section id="brandContent" class="brands carousel slide">
+                        <h5>THƯƠNG HIỆU</h5>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-between">
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-2-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-4-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-7-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-16-1024x1024.png"
+                                            alt="logo brand"></a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-between">
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-10-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-9-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-3-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-5-1024x1024.png"
+                                            alt="logo brand"></a>
+                                    <a href="#"><img
+                                            src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-13-1024x1024.png"
+                                            alt="logo brand"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#brandContent"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#brandContent"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </section>
+                    <section class="selling-products">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="p-2">Sản phẩm bán chạy</h3>
+                            <span class="p-2 view-all"><a href="#">Xem thêm</a></span>
+                        </div>
+                        <div class="content-products">
+                            <div id="sellingProducts" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#sellingProducts" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#sellingProducts" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#sellingProducts" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#sellingProducts"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#sellingProducts"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="two-banner">
+                        <div class="d-flex justify-content-evenly">
+                            <div class="two-banner-item">
+                                <img src="https://img.freepik.com/free-photo/front-view-man-with-sunglasses-talking-smartphone_23-2148682619.jpg?w=360&t=st=1678597280~exp=1678597880~hmac=5919ea73cf1cbd982d0d5eb18724a89803e06a2facbe9570166159dbb81b23e4"
+                                    alt="">
+                                <div>
+                                    <h3>NAM</h3>
+                                    <a href="#">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="two-banner-item">
+                                <img src="https://img.freepik.com/free-photo/young-stylish-blond-woman-big-hat-sunglasses-holding-glass-champagne-happy-party_285396-1129.jpg?w=360&t=st=1678597322~exp=1678597922~hmac=88389837729a670300bda825b7eaedd39f379c7352fd6e2619b9de1c7980c1b0"
+                                    alt="">
+                                <div>
+                                    <h3>NỮ</h3>
+                                    <a href="#">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="two-banner-item">
+                                <img src="https://img.freepik.com/free-photo/pretty-young-boy-casual-clothes-white-wall-fashionable-posing-caucasian-male-preschooler-with-bright-facial-emotions-childhood-expression-having-fun-drinking-milk-thumb-up_155003-39440.jpg?w=360&t=st=1678597545~exp=1678598145~hmac=31a2cef2505c66071bb778a0bdcedc35a2a40834aa7216542bd23efa9a4d956a"
+                                    alt="">
+                                <div>
+                                    <h3>TRẺ EM</h3>
+                                    <a href="#">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="new-arrivals">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="p-2">Sản phẩm mới</h3>
+                            <span class="p-2 view-all"><a href="#">Xem thêm</a></span>
+                        </div>
+                        <div class="content-products">
+                            <div id="newArrvials" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#newArrvials" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#newArrvials" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#newArrvials" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#newArrvials"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#newArrvials"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="promotional-products">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="p-2">Sản phẩm khuyến mãi</h3>
+                            <span class="p-2 view-all"><a href="#">Xem thêm</a></span>
+                        </div>
+                        <div class="content-products">
+                            <div id="promotionalProducts" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#promotionalProducts" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#promotionalProducts" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#promotionalProducts" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">JORDAN</p>
+                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
+                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">VANS VAULT</p>
+                                                    <h5 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h5>
+                                                    <p class="price-prod">2.163.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">NIKE</p>
+                                                    <h5 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' - WHITE/BLACK
+                                                    </h5>
+                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand">ADIDAS</p>
+                                                    <h5 class="name-prod">ADIDAS ORIGINALS YEEZY BOOST 350 V2 - FLAX
+                                                    </h5>
+                                                    <p class="price-prod">5.527.000₫</p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#promotionalProducts" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#promotionalProducts" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="fashion-news">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="p-2">Tin tức</h3>
+                            <span class="p-2 view-all"><a href="#">Xem thêm</a></span>
+                        </div>
+                        <div class="content-fashion-news">
+                            <div class="d-flex justify-content-evenly">
+                                <div class="fashion-news-item">
+                                    <a href="#">
+                                        <img src="https://kingshoes.vn/data/upload/media/cach-do-size-giay-chuan-tai-viet-nam-US-UK-Chuan-xac-tai-KINGSHOES-VN-tphcm-tanbinh-1533788373-.jpg"
+                                            alt="news-img">
+                                    </a>
+                                    <div>
+                                        <a href="#">CÁCH ĐO CỠ CHÂN VÀ XÁC ĐỊNH SIZE GIÀY VIỆT NAM, US, UK</a>
+                                        <span>created-date - creator-name</span>
+                                    </div>
+                                </div>
+                                <div class="fashion-news-item">
+                                    <a href="#">
+                                        <img src="https://tamanh.net/wp-content/uploads/2021/07/phan-biet-hang-authentic-replica-fake-2.jpg"
+                                            alt="news-img">
+                                    </a>
+                                    <div>
+                                        <a href="#">AUTHENTICS, REPLICA, FAKE LÀ GÌ? PHÂN BIỆT HÀNG HIỆU, HÀNG NHÁI</a>
+                                        <span>created-date - creator-name</span>
+                                    </div>
+                                </div>
+                                <div class="fashion-news-item">
+                                    <a href="#">
+                                        <img src="https://kingshoes.vn/data/upload/media/cach-do-size-giay-chuan-tai-viet-nam-US-UK-Chuan-xac-tai-KINGSHOES-VN-tphcm-tanbinh-1533788373-.jpg"
+                                            alt="news-img">
+                                    </a>
+                                    <div>
+                                        <a href="#">CÁCH ĐO CỠ CHÂN VÀ XÁC ĐỊNH SIZE GIÀY VIỆT NAM, US, UK</a>
+                                        <span>created-date - creator-name</span>
+                                    </div>
+                                </div>
+                                <div class="fashion-news-item">
+                                    <a href="#">
+                                        <img src="https://tamanh.net/wp-content/uploads/2021/07/phan-biet-hang-authentic-replica-fake-2.jpg"
+                                            alt="news-img">
+                                    </a>
+                                    <div>
+                                        <a href="#">AUTHENTICS, REPLICA, FAKE LÀ GÌ? PHÂN BIỆT HÀNG HIỆU, HÀNG NHÁI</a>
+                                        <span>created-date - creator-name</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <footer>
+                <div class="footer-content">
+                    <div class="d-flex justify-content-between">
+                        <div class="p-2">
+                            <h5>Về chúng tôi</h5>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#">Giới thiệu</a></li>
+                                <li class="nav-item"><a href="#">Hệ thống của hàng</a></li>
+                            </ul>
+                        </div>
+                        <div class="p-2">
+                            <h5>Hỗ trợ khách hàng</h5>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#">Chính sánh khách hàng</a></li>
+                                <li class="nav-item"><a href="#">Chính sách đổi trả</a></li>
+                                <li class="nav-item"><a href="#">Chính sách bảo hành</a></li>
+                                <li class="nav-item"><a href="#">Chính sách giao hàng</a></li>
+                                <li class="nav-item"><a href="#">Chính sách bảo mật</a></li>
+                                <li class="nav-item"><a href="#">Câu hỏi thường gặp</a></li>
+                            </ul>
+                        </div>
+                        <div class="p-2">
+                            <h5>Tuyển dụng</h5>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#">Tyển dụng</a></li>
+                            </ul>
+                        </div>
+                        <div class="p-2">
+                            <h5>Địa chỉ - Liên hệ</h5>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#">Địa chỉ</a></li>
+                            </ul>
+                        </div>
+                        <div class="p-2">
+                            <h5>Kết nối với chúng tôi</h5>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                                <li class="nav-item"><a href="#"><i class="fa-brands fa-twitter"></i>Twitter</a></li>
+                                <li class="nav-item"><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+                                <li class="nav-item"><a href="#"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
+                                <li class="nav-item"><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
+                                </li>
+
+                                <li class="nav-item"><a href="#">Hotline: 19009191</a></li>
+                                <li class="nav-item"><a href="#">Email: cskhABC@gmai.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="p-2 d-flex align-items-center">
+                            <span>Copyright © 2023 ABC</span>
+                        </div>
+                        <div class="p-2 d-flex align-items-center">
+                            <span>
+                                Thanh toán:
+                                <i class="fa-solid fa-money-bill"></i>
+                                <i class="fa-brands fa-cc-visa"></i>
+                                <i class="fa-brands fa-cc-mastercard"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</body>
+
+</html>
