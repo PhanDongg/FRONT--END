@@ -5,23 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import mock.project.frontend.entities.Users;
 import mock.project.frontend.services.UserService;
 
 @Controller
 public class UserControllerFrontEnd {
-private Logger logger = Logger.getLogger(UserController.class);
+private Logger logger = Logger.getLogger(Users.class);
 	
 	@Autowired
 	private UserService userService;
 	
-//	@GetMapping({ "/", "/welcome-page" })
-//	public String welcome() {
-//		return "welcome-page";
-//	}
-	
-	@GetMapping("/welcome-page")
+	@GetMapping("/home-page")
 	public String welcome() {
-		return "welcome-page";
+		return "home-page";
 	}
 	
 	@GetMapping("/register-page")
