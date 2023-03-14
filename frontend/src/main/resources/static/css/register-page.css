@@ -1,53 +1,53 @@
 @charset "UTF-8";
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-
-.body-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.banner-container {
-    background-image: url("https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c2hvZXMlMjBmYXNoaW9ufGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60");
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+html,
+body {
+    height: 100%;
 }
 
 .register-form-container {
-    padding: 5% 7%;
+    background-image: url("https://sneakernews.com/wp-content/uploads/2021/08/Nike-Dunk-Low-GS-Pink-Velvet-DO6485-600-7.jpg?w=1140");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
 }
 
-.register-form-container h1 {
-    text-align: left;
-    margin-bottom: 40px;
+.register-form-container h2 {
+    text-align: center;
+    padding: 2%;
 }
 
-.input-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 -15px;
+.register-form {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 0% 25%;
+    padding: 1% 1% 1%;
 }
 
-.input-container-item {
+.register-form .d-flex {
+    margin: 5% 0;
+
+}
+
+.input-item {
     width: 50%;
-    margin: 0 15px;
+    margin: 0 3%;
+    color: black !important;
 }
 
 input {
-    padding: 10px;
+    padding: 1%;
     width: 100%;
-    margin-bottom: 12px;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .eye-icon {
@@ -68,7 +68,6 @@ input {
 .register-btns button {
     margin: 10px 0;
     cursor: pointer;
-    /* box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .sign-up-btn {
@@ -89,7 +88,8 @@ input {
 
 }
 
-.google-sign-up-btn, .facebook-sign-up-btn {
+.google-sign-up-btn,
+.facebook-sign-up-btn {
     width: 100%;
     border: 1px solid #B99B6B;
     border-radius: 5px;
@@ -97,7 +97,8 @@ input {
     background-color: white;
 }
 
-.google-sign-up-btn:hover, .facebook-sign-up-btn:hover {
+.google-sign-up-btn:hover,
+.facebook-sign-up-btn:hover {
     background-color: #F1DBBF;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -109,10 +110,9 @@ input {
 }
 
 .sign-in a {
-    color: #B99B6B !important;
+    color: black;
 }
 
 .sign-in a:hover {
-    text-decoration: underline !important;
+    color: goldenrod !important;
 }
-
