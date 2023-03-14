@@ -4,11 +4,16 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import mock.project.frontend.entities.Users;
 import mock.project.frontend.services.UserService;
 
 @Controller
+//@RequestMapping("/")
 public class UserControllerFrontEnd {
 private Logger logger = Logger.getLogger(Users.class);
 	
@@ -29,6 +34,18 @@ private Logger logger = Logger.getLogger(Users.class);
 	public String login() {
 		return "login-page";
 	}
+	
+	
+	@PostMapping("/login")
+	public String checkLogintest() {
+		return "redirect:/home";
+	}
+	
+	@GetMapping("/collection")
+	public String collection() {
+		return "collection-page";
+	}
+	
 	
 	@GetMapping("/cart-page") 
 	public String viewCart() {
