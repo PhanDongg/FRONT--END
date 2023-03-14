@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-by {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.filter-by select {
+    margin: 0 5px;
+}
+
+.show-entry-number .select-entry-number-form {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.product-list__table #productTable {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#productTable tr {
+    border: 1px solid #ddd;
+}
+
+#productTable tr td {
+    padding: 10px 15px !important;
+}
+
+#productTable .product-id {
+    font-weight: bold;
+}
+
+#productTable .product-info {
+    border-bottom-width: 0;
+    text-align: left;
+}
+
+#productTable .product-info img {
+    width: 60px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+
+#productTable .product-info a {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    max-width: 300px;
+}
+
+#productTable .product-status .sell {
+    padding: 3px 8px;
+    background-color: green;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+#productTable .product-status .sold-out {
+    padding: 3px 8px;
+    background-color: tomato;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+#productTable .product-btns button {
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block;
+}
+
+#productTable .product-btns button:hover {
+    background-color: black;
+    color: white;
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.active {
+    background-color: black !important;
+    color: white !important;
+}

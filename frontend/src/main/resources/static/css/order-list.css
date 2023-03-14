@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-by {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.filter-icon {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.form-control {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.filter-by select {
+    margin: 0 5px;
+}
+
+.show-entry-number .select-entry-number-form {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+#orderTable tr {
+    border: 1px solid #ddd;
+}
+
+#orderTable tr td {
+    padding: 15px !important;
+}
+
+#orderTable .order-id a, #orderTable .order-user-id {
+    font-weight: bold;
+    color: black !important;
+}
+
+#orderTable .order-qty {
+    width: 110px;
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: space-between;
+}
+

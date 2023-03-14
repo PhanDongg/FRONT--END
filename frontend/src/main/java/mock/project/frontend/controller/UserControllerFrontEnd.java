@@ -15,6 +15,8 @@ private Logger logger = Logger.getLogger(Users.class);
 	@Autowired
 	private UserService userService;
 	
+//	Customer Interface
+	
 	@GetMapping("/home-page")
 	public String welcome() {
 		return "home-page";
@@ -44,4 +46,34 @@ private Logger logger = Logger.getLogger(Users.class);
 	public String checkOrder() {
 		return "check-order";
 	}
+	
+//	Admin Interface
+	
+	// Admin: order
+	
+	@GetMapping("/order-dashboard")
+	public String viewOrderDashboard() {
+		return "order-dashboard";
+	}
+	
+	@GetMapping("/order-list")
+	public String viewOrderList() {
+		return "order-list";
+	}
+	
+	// Admin: product
+	
+	@GetMapping("/product-list")
+	public String viewProductList() {
+		return "product-list";
+	}
+	
+	@GetMapping("/add-product")
+	public String addProduct() {
+		return "add-product";
+	}
+	
+	// Admin: user
+	
+	
 }

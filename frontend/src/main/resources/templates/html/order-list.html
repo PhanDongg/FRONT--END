@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh sách đơn hàng</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/dashboard.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/order-list.css}">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+<script src="https://kit.fontawesome.com/c39bd3b109.js"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<form th:action="@{/order-list-page}" method="get">
+		<div class="body-container">
+        <div class="dashboard__side-menu">
+            <h3>ABC Store</h3>
+            <ul class="side-menu-container">
+                <li class="">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </li>
+                <li class="products-menu bg-black text-white" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProduct" aria-expanded="false" aria-controls="collapseProduct">
+                    <i class="fa-solid fa-cart-shopping"></i> Products
+                    <div class="collapse" id="collapseProduct">
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Product Lists</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Edit product</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Add new product</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Product detail</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="products-menu bg-black text-white" data-bs-toggle="collapse" data-bs-target="#collapseOrder"
+                    aria-expanded="false" aria-controls="collapseOrder">
+                    <i class="fa-solid fa-receipt"></i> Orders
+                    <div class="collapse" id="collapseOrder">
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Order Lists</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Order detail</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Order invoice</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="products-menu bg-black text-white" data-bs-toggle="collapse"
+                    data-bs-target="#collapseCustomer" aria-expanded="false" aria-controls="collapseCustomer">
+                    <i class="fa-solid fa-user"></i> Customers
+                    <div class="collapse" id="collapseCustomer">
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Customer Lists</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Customer Detail</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="products-menu bg-black text-white" data-bs-toggle="collapse"
+                    data-bs-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory">
+                    <i class="fa-solid fa-database"></i> Inventory
+                    <div class="collapse" id="collapseInventory">
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Inventory Lists</a>
+                        </div>
+                        <div class="bg-black text-white collapse-item">
+                            <a href="" class="text-decoration-none text-white">Inventory edit</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="dashboard__content">
+            <div class="dashboard-head d-flex align-items-center justify-content-between">
+                <div class="dashboard-head-item w-50">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="search-item"
+                            aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class="dashboard-head-item d-flex align-items-center justify-content-end">
+                    <div class="noti-icon">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div class="dashboard-head__user-info text-end">
+                        <span class="d-block fw-bold fs-6">Nguyen Van A</span>
+                        <span class="d-block">Admin</span>
+                    </div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png" alt="">
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-body">
+                <h2>Danh sách đơn hàng</h2>
+                <div class="filter">
+                    <div class="show-entry-number">
+                        Show
+                        <div class="select-entry-number-form">
+                            <select class="form-select" id="autoSizingSelect">
+                                <option selected>5</option>
+                                <option value="1">10</option>
+                                <option value="2">15</option>
+                                <option value="3">20</option>
+                            </select>
+                        </div>
+                        entries
+                    </div>
+
+                    <div class="filter-by">
+                        <div class="input-group-text filter-icon">
+                            <i class="fa-solid fa-filter"></i>
+                        </div>
+                        <input type="text" name="" id="" placeholder="Tìm order ID" class="form-control">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Ngày đặt</option>
+                            <option value="1">Nam</option>
+                            <option value="2">Nữ</option>
+                            <option value="3">Trẻ em</option>
+                            <option value="4">Unisex</option>
+                        </select>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Số lượng</option>
+                            <option value="1">Tăng dần</option>
+                            <option value="2">Giảm dần</option>
+                        </select>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Giá</option>
+                            <option value="1">Tăng dần</option>
+                            <option value="2">Giảm dần</option>
+                        </select>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Tình trạng</option>
+                            <option value="1">Mới</option>
+                            <option value="2">Đang xử lý</option>
+                            <option value="3">Đã giao</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive order-list__table">
+                    <table class="table text-center table-hover" id="orderTable">
+                        <thead class="table-dark text-center align-middle">
+                            <th>ID đơn hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>User ID</th>
+                            <th>Ngày đặt</th>
+                            <th>Số lượng sản phẩm</th>
+                            <th>Tổng tiền</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody class="align-middle">
+                            <tr class="order-row" id="order-row-1">
+                                <td class="order-id">
+                                    <a href="" class="order-link">O123</a>
+                                </td>
+                                <td class="order-customer">
+                                    Peter
+                                </td>
+                                <td class="order-user-id">
+                                    U123
+                                </td>
+                                <td class="order-date">
+                                    12/3/2023
+                                </td>
+                                <td class="order-qty">
+                                    3
+                                </td>
+                                <td class="order-total-money">
+                                    10.000.000
+                                </td>
+                                <td class="order-status">
+                                    <span class="new">new</span>
+                                </td>
+                            </tr>
+                            <tr class="order-row" id="order-row-2">
+                                <td class="order-id">
+                                    <a href="" class="order-link">O123</a>
+                                </td>
+                                <td class="order-customer">
+                                    Peter
+                                </td>
+                                <td class="order-user-id">
+                                    U123
+                                </td>
+                                <td class="order-date">
+                                    12/3/2023
+                                </td>
+                                <td class="order-qty">
+                                    3
+                                </td>
+                                <td class="order-total-money">
+                                    10.000.000
+                                </td>
+                                <td class="order-status">
+                                    <span class="completed">completed</span>
+                                </td>
+                            </tr>
+                            <tr class="order-row" id="order-row-3">
+                                <td class="order-id">
+                                    <a href="" class="order-link">O123</a>
+                                </td>
+                                <td class="order-customer">
+                                    Peter
+                                </td>
+                                <td class="order-user-id">
+                                    U123
+                                </td>
+                                <td class="order-date">
+                                    12/3/2023
+                                </td>
+                                <td class="order-qty">
+                                    3
+                                </td>
+                                <td class="order-total-money">
+                                    10.000.000
+                                </td>
+                                <td class="order-status">
+                                    <span class="completed">completed</span>
+                                </td>
+                            </tr>
+                            <tr class="order-row" id="order-row-4">
+                                <td class="order-id">
+                                    <a href="" class="order-link">O123</a>
+                                </td>
+                                <td class="order-customer">
+                                    Peter
+                                </td>
+                                <td class="order-user-id">
+                                    U123
+                                </td>
+                                <td class="order-date">
+                                    12/3/2023
+                                </td>
+                                <td class="order-qty">
+                                    3
+                                </td>
+                                <td class="order-total-money">
+                                    10.000.000
+                                </td>
+                                <td class="order-status">
+                                    <span class="progressing">progress</span>
+                                </td>
+                            </tr>
+                            <tr class="order-row" id="order-row-5">
+                                <td class="order-id">
+                                    <a href="" class="order-link">O123</a>
+                                </td>
+                                <td class="order-customer">
+                                    Peter
+                                </td>
+                                <td class="order-user-id">
+                                    U123
+                                </td>
+                                <td class="order-date">
+                                    12/3/2023
+                                </td>
+                                <td class="order-qty">
+                                    3
+                                </td>
+                                <td class="order-total-money">
+                                    10.000.000
+                                </td>
+                                <td class="order-status">
+                                    <span class="progressing">progress</span>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <div class="table-pagination">
+                        <div class="table-pagination-item">
+                            <span>Show 1 to 8 of 8 entries</span>
+                        </div>
+                        <div class="table-pagination-item">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	</form>
+</body>
+</html>
