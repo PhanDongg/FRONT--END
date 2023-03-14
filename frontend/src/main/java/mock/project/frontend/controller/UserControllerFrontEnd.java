@@ -15,19 +15,14 @@ private Logger logger = Logger.getLogger(Users.class);
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/home")
+	@GetMapping("/home-page")
 	public String welcome() {
 		return "home-page";
 	}
 	
-	@GetMapping("/register")
+	@GetMapping("/register-page")
 	public String register() {
-		return "register-page";
-	}
-	
-	@GetMapping("/login")
-	public String login() {
-		return "login-page";
+		return "register-2";
 	}
 	
 	@GetMapping("/cart-page") 

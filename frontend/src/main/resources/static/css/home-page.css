@@ -1,8 +1,7 @@
-@charset "UTF-8";
-
 * {
     margin: 0;
     padding: 0;
+    /* border: 0; */
     outline: none;
     box-sizing: border-box;
 }
@@ -25,6 +24,10 @@ i {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 575.98px) {
+
+    .top-bar {
+        background-color: yellow;
+    }
 
     main {
         flex-wrap: wrap;
@@ -234,17 +237,77 @@ i {
 
     }
 
-    .fashion-news-item>div>a {
+    .fashion-news-item>div>a{
         font-size: 15px !important;
         font-weight: 600;
         width: 100%;
         display: block;
     }
 
-    .fashion-news-item>div {
+    .fashion-news-item>div{
         margin: 3% 0 0;
     }
 
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    .top-bar {
+        background-color: green;
+    }
+
+    /* footer */
+    footer {
+        background-color: black;
+        color: white;
+    }
+
+    footer a {
+        color: white !important;
+    }
+
+    .footer-content>div:nth-child(1) {
+        display: grid !important;
+        grid: auto / auto auto auto;
+
+    }
+
+    .footer-content>.d-flex:nth-child(2) {
+        border-top: 0.5px solid white;
+        margin-top: 2%;
+    }
+
+    .footer-content>.d-flex:nth-child(2)>div:nth-child(2) {
+        padding-right: 10px;
+    }
+}
+
+/* // `lg` applies to medium devices (tablets, less than 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .top-bar {
+        background-color: red;
+    }
+
+    /* footer */
+    footer {
+        background-color: black;
+        color: white;
+    }
+
+    footer a {
+        color: white !important;
+    }
+
+    .footer-content>.d-flex:nth-child(2) {
+        border-top: 0.5px solid white;
+        margin-top: 2%;
+    }
+
+    .footer-content>.d-flex:nth-child(2)>div:nth-child(2) {
+        padding-right: 10px;
+    }
 }
 
 /* // Large devices (desktops, 992px and up) */
@@ -253,15 +316,10 @@ i {
         display: block;
     }
 
-    /* topbar and nav-bar*/
-    .topbar-right a:hover,
-    .nav-item>a:hover {
-        color: goldenrod !important;
+    .top-bar {
+        background-color: blue;
     }
 
-    .navbar a{
-        color: white !important;
-    }
 
     /* footer */
     footer {
@@ -305,32 +363,32 @@ i {
     /* brands */
     .brands img {
         display: block;
-        max-width: 100%;
+        width: 100%;
         height: auto;
     }
 
-    .brands img:hover{
-        filter: brightness(200%);
-    }
-
     .brands {
+        margin: 2% 6%;
         position: relative;
-        padding: 4% 5%;
     }
 
-    .brands .carousel-control-prev,
-    .brands .carousel-control-next {
-        background-color: grey;
+    .brands .carousel-control-prev {
         position: absolute;
-        width: 2.5%;
-        height: 10%;
+        background-color: gray;
+        top: 57%;
+        left: -5%;
+        width: 3%;
+        height: 15%;
     }
 
-    .brands .carousel-control-prev,
     .brands .carousel-control-next {
-        top: 48%;
+        position: absolute;
+        background-color: gray;
+        top: 57%;
+        right: -5%;
+        width: 3%;
+        height: 15%;
     }
-
 
     .carousel-control-prev:hover,
     .carousel-control-next:hover {
@@ -339,19 +397,18 @@ i {
 
     .brands h5 {
         text-align: center;
-        font-size: 35px !important;
-        margin-bottom: 4%;
+        padding: 2% 0 3%;
+        font-size: 30px !important;
     }
 
 
     /* content-products */
     .content-products-item * {
-        font-size: 13.5px !important;
+        font-size: 14px !important;
     }
 
     .content-products .carousel {
         position: relative;
-        padding-bottom: 3%;
     }
 
     .content-products img {
@@ -360,87 +417,58 @@ i {
         height: auto;
     }
 
-    .content-products-item {
-        margin: 0.5%;
-        padding: 0.5% 0.5% 1.75%;
-        border: 0.5px solid white;
+    .carousel-item .d-flex {
+        padding: 0.5%;
     }
 
-    .content-products-item:hover{
+    .content-products-item {
+        border: 0.5px solid rgba(0, 0, 0, 0.3);
+        margin: 0.5%;
+        padding: 1%;
+    }
+
+    .content-products-item:hover {
         border: 0.5px solid rgba(0, 0, 0, 0.6);
     }
 
-    .content-products-item:hover h6,
-    .buy-or-cart a:hover{
-        color: goldenrod !important;
-    }
-
-    .content-products-item:hover .buy-or-cart>a{
-        border: 0.5px solid goldenrod;
-    }
-
     .content-products .carousel-control-prev {
-        background-color: grey;
         position: absolute;
-        width: 2.5%;
+        background-color: gray;
+        top: 45%;
+        left: -4%;
+        width: 3%;
         height: 10%;
-        top: 40%;
-        left: -2.5%;
     }
 
     .content-products .carousel-control-next {
-        background-color: grey;
         position: absolute;
-        width: 2.5%;
+        background-color: gray;
+        top: 45%;
+        right: -4%;
+        width: 3%;
         height: 10%;
-        top: 40%;
-        right: -2.5%;
     }
 
     .content-products .carousel-indicators {
         position: absolute;
-        bottom: -2.5%;
+        bottom: -8.5%;
     }
 
     .content-products .carousel-indicators button {
         background-color: black;
     }
-    
 
     .selling-products,
     .new-arrivals,
     .promotional-products {
-        margin-bottom: 6%;
+        margin: 4% 0;
     }
 
-    .buy-or-cart{
-        margin-top: 3.5%;
-    }
-    .buy-or-cart>a{
-        display: block;
-        width: 50%;
-        text-align: center;
-        padding: 3%;
-        color: white !important;
-        border: 0.5px solid white;
-    }
-
-    .content-products-item:hover .buy-or-cart>a{
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        border: 0.5px solid goldenrod;
-    }
-
-    .content-products-item h6{
-        display: block;
-        height: 18%;
-    }
-
-      /* two-banner */
+    /* two-banner */
     .two-banner {
-        margin: 1% 1% 6%;
+        margin: 1% 1%;
     }
-    
+
     .two-banner-item {
         position: relative;
         margin: 1%;
@@ -483,37 +511,44 @@ i {
 
     /* fashion-news */
 
-    .fashion-news img {
-        width: 100%;
-        display: block;
-        height: 80%;
-        border: 0.5px solid white;
+    .fashion-news{
+
     }
 
-    .content-fashion-news{
+    .fashion-news img {
+        max-width: 100%;
+        height: 70%;
+        display: block;
+    }
+
+    .fashion-news img:hover {
+        filter: invert(100%);
+    }
+
+    .content-fashion-news>.d-flex {
         padding: 0.5%;
-        
     }
 
     .fashion-news-item {
         margin: 0.5%;
-        padding-bottom: 1%;
     }
 
-    .fashion-news-item div{
-        padding: 1%;
+    .fashion-news-item>a{
+       
     }
 
-    .fashion-news-item:hover a>div{
-        color: goldenrod;
+    .fashion-news-item>div>a{
+       font-size: 15px !important;
+       font-weight: 600;
+       width: 100%;
+       display: block;
     }
 
-    .fashion-news-item:hover img{
-        border: 0.5px solid rgba(0, 0, 0, 0.6) !important;
+    .fashion-news-item>div>a:hover{
+        color: goldenrod !important;
     }
 
-    /* view-all */
-    .view-all:hover a{
-        color: gold !important;
+    .fashion-news-item>div{
+        margin-top: 5%;
     }
 }
