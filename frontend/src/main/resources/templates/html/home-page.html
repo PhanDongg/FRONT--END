@@ -9,6 +9,7 @@
 <!-- css -->
 <!--     <link rel="stylesheet" href="/LAYOUT/CSS/home-page.css"> -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/home-page.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -33,7 +34,7 @@
 </head>
 
 <body>
-	<form th:action="@{/home-page}" method="post">
+	<form th:action="@{/home}" method="get">
 		<div>
 			<div class="top-bar">
 				<div class="container-fluid">
@@ -48,8 +49,7 @@
 							<ul class="topbar-right d-flex justify-content-end">
 								<li class="p-2"><a href="#"><span>Tra cứu đơn
 											hàng</span></a></li>
-								<li class="p-2"><a href="#"><i class="fa-solid fa-user"></i><span>Sign
-											in</span></a></li>
+								<li class="p-2"><a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a></li>
 								<li class="p-2"><a href="#"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -133,17 +133,17 @@
 						<div class="carousel-item active" data-bs-interval="3000">
 							<img
 								src="https://www.stadiumgoods.com/BWStaticContent/54000/d5979083-2d66-4b44-95c7-f147065761b6_230306-dz1382-001-desktop-02.jpg"
-								alt="...">
+								alt="slide-banner">
 						</div>
 						<div class="carousel-item" data-bs-interval="3000">
 							<img
 								src="https://cdn.shopify.com/s/files/1/0408/9909/files/Untitled-1_93bde367-8510-418d-b6f2-b6532dd59f6d.jpg?v=1675972770&width=1280"
-								alt="...">
+								alt="slide-banner">
 						</div>
 						<div class="carousel-item" data-bs-interval="3000">
 							<img
 								src="https://images.dsw.com/is/image/DSWShoes/P230254_ft_sneakers-75?impolicy=qlt-medium&imwidth=1400&imdensity=1"
-								alt="...">
+								alt="slide-banner">
 						</div>
 					</div>
 					<button class="carousel-control-prev" type="button"
@@ -977,7 +977,7 @@
 						<div class="p-2">
 							<h5>Tuyển dụng</h5>
 							<ul class="navbar-nav">
-								<li class="nav-item"><a href="#">Tyển dụng</a></li>
+								<li class="nav-item"><a href="#">Tuyển dụng</a></li>
 							</ul>
 						</div>
 						<div class="p-2">
