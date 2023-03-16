@@ -49,6 +49,11 @@ private Logger logger = Logger.getLogger(Users.class);
 	
 //	Admin Interface
 	
+	@GetMapping("/dashboard")
+	public String viewDashboard() {
+		return "dashboard";
+	}
+	
 	// Admin: order
 	
 	@GetMapping("/order-dashboard")
@@ -63,10 +68,15 @@ private Logger logger = Logger.getLogger(Users.class);
 	
 	// Admin: product
 	
-	@GetMapping("/product-list")
-	public String viewProductList() {
-		return "product-list";
+	@GetMapping("/product-dashboard")
+	public String viewProductDashboard() {
+		return "product-dashboard";
 	}
+	
+//	@GetMapping("/product-list")
+//	public String viewProductList() {
+//		return "product-list";
+//	}
 	
 	@GetMapping("/add-product")
 	public String addProduct() {

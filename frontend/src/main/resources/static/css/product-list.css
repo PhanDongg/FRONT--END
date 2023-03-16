@@ -55,6 +55,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     max-width: 300px;
+    color: black !important;
 }
 
 #productTable .product-status .sell {
@@ -95,6 +96,10 @@
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
+}
+
+.table-pagination .pagination a {
+	color: black !important;
 }
 
 .active {

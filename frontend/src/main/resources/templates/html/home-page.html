@@ -249,14 +249,12 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="d-flex justify-content-between">
-                                            <div class="content-products-item">
-                                                <img
-                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                              <div class="content-products-item" th:each="product : ${listProducts}">
+                                                <img th:src="${product.images[1]}">
                                                 <div class="">
-                                                    <p class="name-brand">JORDAN</p>
-                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
-                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
-                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <p class="name-brand" th:text="${product.brand}"></p>
+                                                    <h5 class="name-prod"  th:text="${product.productName}"></h5>
+                                                    <p class="price-prod" th:text="${product.price}"></p>
                                                     <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
                                                 </div>
                                             </div>
@@ -448,18 +446,57 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="d-flex justify-content-between">
-                                            <div class="content-products-item">
+                                            <div class="content-products-item" th:each="product : ${listProducts}">
                                                 <img
                                                     src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
                                                 <div class="">
-                                                    <p class="name-brand">JORDAN</p>
-                                                    <h5 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW SALT LAKE
-                                                        CITY - WHITE/BALTIC BLUE/OIL GREEN</h5>
-                                                    <p class="price-prod">3.245.000₫</p>
+                                                    <p class="name-brand" th:text="${product.brand}"></p>
+                                                    <h5 class="name-prod"  th:text="${product.productName}"></h5>
+                                                    <p class="price-prod" th:text="${product.price}"></p>
                                                     <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
                                                 </div>
                                             </div>
-                                            <div class="content-products-item">
+                                            <div class="content-products-item" th:each="product : ${listProducts}">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand" th:text="${product.brand}"></p>
+                                                    <h5 class="name-prod"  th:text="${product.productName}"></h5>
+                                                    <p class="price-prod" th:text="${product.price}"></p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item" th:each="product : ${listProducts}">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand" th:text="${product.brand}"></p>
+                                                    <h5 class="name-prod"  th:text="${product.productName}"></h5>
+                                                    <p class="price-prod" th:text="${product.price}"></p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item" th:each="product : ${listProducts}">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand" th:text="${product.brand}"></p>
+                                                    <h5 class="name-prod"  th:text="${product.productName}"></h5>
+                                                    <p class="price-prod" th:text="${product.price}"></p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-products-item" th:each="product : ${listProducts}">
+                                                <img
+                                                    src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+                                                <div class="">
+                                                    <p class="name-brand" th:text="${product.brand}"></p>
+                                                    <h5 class="name-prod"  th:text="${product.productName}"></h5>
+                                                    <p class="price-prod" th:text="${product.price}"></p>
+                                                    <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="content-products-item">
                                                 <img
                                                     src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
                                                 <div class="">
@@ -490,7 +527,7 @@
                                                     <p class="price-prod">5.527.000₫</p>
                                                     <a href="#" class="btn btn-primary buy-now-btn">Buy Now</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="carousel-item">

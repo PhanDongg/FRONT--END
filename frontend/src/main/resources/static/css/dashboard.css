@@ -18,7 +18,7 @@ ul {
 
 a {
     text-decoration: none !important;
-    color: white !important;
+    color: black !important;
 }
 
 h2 {
@@ -84,20 +84,12 @@ h4 {
 }
 
 .dashboard__side-menu ul li {
-    padding: 10px 0;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
-.dashboard__side-menu ul li i {
-    margin-right: 10px;
-}
-
-.dashboard__side-menu ul li > div {
-    margin-left: 30px;
-}
-
-.dashboard__side-menu ul li > div .collapse-item {
-    padding: 5px 0;
-    margin-top: 5px;
+.dashboard__side-menu ul li a:hover {
+    font-size: 22px;
 }
 
 
