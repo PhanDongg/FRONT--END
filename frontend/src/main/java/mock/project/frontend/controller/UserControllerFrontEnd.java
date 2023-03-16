@@ -66,4 +66,9 @@ private Logger logger = Logger.getLogger(Users.class);
 	public String checkOrder() {
 		return "check-order";
 	}
+	
+	@GetMapping("/add-product")
+	public String addOrder() {
+		return "add-product";
+	}
 }
