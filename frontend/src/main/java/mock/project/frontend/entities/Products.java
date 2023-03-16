@@ -1,7 +1,7 @@
 package mock.project.frontend.entities;
 
 import java.io.Serializable;
-import java.lang.management.MemoryType;
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -19,15 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="product")
 public class Products implements Serializable{
@@ -38,25 +30,28 @@ public class Products implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productId;
 	
-	@Column(name="product_name",nullable = false, length = 50)
+	@Column(name="product_name",columnDefinition = "nvarchar(50)")
 	private String productName;
 	
-	@Column(name="price",nullable = false)
+	@Column(name="price")
 	private double price;
 	
 	@Column(name="description", length = 50)
 	private String description;
 	
-	@Column(name="type", length = 50)
+	@Column(name="type",columnDefinition = "nvarchar(50)")
 	private String type;
 	
-	@Column(name="color", length = 50)
+	@Column(name="color",columnDefinition = "nvarchar(50)")
 	private String color;
 	
 	@Column(name="quantity")
 	private int quantity;
 	
-	@Column(name="brand",nullable = false, length = 50)
+	@Column(name="date")
+	private Date date;
+	
+	@Column(name="brand", length = 50)
 	private String brand;
 	
 	@ManyToOne
@@ -95,7 +90,20 @@ public class Products implements Serializable{
 		this.brand = brand;
 		this.category = category;
 	}
-
+	
+	public Products(String productName, double price, String description, String type, String color, int quantity,
+			Date date, String brand, Categories category) {
+		super();
+		this.productName = productName;
+		this.price = price;
+		this.description = description;
+		this.type = type;
+		this.color = color;
+		this.quantity = quantity;
+		this.date = date;
+		this.brand = brand;
+		this.category = category;
+	}
 
 	public Integer getProductId() {
 		return productId;
@@ -191,6 +199,14 @@ public class Products implements Serializable{
 
 	public void setSizes(List<Sizes> sizes) {
 		this.sizes = sizes;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 }

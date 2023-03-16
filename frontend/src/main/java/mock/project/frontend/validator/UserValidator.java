@@ -7,12 +7,12 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import mock.project.frontend.entities.Users;
-import mock.project.frontend.services.UserService;
+
 
 @Component
 public class UserValidator implements Validator {
-    @Autowired
-    private UserService userService;
+    
+	
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -33,7 +33,7 @@ public class UserValidator implements Validator {
 //        }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (users.getPassword().length() < 8 || users.getPassword().length() > 32) {
+        if (users.getEncryptedPassword().length() < 8 || users.getEncryptedPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
 

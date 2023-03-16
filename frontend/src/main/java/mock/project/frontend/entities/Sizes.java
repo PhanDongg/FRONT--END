@@ -59,4 +59,9 @@ public class Sizes {
 		this.products = products;
 	}
 
+	@Override
+	public String toString() {
+		return "Sizes [sizeId=" + sizeId + ", size=" + size + "]";
+	}
+	
 }

@@ -13,15 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="orders")
 public class Orders implements Serializable {
@@ -35,6 +28,10 @@ public class Orders implements Serializable {
 	
 	@Column(name="order_date", length = 50)
 	private Date orderDate;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "status_id", referencedColumnName = "status_id")
+	private Status status;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id", referencedColumnName = "user_id")

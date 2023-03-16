@@ -29,16 +29,16 @@ public class Roles implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer roleId;
 	
-	@Column(name="role_name",nullable = false, length = 50)
+	@Column(name="role_name", length = 50)
 	private String roleName;
 	
-	@OneToOne(cascade = CascadeType.ALL,mappedBy="role")
-	private Users user;
+//	@OneToOne(cascade = CascadeType.ALL,mappedBy="role")
+//	private Users user;
 	
-	public Roles() {
-		super();
-	}
-	
+//	public Roles() {
+//		super();
+//	}
+//	
 	public Roles(String roleName) {
 		super();
 		this.roleName = roleName;
@@ -60,12 +60,12 @@ public class Roles implements Serializable{
 		this.roleName = roleName;
 	}
 
-	public Users getUser() {
-		return user;
-	}
-
-	public void setUser(Users user) {
-		this.user = user;
-	}
+//	public Users getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(Users user) {
+//		this.user = user;
+//	}
 	
 }

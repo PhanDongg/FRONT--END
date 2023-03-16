@@ -1,12 +1,18 @@
 package mock.project.frontend.request;
 
 import java.sql.Date;
+import java.util.Set;
+
+import mock.project.frontend.entities.OrderDetails;
+import mock.project.frontend.entities.Users;
+
 
 public class OrderDTO {
 	
 	private Integer orderId;
-	private Integer accountId;
-	private Integer productId;
 	private Date orderDate;
-	private int quantity;
+	private Users user;
+	private Set<OrderDetails> orderDetails;
+	
+	
 }
