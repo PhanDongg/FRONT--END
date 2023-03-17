@@ -47,7 +47,7 @@ private Logger logger = Logger.getLogger(Users.class);
 	}
 	
 	
-	@GetMapping("/cart-page") 
+	@GetMapping("/cart") 
 	public String viewCart() {
 		return "cart-page";
 	}
@@ -62,8 +62,13 @@ private Logger logger = Logger.getLogger(Users.class);
 		return "customer-detail-page";
 	}
 	
-	@GetMapping("/check-order-page")
+	@GetMapping("/account/order")
 	public String checkOrder() {
-		return "check-order";
+		return "check-order-page";
+	}
+	
+	@GetMapping("/account/order/detail")
+	public String viewOrderDetail() {
+		return "order-view-page";
 	}
 }
