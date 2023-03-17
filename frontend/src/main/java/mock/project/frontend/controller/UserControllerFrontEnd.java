@@ -52,12 +52,12 @@ private Logger logger = Logger.getLogger(Users.class);
 		return "cart-page";
 	}
 	
-	@GetMapping("/product-detail-page")
+	@GetMapping("/product/detail")
 	public String viewProductDetail() {
 		return "product-detail-page";
 	}
 	
-	@GetMapping("/customer-detail-page")
+	@GetMapping("/account/info")
 	public String updateCustomerInfo() {
 		return "customer-detail-page";
 	}
