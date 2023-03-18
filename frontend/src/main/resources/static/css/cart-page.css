@@ -4,10 +4,6 @@
     margin: 0 6% 5%;
 }
 
-/* .cart-view>div{
-    width: 100%;
-} */
-
 .my-cart table img {
     width: 15%;
     display: block;
@@ -16,7 +12,6 @@
 table td,
 table th {
     border-bottom: 0.5px solid black;
-    padding: 1%;
 }
 
 table {
@@ -24,40 +19,60 @@ table {
 }
 
 .bill tbody tr td:nth-child(1) {
-    width: 90%;
+    width: 75%;
 }
 
 table th,
-.bill tbody tr td:nth-child(2) {
+.bill tbody tr td:nth-child(2),
+.my-cart tr td:not(:nth-child(1)) {
     text-align: center;
-}
-
-h5 {
-    padding-top: 5%;
 }
 
 table a:hover {
     color: goldenrod !important;
 }
 
-.info-customer .row {
-    padding: 1% 0 0%;
-}
-
-table tr td:nth-child(1) {
+.my-cart tr td:nth-child(1) {
     width: 70%;
 }
 
-.my-cart tr td:not(:nth-child(1)) {
-    text-align: center;
-}
-
-.product-info .d-flex>div {
+.my-cart .product-info .d-flex>div {
     margin-left: 2%;
 }
 
-.bill {
+.my-cart table th,
+.my-cart table td{
+    padding: 1.5%;
+}
+
+
+.delivery-info>div{
+    width: 48%;
     margin-top: 2%;
+}
+
+.customer-info .row{
+    margin-bottom: 2%;
+}
+
+.payment input{
+    cursor: pointer;
+}
+
+.payment {
+    margin-top: 4%;
+}
+
+.payment .form-check{
+    margin: 2% 0;
+}
+
+.bill td{
+    padding: 1.5% 0; 
+}
+
+.bill tr td:nth-child(1) {
+    width: 78% !important;
 }
 
 .btn-cart {
