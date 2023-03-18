@@ -25,8 +25,7 @@ i {
 }
 
 /* topbar and nav-bar*/
-/* .topbar-right a:hover,
-.nav-item>a:hover  */
+.topbar-right a:hover,
 .nav-item a:hover,
 .view-all:hover a{
     color: goldenrod !important;
