@@ -1,129 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giỏ hàng</title>
+
+<!-- css -->
+<!-- <link rel="stylesheet" href="/LAYOUT/CSS/cart-page.css"> -->
+<!-- <link rel="stylesheet" href="/LAYOUT/CSS/navbar.css"> -->
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/css/login-form.css}">
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/login-form.css}"> -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/cart-page.css}">
-<script type="text/javascript" th:src="@{/js/cart-page.js}"></script>
-<script type="text/javascript" th:src="@{/js/login.js}"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+
+<!-- js -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+	crossorigin="anonymous"></script>
+
+<!-- <script type="text/javascript" th:src="@{/js/cart-page.js}"></script>
+	<script type="text/javascript" th:src="@{/js/login.js}"></script> -->
 <script src="https://kit.fontawesome.com/c39bd3b109.js"
 	crossorigin="anonymous"></script>
 </head>
-<body>
-	<form th:action="@{/cart-page}" method="get">
-		<div class="body-container">
 
+<body>
+	<form th:action="@{/cart}" method="get">
+		<div class="body-container">
 			<div class="top-bar">
 				<div class="container-fluid">
 					<div class="d-flex justify-content-between">
-						<div class="topbar-left">
-							<ul>
-								<li class="me-auto p-2"><span><i
-										class="fa-solid fa-phone-volume"></i> Hotline: 19009191</span></li>
+						<div>
+							<ul class="topbar-left p-2">
+								<li><span><i class="fa-solid fa-phone-volume"></i>Hotline:
+										19009191</span></li>
 							</ul>
 						</div>
-						<div class="topbar-right">
-							<ul class="d-flex">
-								<li class="p-2"><span><a href="#"><i
-											class="fa-solid fa-truck-fast"></i> Tra cứu đơn hàng</a></span></li>
-								<li class="p-2"><span><a href="#" class="sign-in"><i
-											class="fa-solid fa-user"></i> Sign in</a></span></li>
-								<li class="p-2 cart-btn"><span><a href="#"><i
-											class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a></span>
-									<div class="cart">
-										<span>Sản phẩm mới thêm</span>
-										<ul class="cart-list-product">
-											<li class="cart-item">
-												<div class="cart-item-info">
-													<img
-														src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-														alt="" class="cart-item-img">
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-name"> Nike Zoom SuperRep 4
-														Next Nature Nike Zoom SuperRep 4 Next Nature </span>
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-qty">x1</span>
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-price">3,829,000₫</span>
-												</div>
-												<div class="cart-item-info">
-													<button class="delete-btn">Xóa</button>
-												</div>
-											</li>
-											<li class="cart-item">
-												<div class="cart-item-info">
-													<img
-														src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80"
-														alt="" class="cart-item-img">
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-name"> Nike Zoom SuperRep 4
-														Next Nature Nike Zoom SuperRep 4 Next Nature </span>
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-qty">x1</span>
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-price">3,829,000₫</span>
-												</div>
-												<div class="cart-item-info">
-													<button class="delete-btn">Xóa</button>
-												</div>
-											</li>
-											<li class="cart-item">
-												<div class="cart-item-info">
-													<img
-														src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-														alt="" class="cart-item-img">
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-name"> Nike Zoom SuperRep 4
-														Next Nature Nike Zoom SuperRep 4 Next Nature </span>
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-qty">x2</span>
-												</div>
-												<div class="cart-item-info">
-													<span class="cart-item-price">3,829,000₫</span>
-												</div>
-												<div class="cart-item-info">
-													<button class="delete-btn">Xóa</button>
-												</div>
-											</li>
-										</ul>
-										<div class="cart-footer">
-											<div class="cart-footer-item">
-												<span>1 sản phẩm thêm vào giỏ</span>
-											</div>
-											<div class="cart-footer-item">
-												<button type="submit" class="view-cart-btn">Xem giỏ
-													hàng</button>
-											</div>
-										</div>
-
-									</div></li>
+						<div>
+							<ul class="topbar-right d-flex justify-content-end">
+								<li class="p-2"><a href="#"><span>Tra cứu đơn
+											hàng</span></a></li>
+								<li class="p-2"><a href="#"><i class="fa-solid fa-user"></i><span>Sign
+											in</span></a></li>
+								<li class="p-2"><a href="#"><i
+										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
-
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<nav
-				class="navbar navbar-expand-lg bg-body-tertiary sticky-top navbar-dark bg-black">
+			<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"
+				data-bs-theme="dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">LOGO</a>
+					<a class="navbar-brand" href="#">Logo</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -132,457 +76,266 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">GIÀY</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">action</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">DÉP</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">action</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">QUẦN/ÁO</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">actio n</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">BALO/TÚI
-									XÁCH</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">action</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">NÓN</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">action</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">PHỤ KIỆN</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">action</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#"
+							<li class="nav-item dropdown"><a class="nav-link" href="#"
+								data-bs-toggle="dropdown" aria-expanded="false">SẢN PHẨM MỚI</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a>
+								</div></li>
+							<li class="nav-item dropdown"><a class="nav-link" href="#"
+								data-bs-toggle="dropdown" aria-expanded="false">ADIDAS</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a>
+								</div></li>
+							<li class="nav-item dropdown"><a class="nav-link" href="#"
+								data-bs-toggle="dropdown" aria-expanded="false">NIKE</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a>
+								</div></li>
+							<li class="nav-item dropdown"><a class="nav-link" href="#"
+								data-bs-toggle="dropdown" aria-expanded="false">PUMA</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a>
+								</div></li>
+							<li class="nav-item dropdown"><a class="nav-link" href="#"
 								data-bs-toggle="dropdown" aria-expanded="false">SALE</a>
-								<ul class="dropdown-menu dropdown-menu-start">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">action</a></li>
-									<li><a class="dropdown-item" href="#">Something</a></li>
-								</ul></li>
-							<li class="nav-item"><a class="nav-link" href="#">TIN
-									TỨC</a></li>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a>
+								</div></li>
+							<li class="nav-item dropdown"><a class="nav-link" href="#"
+								aria-expanded="false">TIN TỨC</a></li>
 						</ul>
-						<form class="d-flex" role="search">
+						<div class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
 								placeholder="Search" aria-label="Search">
-							<button type="button" class="btn btn-secondary">
+							<button class="btn btn-outline-success" type="submit">
 								<i class="fa-solid fa-magnifying-glass"></i>
 							</button>
-						</form>
+						</div>
 					</div>
 				</div>
 			</nav>
-
-			<div class="cart-detail">
-
-				<h1 class="cart-heading">Giỏ hàng của bạn</h1>
-
-				<div class="cart-detail-container">
-
-					<div class="cart-detail-list">
-						<div class="cart-detail-item">
-							<div class="cart-detail-img text-center">
-								<img
-									src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-									alt="">
-							</div>
-							<div class="cart-detail-product-info">
-								<div class="cart-detail-product-name">
-									<span class="product-name">Nike Zoom SuperRep 4 Next
-										Nature Nike Zoom SuperRep 4 Next Nature</span>
-								</div>
-								<div class="cart-detail-product-type">
-									<select name="" id="" class="product-size">
-										<option value="36">35</option>
-										<option value="37">36</option>
-										<option value="38">37</option>
-										<option value="39">39</option>
-									</select> <select name="" id="" class="product-color">
-										<option value="green">Green</option>
-										<option value="pink">Pink</option>
-									</select>
-								</div>
-								<div class="cart-detail-product-qty">
-									<span class="product-unit-price">3,829,000₫</span>
-									<div class="qty-control">
-										<button class="add-qty-btn">+</button>
-										<input type="text" name="" id="" value="1"
-											class="qty-input text-center">
-										<button class="minus-qty-btn">-</button>
-									</div>
-								</div>
-							</div>
-							<div class="cart-detail-product-price ">
-								<div class="product-total-price">3,829,000₫</div>
-								<div class="product-delete-action">
-									<button class="product-delete-btn">Delete</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="cart-detail-item">
-							<div class="cart-detail-img text-center">
-								<img
-									src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-									alt="">
-							</div>
-							<div class="cart-detail-product-info">
-								<div class="cart-detail-product-name">
-									<span class="product-name">Nike Zoom SuperRep 4 Next
-										Nature Nike Zoom SuperRep 4 Next Nature</span>
-								</div>
-								<div class="cart-detail-product-type">
-									<select name="" id="" class="product-size">
-										<option value="36">35</option>
-										<option value="37">36</option>
-										<option value="38">37</option>
-										<option value="39">39</option>
-									</select> <select name="" id="" class="product-color">
-										<option value="green">Green</option>
-										<option value="pink">Pink</option>
-									</select>
-								</div>
-								<div class="cart-detail-product-qty">
-									<span class="product-unit-price">3,829,000₫</span>
-									<div class="qty-control">
-										<button class="add-qty-btn">+</button>
-										<input type="text" name="" id="" value="1"
-											class="qty-input text-center">
-										<button class="minus-qty-btn">-</button>
-									</div>
-								</div>
-							</div>
-							<div class="cart-detail-product-price ">
-								<div class="product-total-price">3,829,000₫</div>
-								<div class="product-delete-action">
-									<button class="product-delete-btn">Delete</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="cart-detail-item">
-							<div class="cart-detail-img text-center">
-								<img
-									src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-									alt="">
-							</div>
-							<div class="cart-detail-product-info">
-								<div class="cart-detail-product-name">
-									<span class="product-name">Nike Zoom SuperRep 4 Next
-										Nature Nike Zoom SuperRep 4 Next Nature</span>
-								</div>
-								<div class="cart-detail-product-type">
-									<select name="" id="" class="product-size">
-										<option value="36">35</option>
-										<option value="37">36</option>
-										<option value="38">37</option>
-										<option value="39">39</option>
-									</select> <select name="" id="" class="product-color">
-										<option value="green">Green</option>
-										<option value="pink">Pink</option>
-									</select>
-								</div>
-								<div class="cart-detail-product-qty">
-									<span class="product-unit-price">3,829,000₫</span>
-									<div class="qty-control">
-										<button class="add-qty-btn">+</button>
-										<input type="text" name="" id="" value="1"
-											class="qty-input text-center">
-										<button class="minus-qty-btn">-</button>
-									</div>
-								</div>
-							</div>
-							<div class="cart-detail-product-price ">
-								<div class="product-total-price">3,829,000₫</div>
-								<div class="product-delete-action">
-									<button class="product-delete-btn">Delete</button>
-								</div>
-							</div>
-						</div>
+			<main>
+				<div class="cart-view">
+					<div class="my-cart">
+						<h5>Giỏ hàng của bạn</h5>
+						<table>
+							<thead>
+								<tr>
+									<th>Sản phẩm</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+									<th>Thành tiền</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="product-info">
+									<td>
+										<div class="d-flex">
+											<img
+												src="https://cdn.shopify.com/s/files/1/0408/9909/products/converse-x-comme-des-garcons-play-all-star-chuck-70-hi-multi-heart-khaki.jpg?v=1596148223&width=1280"
+												alt="">
+											<div>
+												<p>CONVERSE</p>
+												<a href="#">CONVERSE X COMME DES GARCONS PLAY ALL STAR
+													CHUCK '70 HI "MULTI HEART" - KHAKI</a>
+												<p>
+													Màu sắc: <span>Nâu</span>
+												</p>
+											</div>
+										</div>
+									</td>
+									<td>2.035.000đ</td>
+									<td>2</td>
+									<td>4.070.000đ</td>
+								</tr>
+								<tr class="product-info">
+									<td>
+										<div class="d-flex">
+											<img
+												src="https://cdn.shopify.com/s/files/1/0408/9909/products/Nike-Women_s-AJ1-Zoom-Comfort-2---Phantom-University-Blue-DV1305-004---01-31-23---Feature--JP.jpg?v=1675887738&width=1280"
+												alt="">
+											<div>
+												<p>JORDAN</p>
+												<a href="#">AIR JORDAN 1 ZOOM CMFT WOMEN'S UNIVERSITY
+													BLUE - PHANTOM/UNIVERSITY BLUE</a>
+												<p>
+													Màu sắc: <span>Xanh</span>
+												</p>
+											</div>
+										</div>
+									</td>
+									<td>3.590.000đ</td>
+									<td>1</td>
+									<td>3.590.000đ</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="cart-detail-bill">
-						<h2>Tổng tiền</h2>
-						<div class="total-product-price">
-							<span>Tổng tiền sản phẩm</span> <span class="price">3,829,000₫</span>
-						</div>
-						<div class="shipping-fee">
-							<span>Shipping fee</span> <span class="price">3,829,000₫</span>
-						</div>
-						<hr>
-						<div class="total-price">
-							<span class="fw-bold">Tổng cộng</span> <span class="fw-bold">3,829,000₫</span>
-						</div>
-						<button class="order-btn">Tiến hành đặt hàng</button>
-						<button class="continue-buy-btn">Tiếp tục mua hàng</button>
+					<div class="info-customer">
+						<form action="" class="d-flex">
+							<div>
+								<h5>Thông Tin Người Nhận</h5>
+								<div class="row">
+									<div class="col">
+										<label for="fullName" class="form-label">Họ và Tên</label> <input
+											type="text" class="form-control" placeholder="Nhập Họ và Tên"
+											id="fullName">
+									</div>
+									<div class="col">
+										<label for="phone" class="form-label">Số điện thoại</label> <input
+											type="text" class="form-control"
+											placeholder="Nhập Số điện thoại" id="phone">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<label for="address" class="form-label">Địa chỉ</label> <input
+											type="text" class="form-control" placeholder="Nhập Địa chỉ"
+											id="address">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<label for="email" class="form-label">Email</label> <input
+											type="email" class="form-control" placeholder="Nhập Email"
+											id="email">
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div>
+									<h5>Phương thức thanh toán</h5>
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault1" checked>
+										<label class="form-check-label" for="flexRadioDefault1">
+											Thanh toán tiền mặt khi nhận hàng </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault2"> <label
+											class="form-check-label" for="flexRadioDefault2">
+											Thanh toán bằng chuyển khoản </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault3"> <label
+											class="form-check-label" for="flexRadioDefault3">
+											Thanh toán trực tuyến </label>
+									</div>
+									<table class="bill">
+										<tbody>
+											<tr>
+												<td>Tổng giá trị sản phẩm:</td>
+												<td>7.660.000đ</td>
+											</tr>
+											<tr>
+												<td>Giảm giá</td>
+												<td>0%</td>
+											</tr>
+											<tr>
+												<td>Phí vận chuyển</td>
+												<td>20.000đ</td>
+											</tr>
+											<tr>
+												<td>Tổng hóa đơn</td>
+												<td>7.680.000đ</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="btn-cart d-flex justify-content-center">
+								<button class="add-cart-btn" type="button">TIẾP TỤC MUA
+									HÀNG</button>
+								<button class="buy-now-btn" type="button">
+									<a href="#">TIẾN HÀNH ĐẶT HÀNG</a>
+								</button>
+							</div>
+						</form>
 					</div>
-
 				</div>
-
-				<div class="recommended-product">
-					<h4>Bạn cũng muốn mua</h4>
-					<div class="recommended-product-container">
-						<i class="fa-solid fa-angle-left prev-btn"></i>
-						<div class="recommended-product-slide-wrapper">
-							<div class="recommended-product-slide">
-								<div class="recommended-product-slide-item">
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2023/01/giay-the-thao-puma-380606-06-pacer-future-lux-lace-up-sneakers-shoes-casual-beige-mau-be-size-36-63d8dcce04fc7-31012023161806.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2020/01/giay-mlb-big-ball-chunky-p-boston-size-240-5e200882263f2-16012020135354.png"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/12/giay-the-thao-nike-joyride-flyknit-mau-hong-63ac0a6aa0cac-28122022162042.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/03/giay-sneakers-mlb-playball-monogram-yankees-yanke-3acvvm12n-50bks-mau-den-62440634a3747-30032022142644.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2023/01/giay-bong-ro-nike-zoom-freak-2-letter-bro-cw3162-001-phoi-mau-size-41-63b4de16f0794-04012023090158.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="recommended-product-slide-item">
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=812&q=80"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
+			</main>
+			<footer>
+				<div class="footer-content">
+					<div class="d-flex justify-content-between">
+						<div class="p-2">
+							<h5>Về chúng tôi</h5>
+							<ul class="navbar-nav">
+								<li class="nav-item"><a href="#">Giới thiệu</a></li>
+								<li class="nav-item"><a href="#">Hệ thống của hàng</a></li>
+							</ul>
 						</div>
-						<i class="fa-solid fa-angle-right next-btn"></i>
-					</div>
-
-				</div>
-
-				<div class="recommended-product">
-					<h4>Sản phẩm vừa xem</h4>
-					<div class="recommended-product-container">
-						<i class="fa-solid fa-angle-left prev-btn"></i>
-						<div class="recommended-product-slide-wrapper">
-							<div class="recommended-product-slide">
-								<div class="recommended-product-slide-item">
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2023/01/giay-the-thao-nike-air-force-1-low-shadow-cu8591-104-phoi-mau-size-38-63b4e63a3b002-04012023093642.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/ce8a6f3aa6294de988d7abce00c4e459_9366/Breaknet_Shoes_White_FX8707_01_standard.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-									<div class="recommended-product-item" style="width: 18rem;">
-										<img
-											src="https://ticosneaker.com.vn/wp-content/uploads/2022/05/d75357726b6dab33f27c41.jpg"
-											class="card-img-top" alt="...">
-										<div class="card-body">
-											<h5 class="card-title">Nike Zoom SuperRep 4 Next Nature
-												Nike Zoom SuperRep 4 Next Nature</h5>
-											<p class="card-text fw-bold">3,829,000₫</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
+						<div class="p-2">
+							<h5>Hỗ trợ khách hàng</h5>
+							<ul class="navbar-nav">
+								<li class="nav-item"><a href="#">Chính sánh khách hàng</a></li>
+								<li class="nav-item"><a href="#">Chính sách đổi trả</a></li>
+								<li class="nav-item"><a href="#">Chính sách bảo hành</a></li>
+								<li class="nav-item"><a href="#">Chính sách giao hàng</a></li>
+								<li class="nav-item"><a href="#">Chính sách bảo mật</a></li>
+								<li class="nav-item"><a href="#">Câu hỏi thường gặp</a></li>
+							</ul>
 						</div>
-						<i class="fa-solid fa-angle-right next-btn"></i>
+						<div class="p-2">
+							<h5>Tuyển dụng</h5>
+							<ul class="navbar-nav">
+								<li class="nav-item"><a href="#">Tuyển dụng</a></li>
+							</ul>
+						</div>
+						<div class="p-2">
+							<h5>Địa chỉ - Liên hệ</h5>
+							<ul class="navbar-nav">
+								<li class="nav-item"><a href="#">Địa chỉ</a></li>
+							</ul>
+						</div>
+						<div class="p-2">
+							<h5>Kết nối với chúng tôi</h5>
+							<ul class="navbar-nav">
+								<li class="nav-item"><a href="#"><i
+										class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+								<li class="nav-item"><a href="#"><i
+										class="fa-brands fa-twitter"></i>Twitter</a></li>
+								<li class="nav-item"><a href="#"><i
+										class="fa-brands fa-youtube"></i>Youtube</a></li>
+								<li class="nav-item"><a href="#"><i
+										class="fa-brands fa-facebook"></i>Facebook</a></li>
+								<li class="nav-item"><a href="#"><i
+										class="fa-brands fa-instagram"></i>Instagram</a></li>
+
+								<li class="nav-item"><a href="#">Hotline: 19009191</a></li>
+								<li class="nav-item"><a href="#">Email:
+										cskhABC@gmai.com</a></li>
+							</ul>
+						</div>
 					</div>
-
+					<div class="d-flex justify-content-between">
+						<div class="p-2 d-flex align-items-center">
+							<span>Copyright © 2023 ABC</span>
+						</div>
+						<div class="p-2 d-flex align-items-center">
+							<span> Thanh toán: <i class="fa-solid fa-money-bill"></i>
+								<i class="fa-brands fa-cc-visa"></i> <i
+								class="fa-brands fa-cc-mastercard"></i>
+							</span>
+						</div>
+					</div>
 				</div>
-			</div>
-
+			</footer>
 		</div>
-		<footer>
-			<div class="footer-content">
-				<div class="d-flex justify-content-between footer-content-one">
-					<div class="p-2">
-						<h5>Về chúng tôi</h5>
-						<ul class="navbar-nav">
-							<li class="nav-item"><a href="#">Giới thiệu</a></li>
-							<li class="nav-item"><a href="#">Hệ thống của hàng</a></li>
-						</ul>
-					</div>
-					<div class="p-2">
-						<h5>Hỗ trợ khách hàng</h5>
-						<ul class="navbar-nav">
-							<li class="nav-item"><a href="#">Chính sánh khách hàng</a></li>
-							<li class="nav-item"><a href="#">Chính sách đổi trả</a></li>
-							<li class="nav-item"><a href="#">Chính sách bảo hành</a></li>
-							<li class="nav-item"><a href="#">Chính sách giao hàng</a></li>
-							<li class="nav-item"><a href="#">Chính sách bảo mật</a></li>
-							<li class="nav-item"><a href="#">Câu hỏi thường gặp</a></li>
-						</ul>
-					</div>
-					<div class="p-2">
-						<h5>Tuyển dụng</h5>
-						<ul class="navbar-nav">
-							<li class="nav-item"><a href="#">Tyển dụng</a></li>
-						</ul>
-						<a href="#"><img
-							src="/image/iconfooter/20150827110756_dathongbao.png" alt=""></a>
-					</div>
-					<div class="p-2">
-						<h5>Địa chỉ - Liên hệ</h5>
-						<ul class="navbar-nav">
-							<li class="nav-item"><a href="#">Địa chỉ</a></li>
-						</ul>
-					</div>
-					<div class="p-2">
-						<h5>Kết nối với chúng tôi</h5>
-						<ul class="navbar-nav">
-							<li class="nav-item"><a href="#"><i
-									class="fa-brands fa-facebook"></i>Facebook</a></li>
-							<li class="nav-item"><a href="#"><i
-									class="fa-brands fa-instagram"></i>Instagram</a></li>
-							<li class="nav-item"><a href="#"><i
-									class="fa-brands fa-twitter"></i>Twitter</a></li>
-							<li class="nav-item"><a href="#"><i
-									class="fa-brands fa-tiktok"></i>Tiktok</a></li>
-							<li class="nav-item"><a href="#"><i
-									class="fa-brands fa-youtube"></i>Youtube</a></li>
-
-							<li class="nav-item"><a href="#">Hotline: 19009191</a></li>
-							<li class="nav-item"><a href="#">Email: cskhABC@gmai.com</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="d-flex justify-content-between footer-content-two">
-					<div class="p-2 d-flex align-items-center">
-						<span>Copyright © 2023 ABC</span>
-					</div>
-					<div class="p-2 d-flex align-items-center">
-						<span>Thanh toán: </span> <i class="fa-solid fa-money-bill"></i> <i
-							class="fa-brands fa-cc-visa"></i> <i
-							class="fa-brands fa-cc-mastercard"></i>
-					</div>
-				</div>
-			</div>
-		</footer>
 	</form>
-	<script src="/js/cart.js"></script>
-	<script src="/js/login.js"></script>
+<!-- 	<script src="/js/cart.js"></script> -->
+<!-- 	<script src="/js/login.js"></script> -->
 </body>
+
 </html>
