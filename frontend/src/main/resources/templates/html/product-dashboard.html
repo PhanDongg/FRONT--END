@@ -18,79 +18,18 @@
 			<div class="dashboard__side-menu">
 				<h3>ABC Store</h3>
 				<ul class="side-menu-container">
-					<li class=""><i class="fa-solid fa-house"></i> Dashboard</li>
-					<li class="products-menu bg-black text-white"
-						data-bs-toggle="collapse" data-bs-target="#collapseProduct"
-						aria-expanded="false" aria-controls="collapseProduct"><i
-						class="fa-solid fa-cart-shopping"></i> Sản phẩm
-						<div class="collapse" id="collapseProduct">
-							<div class="bg-black text-white collapse-item">
-								<a th:href="@{product-list}"
-									class="text-decoration-none text-white">Danh sách sản phẩm</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Edit
-									product</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a th:href="@{add-product}"
-									class="text-decoration-none text-white">Thêm sản phẩm mới</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Product
-									detail</a>
-							</div>
-						</div></li>
-					<li class="products-menu bg-black text-white"
-						data-bs-toggle="collapse" data-bs-target="#collapseOrder"
-						aria-expanded="false" aria-controls="collapseOrder"><i
-						class="fa-solid fa-receipt"></i> Đơn hàng
-						<div class="collapse" id="collapseOrder">
-							<div class="bg-black text-white collapse-item">
-								<a th:href="@{order-list}"
-									class="text-decoration-none text-white">Danh sách đơn hàng</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Order
-									detail</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Order
-									invoice</a>
-							</div>
-						</div></li>
-					<li class="products-menu bg-black text-white"
-						data-bs-toggle="collapse" data-bs-target="#collapseCustomer"
-						aria-expanded="false" aria-controls="collapseCustomer"><i
-						class="fa-solid fa-user"></i> Customers
-						<div class="collapse" id="collapseCustomer">
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Customer
-									Lists</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Customer
-									Detail</a>
-							</div>
-						</div></li>
-					<li class="products-menu bg-black text-white"
-						data-bs-toggle="collapse" data-bs-target="#collapseInventory"
-						aria-expanded="false" aria-controls="collapseInventory"><i
-						class="fa-solid fa-database"></i> Inventory
-						<div class="collapse" id="collapseInventory">
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Inventory
-									Lists</a>
-							</div>
-							<div class="bg-black text-white collapse-item">
-								<a href="" class="text-decoration-none text-white">Inventory
-									edit</a>
-							</div>
-						</div></li>
+					<li class=""><a href=""><i class="fa-solid fa-house"></i>
+							Dashboard</a></li>
+					<li><a href=""><i class="fa-brands fa-shopify"></i> Sản
+							phẩm</a></li>
+					<li><a href=""><i class="fa-solid fa-clipboard"></i> Đơn
+							hàng</a></li>
+					<li><a href=""><i class="fa-solid fa-user"></i> Thành viên</a>
+					</li>
 				</ul>
 			</div>
 
-			<div class="dashboard-content">
+			<div class="dashboard__content">
 				<div
 					class="dashboard-head d-flex align-items-center justify-content-between">
 					<div class="dashboard-head-item w-50">
@@ -103,7 +42,7 @@
 					</div>
 					<div
 						class="dashboard-head-item d-flex align-items-center justify-content-end">
-						<div class="noti-icon">
+						<div class="dashboard-head__noti">
 							<i class="fa-solid fa-bell"></i>
 						</div>
 						<div class="dashboard-head__user-info text-end">
@@ -112,39 +51,145 @@
 						</div>
 						<img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
 							alt="">
-						<div class="setting-icon">
+						<div class="dashboard-head__setting">
 							<i class="fa-solid fa-gear"></i>
 						</div>
 					</div>
 				</div>
 
-				<div class="product-management">
+				<div class="product-dashboard">
 					<div class="container overflow-hidden">
 						<div class="row gy-5 product-menu">
 							<div class="col-4">
 								<div class="p-3">
-									<button class="view-product-list-btn shadow">
-										<a th:href="@{product-list}">Danh sách sản phẩm</a>
-									</button>
+									<button class="view-product-list-btn shadow">Danh sách
+										sản phẩm</button>
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="p-3">
-									<button class="update-product-btn shadow">
-										<a th:href="@{add-product}">Thêm sản phẩm mới</a>
-									</button>
+									<button class="update-product-btn shadow">Chỉnh sửa
+										sản phẩm</button>
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="p-3">
-									<button class="view-product-detail-btn shadow">
-										Chỉnh sửa sản phẩm
-									</button>
+									<button class="view-product-detail-btn shadow">Thêm
+										sản phẩm mới</button>
+								</div>
+							</div>
+							<div class="col-8">
+								<div class="best-selling-product-table border rounded shadow">
+									<h4>Sản phẩm bán chạy</h4>
+									<table class="table text-center align-middle"
+										id="bestSellingTable">
+										<thead class="align-middle">
+											<tr>
+												<th scope="col">ID</th>
+												<th scope="col">Sản phẩm</th>
+												<th scope="col">Đã bán</th>
+												<th scope="col">Còn lại</th>
+											</tr>
+										</thead>
+										<tbody class="align-middle">
+											<tr class="best-selling-product-row"
+												id="best-selling-product-row-1">
+												<th scope="row">#P1</th>
+												<td class="d-flex align-items-center"><img
+													src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/12/giay-the-thao-mlb-chunky-liner-mid-basic-new-york-yankees-3asxlmb3n-50bks-mau-trang-63ad362ab73c9-29122022133938.jpg"
+													alt=""> <span class="text-start">MLB Chunky
+														Liner Mid Basic New York Yankees</span></td>
+												<td>50</td>
+												<td>10</td>
+											</tr>
+											<tr class="best-selling-product-row"
+												id="best-selling-product-row-2">
+												<th scope="row">#P1</th>
+												<td class="d-flex align-items-center"><img
+													src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/12/giay-the-thao-mlb-chunky-liner-mid-basic-new-york-yankees-3asxlmb3n-50bks-mau-trang-63ad362ab73c9-29122022133938.jpg"
+													alt=""> <span class="text-start">MLB Chunky
+														Liner Mid Basic New York Yankees</span></td>
+												<td>50</td>
+												<td>10</td>
+											</tr>
+											<tr class="best-selling-product-row"
+												id="best-selling-product-row-3">
+												<th scope="row">#P1</th>
+												<td class="d-flex align-items-center"><img
+													src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/12/giay-the-thao-mlb-chunky-liner-mid-basic-new-york-yankees-3asxlmb3n-50bks-mau-trang-63ad362ab73c9-29122022133938.jpg"
+													alt=""> <span class="text-start">MLB Chunky
+														Liner Mid Basic New York Yankees</span></td>
+												<td>50</td>
+												<td>10</td>
+											</tr>
+											<tr class="best-selling-product-row"
+												id="best-selling-product-row-4">
+												<th scope="row">#P1</th>
+												<td class="d-flex align-items-center"><img
+													src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/12/giay-the-thao-mlb-chunky-liner-mid-basic-new-york-yankees-3asxlmb3n-50bks-mau-trang-63ad362ab73c9-29122022133938.jpg"
+													alt=""> <span class="text-start">MLB Chunky
+														Liner Mid Basic New York Yankees</span></td>
+												<td>50</td>
+												<td>10</td>
+											</tr>
+											<tr class="best-selling-product-row"
+												id="best-selling-product-row-5">
+												<th scope="row">#P1</th>
+												<td class="d-flex align-items-center"><img
+													src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/12/giay-the-thao-mlb-chunky-liner-mid-basic-new-york-yankees-3asxlmb3n-50bks-mau-trang-63ad362ab73c9-29122022133938.jpg"
+													alt=""> <span class="text-start">MLB Chunky
+														Liner Mid Basic New York Yankees</span></td>
+												<td>50</td>
+												<td>10</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="product-number border rounded shadow">
+
+									<div class="row product-filter">
+										<div class="col-7">
+											<h5>Số lượng sản phẩm</h5>
+										</div>
+										<div class="col-5">
+											<select name="" id="" class="form-select">
+												<option value="">Hôm nay</option>
+												<option value="">Tuần</option>
+												<option value="">Tháng</option>
+												<option value="">Năm</option>
+											</select>
+										</div>
+									</div>
+									<div class="product-number-container">
+										<table class="table">
+											<tr>
+												<td>Sản phẩm mới</td>
+												<td class="fw-bold">5</td>
+											</tr>
+											<tr>
+												<td>Sản phẩm cũ</td>
+												<td class="fw-bold">5</td>
+											</tr>
+											<tr>
+												<td>Sản phẩm bán hết</td>
+												<td class="fw-bold">5</td>
+											</tr>
+											<tfoot>
+												<tr class="bg-black bg-opacity-50 text-white">
+													<td class="fw-bold">Tổng cộng</td>
+													<td class="fw-bold">20</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</form>

@@ -9,3 +9,29 @@
     border-radius: 5px;
     border: none;
 }
+
+.best-selling-product-table {
+    padding: 20px;
+}
+
+#bestSellingTable thead th {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#bestSellingTable img {
+    width: 70px;
+    border: 1px solid #ddd;
+}
+
+.product-number {
+    padding: 20px;
+}
+
+.product-number .product-number-container {
+    padding: 20px 0;
+}
+
+.product-number .product-number-container table {
+    width: 100%;
+}
