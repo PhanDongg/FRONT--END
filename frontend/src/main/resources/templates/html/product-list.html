@@ -19,64 +19,16 @@
             <h3>ABC Store</h3>
             <ul class="side-menu-container">
                 <li class="">
-                    <i class="fa-solid fa-house"></i> Dashboard
+                    <a href=""><i class="fa-solid fa-house"></i> Dashboard</a>
                 </li>
-                <li class="products-menu bg-black text-white" data-bs-toggle="collapse"
-                    data-bs-target="#collapseProduct" aria-expanded="false" aria-controls="collapseProduct">
-                    <i class="fa-solid fa-cart-shopping"></i> Products
-                    <div class="collapse" id="collapseProduct">
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Product Lists</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Edit product</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Add new product</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Product detail</a>
-                        </div>
-                    </div>
+                <li>
+                    <a href=""><i class="fa-brands fa-shopify"></i> Sản phẩm</a>
                 </li>
-                <li class="products-menu bg-black text-white" data-bs-toggle="collapse" data-bs-target="#collapseOrder"
-                    aria-expanded="false" aria-controls="collapseOrder">
-                    <i class="fa-solid fa-receipt"></i> Orders
-                    <div class="collapse" id="collapseOrder">
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Order Lists</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Order detail</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Order invoice</a>
-                        </div>
-                    </div>
+                <li>
+                    <a href=""><i class="fa-solid fa-clipboard"></i> Đơn hàng</a>
                 </li>
-                <li class="products-menu bg-black text-white" data-bs-toggle="collapse"
-                    data-bs-target="#collapseCustomer" aria-expanded="false" aria-controls="collapseCustomer">
-                    <i class="fa-solid fa-user"></i> Customers
-                    <div class="collapse" id="collapseCustomer">
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Customer Lists</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Customer Detail</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-menu bg-black text-white" data-bs-toggle="collapse"
-                    data-bs-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory">
-                    <i class="fa-solid fa-database"></i> Inventory
-                    <div class="collapse" id="collapseInventory">
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Inventory Lists</a>
-                        </div>
-                        <div class="bg-black text-white collapse-item">
-                            <a href="" class="text-decoration-none text-white">Inventory edit</a>
-                        </div>
-                    </div>
+                <li>
+                    <a href=""><i class="fa-solid fa-user"></i> Thành viên</a>
                 </li>
             </ul>
         </div>
@@ -175,9 +127,7 @@
                                 <td class="product-id" th:text="${product.productId}">
                                 </td>
                                 <td class="product-info d-flex align-items-center justify-content-start">
-                                    <img class="product-img"
-                                        src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/10/giay-the-thao-nike-air-force-1-low-07-se-pearl-white-dq0231-100-mau-trang-size-40-6348e56b8cef4-14102022112827.jpg"
-                                        alt="">
+                                    <img class="product-img" th:src="${product.images[0].link}">
                                     <div class="product-name">
                                         <a href="" class="product-link" th:text="${product.productName}"></a>
                                     </div>
@@ -208,7 +158,7 @@
                     </table>
                     <div class="table-pagination">
                         <div class="table-pagination-item">
-                            <span>Show 1 to 8 of 8 entries</span>
+                            <span>Show 1 to 5 of 20 entries</span>
                         </div>
                         <div class="table-pagination-item">
                             <nav aria-label="Page navigation example">
