@@ -23,7 +23,7 @@ public class UserControllerFrontEnd {
 private Logger logger = Logger.getLogger(Users.class);
 	
 	@Autowired
-	private UserService userService;
+//	private UserService userService;
 	
 	@GetMapping("/home")
 	public String welcome() {

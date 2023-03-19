@@ -12,16 +12,16 @@ import mock.project.frontend.repository.UserRepository;
 @Transactional
 public class UserService {
 	
-	@Autowired
-	private UserRepository userRepo;
-	
-//	   @PersistenceContext
-//
-//       private EntityManager entityManager;
-	
-	public Users checkLogin(final Users user) {
-		return user;
-//		return userRepo.findByUserNameAndPassword(user.getUserName(), user.getPassword());
-	}
+//	@Autowired
+//	private UserRepository userRepo;
+//	
+////	   @PersistenceContext
+////
+////       private EntityManager entityManager;
+//	
+//	public Users checkLogin(final Users user) {
+//		return user;
+////		return userRepo.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+//	}
 
 }

@@ -11,6 +11,5 @@ import mock.project.frontend.entities.Products;
 public interface ProductRepository extends JpaRepository<Products, Integer> {
 	
 	List<Products> findByProductName(String productName);
-//	 List<Products> findAllByPrice(double price, Pageable pageable);
 
 }
