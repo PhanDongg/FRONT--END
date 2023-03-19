@@ -40,7 +40,7 @@
 </head>
 
 <body>
-	<form th:action="@{/cart}" method="get">
+	<form th:action="@{/cart-page}" method="get">
 		<div class="body-container">
 			<div class="top-bar">
 				<div class="container-fluid">
@@ -53,11 +53,11 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a href="#"><span>Tra cứu đơn
-											hàng</span></a></li>
-								<li class="p-2"><a href="#"><i class="fa-solid fa-user"></i><span>Sign
-											in</span></a></li>
-								<li class="p-2"><a href="#"><i
+								<li class="p-2"><a th:href="@{/account/order}"><span>Tra
+											cứu đơn hàng</span></a></li>
+								<li class="p-2"><a th:href="@{/login}"><i
+										class="fa-solid fa-user"></i><span>Sign in</span></a></li>
+								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
 						</div>
@@ -67,7 +67,7 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"
 				data-bs-theme="dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">Logo</a>
+					<a class="navbar-brand" th:href="@{/home}">Logo</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -181,9 +181,9 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="info-customer">
-						<form action="" class="d-flex">
-							<div>
+					<form action="">
+						<div class="delivery-info d-flex justify-content-between">
+							<div class="customer-info">
 								<h5>Thông Tin Người Nhận</h5>
 								<div class="row">
 									<div class="col">
@@ -212,28 +212,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="">
-								<div>
-									<h5>Phương thức thanh toán</h5>
-									<div class="form-check">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault1" checked>
-										<label class="form-check-label" for="flexRadioDefault1">
-											Thanh toán tiền mặt khi nhận hàng </label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault2"> <label
-											class="form-check-label" for="flexRadioDefault2">
-											Thanh toán bằng chuyển khoản </label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault3"> <label
-											class="form-check-label" for="flexRadioDefault3">
-											Thanh toán trực tuyến </label>
-									</div>
-									<table class="bill">
+							<div>
+								<div class="bill">
+									<h5>Hóa đơn</h5>
+									<table>
 										<tbody>
 											<tr>
 												<td>Tổng giá trị sản phẩm:</td>
@@ -254,16 +236,38 @@
 										</tbody>
 									</table>
 								</div>
+								<div class="payment">
+									<h5>Phương thức thanh toán</h5>
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault1" checked>
+										<label class="form-check-label" for="flexRadioDefault1">
+											Thanh toán tiền mặt khi nhận hàng </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault2"> <label
+											class="form-check-label" for="flexRadioDefault2">
+											Thanh toán bằng chuyển khoản </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault3"> <label
+											class="form-check-label" for="flexRadioDefault3">
+											Thanh toán trực tuyến </label>
+									</div>
+								</div>
 							</div>
-							<div class="btn-cart d-flex justify-content-center">
-								<button class="add-cart-btn" type="button">TIẾP TỤC MUA
-									HÀNG</button>
-								<button class="buy-now-btn" type="button">
-									<a href="#">TIẾN HÀNH ĐẶT HÀNG</a>
-								</button>
-							</div>
-						</form>
-					</div>
+						</div>
+						<div class="btn-cart d-flex justify-content-center">
+							<button class="add-cart-btn" type="button">
+								<a th:href="@{/home}">TIẾP TỤC MUA HÀNG</a>
+							</button>
+							<button class="buy-now-btn" type="button">
+								<a href="#">TIẾN HÀNH ĐẶT HÀNG</a>
+							</button>
+						</div>
+					</form>
 				</div>
 			</main>
 			<footer>
@@ -308,7 +312,7 @@
 										class="fa-brands fa-twitter"></i>Twitter</a></li>
 								<li class="nav-item"><a href="#"><i
 										class="fa-brands fa-youtube"></i>Youtube</a></li>
-								<li class="nav-item"><a href="#"><i
+								<li class="nav-item"><a  href="https://www.facebook.com/phuonganh.2407"><i
 										class="fa-brands fa-facebook"></i>Facebook</a></li>
 								<li class="nav-item"><a href="#"><i
 										class="fa-brands fa-instagram"></i>Instagram</a></li>
@@ -334,8 +338,8 @@
 			</footer>
 		</div>
 	</form>
-<!-- 	<script src="/js/cart.js"></script> -->
-<!-- 	<script src="/js/login.js"></script> -->
+	<!-- 	<script src="/js/cart.js"></script> -->
+	<!-- 	<script src="/js/login.js"></script> -->
 </body>
 
 </html>
