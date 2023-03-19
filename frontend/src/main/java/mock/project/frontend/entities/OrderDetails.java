@@ -11,13 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="order_detail")
 public class OrderDetails implements Serializable {
@@ -29,7 +22,7 @@ public class OrderDetails implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderDetailId;
 	
-	@Column(name="quantity",nullable = false, length = 50)
+	@Column(name="quantity", length = 50, columnDefinition = "nvarchar(50)")
 	private int quantity;
 	
 	@ManyToOne

@@ -59,6 +59,10 @@ public class Images {
 	public void setProduct(Products product) {
 		this.product = product;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Images [imageId=" + imageId + ", link=" + link + "]";
+	}
 	
 }

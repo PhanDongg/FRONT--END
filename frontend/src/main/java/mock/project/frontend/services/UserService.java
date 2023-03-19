@@ -20,7 +20,8 @@ public class UserService {
 //       private EntityManager entityManager;
 	
 	public Users checkLogin(final Users user) {
-		return userRepo.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+		return user;
+//		return userRepo.findByUserNameAndPassword(user.getUserName(), user.getPassword());
 	}
 
 }

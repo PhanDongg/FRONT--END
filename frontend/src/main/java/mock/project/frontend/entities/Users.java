@@ -15,13 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="users")
 public class Users implements Serializable {
@@ -35,31 +28,34 @@ public class Users implements Serializable {
 	@Column(name="user_name", length = 50)
 	private String userName;
 	
-	@Column(name="password", length = 50)
-	private String password;
+	@Column(name = "encrypted_password", length = 128)
+	private String encryptedPassword;
 	
-	@Column(name="full_name",nullable = false, length = 50)
+	@Column(name="full_name", length = 50)
 	private String fullName;
 	
-	@Column(name="email",nullable = false, length = 255)
+	@Column(name="email", length = 255)
 	private String email;
 	
-	@Column(name="address",nullable = false, length = 50)
+	@Column(name="address", length = 50)
 	private String address;
 	
-	@Column(name="phone",nullable = false, length = 25)
+	@Column(name="phone", length = 25)
 	private String phone;
 	
-	@Column(name="date_of_birth",nullable = false)
+	@Column(name="date_of_birth")
 	private Date dateofBirth;
 	
 	@Column(name="image",length = 255)
 	private String image;
 	
-	@OneToOne
-	@JoinColumn(name="role_id",referencedColumnName="role_id")
-	private Roles role;
+	@Column(name = "enabled")
+	private Boolean enabled;
 	
+//	@OneToOne
+//	@JoinColumn(name="role_id",referencedColumnName="role_id")
+//	private Roles role;
+//	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="user")
 	private Set<Orders> orders;
 	
@@ -67,19 +63,46 @@ public class Users implements Serializable {
 		super();
 	}
 	
-	public Users(String userName, String password, String fullName, String email, String address, String phone,
-			Date dateofBirth, String image, Roles role) {
+public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
+			Date dateofBirth, String image, Boolean enabled) {
 		super();
 		this.userName = userName;
-		this.password = password;
+		this.encryptedPassword = encryptedPassword;
 		this.fullName = fullName;
 		this.email = email;
 		this.address = address;
 		this.phone = phone;
 		this.dateofBirth = dateofBirth;
 		this.image = image;
-		this.role = role;
+		this.enabled = enabled;
 	}
+
+public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
+			Date dateofBirth, String image) {
+		super();
+		this.userName = userName;
+		this.encryptedPassword = encryptedPassword;
+		this.fullName = fullName;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.dateofBirth = dateofBirth;
+		this.image = image;
+	}
+
+//	public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
+//			Date dateofBirth, String image, Roles role) {
+//		super();
+//		this.userName = userName;
+//		this.encryptedPassword = encryptedPassword;
+//		this.fullName = fullName;
+//		this.email = email;
+//		this.address = address;
+//		this.phone = phone;
+//		this.dateofBirth = dateofBirth;
+//		this.image = image;
+//		this.role = role;
+//	}
 
 	public Integer getUserId() {
 		return userId;
@@ -97,12 +120,12 @@ public class Users implements Serializable {
 		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getEncryptedPassword() {
+		return encryptedPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
 	}
 
 	public String getFullName() {
@@ -153,13 +176,13 @@ public class Users implements Serializable {
 		this.image = image;
 	}
 
-	public Roles getRole() {
-		return role;
-	}
-
-	public void setRole(Roles role) {
-		this.role = role;
-	}
+//	public Roles getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(Roles role) {
+//		this.role = role;
+//	}
 
 	public Set<Orders> getOrders() {
 		return orders;
@@ -167,6 +190,14 @@ public class Users implements Serializable {
 
 	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }
