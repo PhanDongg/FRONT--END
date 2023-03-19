@@ -1,6 +1,8 @@
 package mock.project.frontend.request;
 
 public class ProductRequest {
+	
+	private	String categoryName;
 	private String color;
 	private  double size;
 	private String type;
@@ -38,4 +40,11 @@ public class ProductRequest {
 	public void setEndRangePrice(double endRangePrice) {
 		this.endRangePrice = endRangePrice;
 	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	
 }

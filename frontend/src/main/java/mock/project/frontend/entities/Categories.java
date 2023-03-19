@@ -13,9 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
+
 @Entity
 @Table(name="category")
 public class Categories implements Serializable {
@@ -27,7 +25,7 @@ public class Categories implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoryId;
 	
-	@Column(name="category_name")
+	@Column(name="category_name",columnDefinition = "nvarchar(50)")
 	private String categoryName;
 	
 
