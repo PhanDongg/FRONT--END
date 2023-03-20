@@ -22,8 +22,8 @@ import mock.project.frontend.services.UserService;
 public class UserControllerFrontEnd {
 private Logger logger = Logger.getLogger(Users.class);
 	
-	@Autowired
-	private UserService userService;
+//	@Autowired
+//	private UserService userService;
 	
 	@GetMapping("/home")
 	public String welcome() {
