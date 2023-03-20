@@ -7,26 +7,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import mock.project.frontend.entities.Users;
 import mock.project.frontend.request.ProductDTO;
-import mock.project.frontend.services.UserService;
+import mock.project.frontend.request.UserDTO;
 
 @Controller
 //@RequestMapping("/")
 public class UserControllerFrontEnd {
 private Logger logger = Logger.getLogger(Users.class);
 	
+<<<<<<< HEAD
 //	@Autowired
 //	private UserService userService;
+=======
+	@Autowired
+	private RestTemplate restTemplate;
+>>>>>>> f68a14e1e9876ded3b5cafd749317a76ef02e5db
 	
 	@GetMapping("/home")
-	public String welcome() {
+	public String home() {
 		return "home-page";
 	}
 	
