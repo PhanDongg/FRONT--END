@@ -1,55 +1,32 @@
 @charset "UTF-8";
 
-.filter {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
 
-.filter-by {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-}
-
-.filter-icon {
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-}
-
-.form-control {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-
-.filter-by select {
-    margin: 0 5px;
-}
-
-.show-entry-number .select-entry-number-form {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-#orderTable tr {
-    border: 1px solid #ddd;
-}
-
-#orderTable tr td {
-    padding: 15px !important;
-}
 
 #orderTable .order-id a, #orderTable .order-user-id {
     font-weight: bold;
     color: black !important;
 }
 
-#orderTable .order-qty {
-    width: 110px;
+#orderTable .order-btns button {
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block;
 }
 
-.table-pagination {
-    display: flex;
-    justify-content: space-between;
+#orderTable .order-btns button:hover {
+    background-color: black;
+    color: white;
+}
+
+.pagination li a {
+	color: black !important;
+}
+
+.active {
+	color: white !important;
+	background-color: black !important;
 }
 

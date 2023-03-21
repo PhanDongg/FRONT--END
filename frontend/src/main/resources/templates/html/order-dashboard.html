@@ -18,14 +18,14 @@
 			<div class="dashboard__side-menu">
 				<h3>ABC Store</h3>
 				<ul class="side-menu-container">
-					<li class=""><a href=""><i class="fa-solid fa-house"></i>
-							Dashboard</a></li>
-					<li><a href=""><i class="fa-brands fa-shopify"></i> Sản
-							phẩm</a></li>
-					<li><a href=""><i class="fa-solid fa-clipboard"></i> Đơn
-							hàng</a></li>
-					<li><a href=""><i class="fa-solid fa-user"></i> Thành viên</a>
-					</li>
+					<li class=""><a th:href="@{/dashboard}"><i
+							class="fa-solid fa-house"></i> Dashboard</a></li>
+					<li><a th:href="@{/product/dashboard}"><i
+							class="fa-brands fa-shopify"></i> Sản phẩm</a></li>
+					<li><a th:href="@{/order/dashboard}"><i
+							class="fa-solid fa-clipboard"></i> Đơn hàng</a></li>
+					<li><a th:href="@{/user/list}"><i
+							class="fa-solid fa-user"></i> Thành viên</a></li>
 				</ul>
 			</div>
 
@@ -40,7 +40,8 @@
 								aria-label="search-item" aria-describedby="addon-wrapping">
 						</div>
 					</div>
-					<div class="dashboard-head-item d-flex align-items-center justify-content-end">
+					<div
+						class="dashboard-head-item d-flex align-items-center justify-content-end">
 						<div class="dashboard-head__noti">
 							<i class="fa-solid fa-bell"></i>
 						</div>
@@ -59,23 +60,19 @@
 				<div class="order-dashboard">
 					<div class="container overflow-hidden">
 						<div class="row gy-5 order-menu">
-							<div class="col-4">
+							<div class="col-6">
 								<div class="p-3">
 									<button class="view-order-list-btn shadow">
-										<a th:href="@{order-list}">Danh sách đơn hàng</a>
+										<a th:href="@{/order/list}">Danh sách đơn hàng</a>
 									</button>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-6">
 								<div class="p-3">
-									<button class="update-order-btn shadow">Cập nhật đơn
-										hàng</button>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="p-3">
-									<button class="view-order-detail-btn shadow">Đơn hàng
-										chi tiết</button>
+									<button class="update-order-btn shadow">
+										<a th:href="@{/edit/order}">Cập nhật đơn
+										hàng</a>
+									</button>
 								</div>
 							</div>
 							<div class="col-8">

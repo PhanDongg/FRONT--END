@@ -49,8 +49,9 @@
 							<ul class="topbar-right d-flex justify-content-end">
 								<li class="p-2"><a th:href="@{/account/order}"><span>Tra
 											cứu đơn hàng</span></a></li>
-								<li class="p-2"><a th:href="@{/login}"><i
-										class="fa-solid fa-user"></i><span>Đăng nhập</span></a></li>
+								<li class="p-2 user-menu">
+									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
+								</li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -1054,7 +1055,8 @@
 			</footer>
 		</div>
 	</form>
-
+	
+	<script src="/js/navbar.js"></script>
 </body>
 
 </html>
