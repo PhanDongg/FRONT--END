@@ -13,18 +13,18 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<form th:action="@{/product-dashboard}" method="get">
+	<form th:action="@{/product/dashboard}" method="get">
 		<div class="body-container">
 			<div class="dashboard__side-menu">
 				<h3>ABC Store</h3>
 				<ul class="side-menu-container">
-					<li class=""><a href=""><i class="fa-solid fa-house"></i>
+					<li class=""><a th:href="@{/dashboard}"><i class="fa-solid fa-house"></i>
 							Dashboard</a></li>
-					<li><a href=""><i class="fa-brands fa-shopify"></i> Sản
+					<li><a th:href="@{/product/dashboard}"><i class="fa-brands fa-shopify"></i> Sản
 							phẩm</a></li>
-					<li><a href=""><i class="fa-solid fa-clipboard"></i> Đơn
+					<li><a th:href="@{/order/dashboard}"><i class="fa-solid fa-clipboard"></i> Đơn
 							hàng</a></li>
-					<li><a href=""><i class="fa-solid fa-user"></i> Thành viên</a>
+					<li><a th:href="@{/user/list}"><i class="fa-solid fa-user"></i> Thành viên</a>
 					</li>
 				</ul>
 			</div>
@@ -62,20 +62,20 @@
 						<div class="row gy-5 product-menu">
 							<div class="col-4">
 								<div class="p-3">
-									<button class="view-product-list-btn shadow">Danh sách
-										sản phẩm</button>
+									<button class="view-product-list-btn shadow"><a th:href="@{/product/list}">Danh sách
+										sản phẩm</a></button>
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="p-3">
-									<button class="update-product-btn shadow">Chỉnh sửa
-										sản phẩm</button>
+									<button class="update-product-btn shadow"><a th:href="@{/edit/product}">Chỉnh sửa
+										sản phẩm</a></button>
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="p-3">
-									<button class="view-product-detail-btn shadow">Thêm
-										sản phẩm mới</button>
+									<button class="view-product-detail-btn shadow"><a th:href="@{/add/product}">Thêm
+										sản phẩm mới</a></button>
 								</div>
 							</div>
 							<div class="col-8">

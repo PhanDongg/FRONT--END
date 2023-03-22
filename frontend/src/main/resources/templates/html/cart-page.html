@@ -40,7 +40,7 @@
 </head>
 
 <body>
-	<form th:action="@{/cart-page}" method="get">
+	<form th:action="@{/cart}" method="get">
 		<div class="body-container">
 			<div class="top-bar">
 				<div class="container-fluid">
@@ -148,9 +148,12 @@
 												<p>CONVERSE</p>
 												<a href="#">CONVERSE X COMME DES GARCONS PLAY ALL STAR
 													CHUCK '70 HI "MULTI HEART" - KHAKI</a>
-												<p>
+												<div>
+													Size: <span>37</span>
+												</div>
+												<div>
 													Màu sắc: <span>Nâu</span>
-												</p>
+												</div>
 											</div>
 										</div>
 									</td>
@@ -168,9 +171,12 @@
 												<p>JORDAN</p>
 												<a href="#">AIR JORDAN 1 ZOOM CMFT WOMEN'S UNIVERSITY
 													BLUE - PHANTOM/UNIVERSITY BLUE</a>
-												<p>
+												<div>
 													Màu sắc: <span>Xanh</span>
-												</p>
+												</div>
+												<div>
+													Size: <span>37</span>
+												</div>
 											</div>
 										</div>
 									</td>
@@ -181,7 +187,6 @@
 							</tbody>
 						</table>
 					</div>
-					<form action="">
 						<div class="delivery-info d-flex justify-content-between">
 							<div class="customer-info">
 								<h5>Thông Tin Người Nhận</h5>
@@ -267,7 +272,6 @@
 								<a href="#">TIẾN HÀNH ĐẶT HÀNG</a>
 							</button>
 						</div>
-					</form>
 				</div>
 			</main>
 			<footer>

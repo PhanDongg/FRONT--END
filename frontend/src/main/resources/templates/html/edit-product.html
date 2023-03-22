@@ -15,19 +15,15 @@
 			<div class="dashboard__side-menu">
 				<h3>ABC Store</h3>
 				<ul class="side-menu-container">
-                <li class="">
-                    <a href=""><i class="fa-solid fa-house"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href=""><i class="fa-brands fa-shopify"></i> Sản phẩm</a>
-                </li>
-                <li>
-                    <a href=""><i class="fa-solid fa-clipboard"></i> Đơn hàng</a>
-                </li>
-                <li>
-                    <a href=""><i class="fa-solid fa-user"></i> Thành viên</a>
-                </li>
-            </ul>
+					<li class=""><a th:href="@{/dashboard}"><i
+							class="fa-solid fa-house"></i> Dashboard</a></li>
+					<li><a th:href="@{/product/dashboard}"><i
+							class="fa-brands fa-shopify"></i> Sản phẩm</a></li>
+					<li><a th:href="@{/order/dashboard}"><i
+							class="fa-solid fa-clipboard"></i> Đơn hàng</a></li>
+					<li><a th:href="@{/user/list}"><i
+							class="fa-solid fa-user"></i> Thành viên</a></li>
+				</ul>
 			</div>
 			<div class="dashboard__content">
 				<div
