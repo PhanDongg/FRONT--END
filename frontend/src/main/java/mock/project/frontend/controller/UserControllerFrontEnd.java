@@ -27,10 +27,10 @@ private Logger logger = Logger.getLogger(Users.class);
 	private RestTemplate restTemplate;
 >>>>>>> f68a14e1e9876ded3b5cafd749317a76ef02e5db
 	
-	@GetMapping("/home")
-	public String home() {
-		return "home-page";
-	}
+//	@GetMapping("/home")
+//	public String home() {
+//		return "home-page";
+//	}
 	
 	@GetMapping("/register")
 	public String register() {
