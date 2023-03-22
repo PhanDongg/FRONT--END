@@ -25,11 +25,12 @@ public class UserControllerFrontEnd {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping("/home")
-	public String home() {
-		return "home-page";
-	}
-
+	
+  @GetMapping("/home")
+  public String home() {
+    return "home-page";
+  }
+	
 	@GetMapping("/register")
 	public String register() {
 		return "register-page";
