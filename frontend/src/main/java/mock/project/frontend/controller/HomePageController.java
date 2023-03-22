@@ -37,16 +37,16 @@ public class HomePageController {
 			System.out.println(product);
 		}
 		
-		model.addAttribute("listProducts1", limitList(listProducts, 0));
-		model.addAttribute("listProducts2", limitList(listProducts, 5));
-		model.addAttribute("listProducts3", limitList(listProducts, 10));
+		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
+		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
+		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));
 		return "home-page";
 	}
 	
 
-	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemIndex) {
+	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemStartIndex, int numberOfItem) {
 		List<ProductDTO> listNew = new ArrayList<>();
-		for (int i = itemIndex ; i<(itemIndex+5); i++) {
+		for (int i = itemStartIndex ; i<(itemStartIndex + numberOfItem); i++) {
 			 listNew.add(listProducts[i]);
 		}
 		return listNew;
