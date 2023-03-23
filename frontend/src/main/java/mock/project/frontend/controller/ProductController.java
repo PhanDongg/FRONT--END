@@ -83,20 +83,11 @@ public class ProductController {
 		
 
 	@PostMapping("/product/{id}")
-	public String getSize(Model model,@PathVariable(name="id", required = false)Integer id, @RequestParam(name = "size") String size, HttpServletResponse response) throws UnsupportedEncodingException{
+	public String getSize(Model model,@PathVariable(name="id", required = false)Integer id, @RequestParam(name = "size") String size) {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
 		System.out.println(size);
-		
-//		try {
-//			Gson gson = new Gson();
-//			cookie = new Cookie("cookieProduct", URLEncoder.encode(gson.toJson(product), "UTF-8"));
-//			cookie.setMaxAge(7 * 24 * 60 * 60);
-//			response.addCookie(cookie);
-//		} catch (UnsupportedEncodingException e) {
-//			System.err.println(e.getMessage());
-//		}
 		
 		return "product-detail-page";
 	}
