@@ -19,7 +19,7 @@ public class Status implements Serializable {
 	@Id
 	@Column(name = "status_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer statusID;	
+	private Integer statusId;	
 	
 	@Column(name="status",columnDefinition = "nvarchar(50)")
 	private String status;
@@ -37,11 +37,11 @@ public class Status implements Serializable {
 	}
 
 	public Integer getStatusID() {
-		return statusID;
+		return statusId;
 	}
 
 	public void setStatusID(Integer statusID) {
-		this.statusID = statusID;
+		this.statusId = statusID;
 	}
 
 	public String getStatus() {
