@@ -26,22 +26,22 @@ public class HomePageController {
 	@Value("${product.api.url}")
 	private String productApi;
 
-	@GetMapping("/home")
-	public String homePage(Model model) {
-		String url = productApi ;
-		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
-		ProductDTO[] listProducts = response.getBody();
-		
-//		model.addAttribute("userName", loginedUser.getUsername());
-		for(ProductDTO product: listProducts) {
-			System.out.println(product);
-		}
-		
-		model.addAttribute("listProducts1", limitList(listProducts, 0));
-		model.addAttribute("listProducts2", limitList(listProducts, 5));
-		model.addAttribute("listProducts3", limitList(listProducts, 10));
-		return "home-page";
-	}
+//	@GetMapping("/home")
+//	public String homePage(Model model) {
+//		String url = productApi ;
+//		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
+//		ProductDTO[] listProducts = response.getBody();
+//		
+////		model.addAttribute("userName", loginedUser.getUsername());
+//		for(ProductDTO product: listProducts) {
+//			System.out.println(product);
+//		}
+//		
+//		model.addAttribute("listProducts1", limitList(listProducts, 0));
+//		model.addAttribute("listProducts2", limitList(listProducts, 5));
+//		model.addAttribute("listProducts3", limitList(listProducts, 10));
+//		return "home-page";
+//	}
 	
 
 	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemIndex) {
