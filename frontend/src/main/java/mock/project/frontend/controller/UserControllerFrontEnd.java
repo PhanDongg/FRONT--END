@@ -113,8 +113,11 @@ public class UserControllerFrontEnd {
 		return "edit-order";
 	}
 
-//	@GetMapping("/user/list")
-//	public String viewUserList() {
-//		return "user-list";
-//	}
+	
+	// 404
+	
+	@GetMapping("/404")
+	public String errorPage() {
+		return "404-page";
+	}
 }
