@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,12 +43,17 @@ public class LoginAndRegisterController {
 	}
 	
 	@PostMapping("/register")
-	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user) {
+	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user, BindingResult bindingResult) {
 //			logger.info("Processing...");
-		String url = userApi + "/register";
-		ResponseEntity<ResponseTransfer> response = restTemplate.postForEntity(url, user, ResponseTransfer.class);
-		model.addAttribute("msg", response);
-		return "register-page";
+		if (bindingResult.hasErrors()) {
+			
+            return "register-page";
+        } else {
+        	String url = userApi + "/register";
+        	ResponseEntity<ResponseTransfer> response = restTemplate.postForEntity(url, user, ResponseTransfer.class);
+        	model.addAttribute("msg", response);
+        	return "register-page";
+		}
 	}
 
 	@PostMapping("/login")

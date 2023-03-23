@@ -14,16 +14,14 @@ $(document).ready(function(){
 //validation bằng js
 $('#register').click(function validate() {
 	
-    var firstName = document.getElementById("firstName").value;
+    var firstName = document.getElementById("userName").value;
     if (firstName.length === 0) {
-        $('#error1').html("Vui lòng nhập tên.");
+        $('#error1').html("Vui lòng nhập tên tài khoản.");
     }
     
-    var lastName = document.getElementById("lastName").value;
+    var lastName = document.getElementById("fullName").value;
     if (lastName.length === 0) {
-        $('#error2').html("Vui lòng nhập họ.");
-        console.log("ydefywe");
-        
+        $('#error2').html("Vui lòng nhập Họ và Tên.");
     }
     
     var email = document.getElementById("email").value;
