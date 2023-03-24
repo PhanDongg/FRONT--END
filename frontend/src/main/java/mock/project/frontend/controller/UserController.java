@@ -13,18 +13,4 @@ import mock.project.frontend.request.UserDTO;
 @Controller
 public class UserController {
 
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Value("${user.api.url}")
-	private String userApi;
-	
-	@GetMapping("/user/list")
-	public String viewUserList(Model model) {
-		String url = userApi;
-		ResponseEntity<UserDTO[]> response = restTemplate.getForEntity(url, UserDTO[].class);
-		UserDTO[] listUsers = response.getBody();
-		model.addAttribute("listUsers", listUsers);
-		return "user-list";
-	}
 }

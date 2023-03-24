@@ -6,4 +6,18 @@ $(document).ready(function() {
     }
 
     convertPrice();
+    
+    
+    function convertTablePrice() {
+
+        const rowLength = $("table tr").length;
+        for (let i=0; i<rowLength; i++) {
+            let oldPrice = $("table").find("tr").eq(i).find(".dbPrices").text();
+            let newPrice = Number(Math.floor(oldPrice));
+            $("table").find("tr").eq(i).find(".dbPrices").text(newPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        }
+        
+    }
+
+    convertTablePrice();
 })

@@ -36,7 +36,7 @@
 
 </head>
 <body>
-	<form th:action="@{/product-list-page}" method="get">
+	<form th:action="@{/product/list}" method="get">
 		<div class="body-container">
 			<div class="dashboard__side-menu">
 				<h3>ABC Store</h3>
@@ -113,7 +113,7 @@
 									<td class="product-brand" th:text="${product.brand}"></td>
 									<td class="product-color" th:text="${product.color}"></td>
 									<td class="product-qty" th:text="${product.quantity}"></td>
-									<td class="product-price" th:text="${product.price}"></td>
+									<td class="product-price" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></td>
 									<td class="product-status"><span class="sell">sell</span>
 									</td>
 									<td class="product-btns">
@@ -137,5 +137,6 @@
 		</div>
 	</form>
 	<script type="text/javascript" th:src="@{/js/product-list.js}"></script>
+
 </body>
 </html>

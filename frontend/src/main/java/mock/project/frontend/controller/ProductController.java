@@ -31,12 +31,10 @@ public class ProductController {
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Value("${product.api.url}")
 	private String productApi;
-	
-	Cookie cookie = null;
-	
+
 	@GetMapping("/product/list")
 	public String viewProductList(Model model) {
 		String url = productApi;
@@ -44,19 +42,20 @@ public class ProductController {
 		ProductDTO[] listProducts = response.getBody();
 		model.addAttribute("listProducts", listProducts);
 		return "product-list";
+
 	}
-	
+
 	@GetMapping("/category/{id}")
-		public String getProductByCategory(@PathVariable(name="id", required = false)Integer id, Model model) {
-			String url = productApi + "/category/" + id;
-			ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
-			ProductDTO[] listProducts = response.getBody();
-			model.addAttribute("listProducts", listProducts);
-			return "collection-page";
+	public String getProductByCategory(@PathVariable(name = "id", required = false) Integer id, Model model) {
+		String url = productApi + "/category/" + id;
+		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
+		ProductDTO[] listProducts = response.getBody();
+		model.addAttribute("listProducts", listProducts);
+		return "collection-page";
 	}
-	
+
 	@GetMapping("/product/{id}")
-	public String getProductDetails(@PathVariable(name="id", required = false)Integer id, Model model) {
+	public String getProductDetails(@PathVariable(name = "id", required = false) Integer id, Model model) {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
@@ -72,18 +71,11 @@ public class ProductController {
 		
 		return "product-detail-page";
 	}
-	
-	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemStartIndex, int numberOfItem) {
-		List<ProductDTO> listNew = new ArrayList<>();
-		for (int i = itemStartIndex ; i<(itemStartIndex + numberOfItem); i++) {
-			 listNew.add(listProducts[i]);
-		}
-		return listNew;
-	}
-		
+
 
 	@PostMapping("/product/{id}")
-	public String getSize(Model model,@PathVariable(name="id", required = false)Integer id, @RequestParam(name = "size") String size) {
+	public String getSize(Model model, @PathVariable(name = "id", required = false) Integer id,
+			@RequestParam(name = "size") String size) {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
