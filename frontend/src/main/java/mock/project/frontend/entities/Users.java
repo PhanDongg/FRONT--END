@@ -1,6 +1,7 @@
 package mock.project.frontend.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ public class Users implements Serializable {
 	private String phone;
 	
 	@Column(name="date_of_birth")
-	private Date dateofBirth;
+	private LocalDate dateofBirth;
 	
 	@Column(name="image",length = 255)
 	private String image;
@@ -52,33 +53,16 @@ public class Users implements Serializable {
 	@Column(name = "enabled")
 	private Boolean enabled;
 	
-//	@OneToOne
-//	@JoinColumn(name="role_id",referencedColumnName="role_id")
-//	private Roles role;
-//	
+
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="user")
 	private Set<Orders> orders;
 	
 	public Users() {
 		super();
 	}
-	
-public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
-			Date dateofBirth, String image, Boolean enabled) {
-		super();
-		this.userName = userName;
-		this.encryptedPassword = encryptedPassword;
-		this.fullName = fullName;
-		this.email = email;
-		this.address = address;
-		this.phone = phone;
-		this.dateofBirth = dateofBirth;
-		this.image = image;
-		this.enabled = enabled;
-	}
 
-public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
-			Date dateofBirth, String image) {
+	public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
+			LocalDate dateofBirth, String image) {
 		super();
 		this.userName = userName;
 		this.encryptedPassword = encryptedPassword;
@@ -90,19 +74,7 @@ public Users(String userName, String encryptedPassword, String fullName, String 
 		this.image = image;
 	}
 
-//	public Users(String userName, String encryptedPassword, String fullName, String email, String address, String phone,
-//			Date dateofBirth, String image, Roles role) {
-//		super();
-//		this.userName = userName;
-//		this.encryptedPassword = encryptedPassword;
-//		this.fullName = fullName;
-//		this.email = email;
-//		this.address = address;
-//		this.phone = phone;
-//		this.dateofBirth = dateofBirth;
-//		this.image = image;
-//		this.role = role;
-//	}
+
 
 	public Integer getUserId() {
 		return userId;
@@ -160,11 +132,11 @@ public Users(String userName, String encryptedPassword, String fullName, String 
 		this.phone = phone;
 	}
 
-	public Date getDateofBirth() {
+	public LocalDate getDateofBirth() {
 		return dateofBirth;
 	}
 
-	public void setDateofBirth(Date dateofBirth) {
+	public void setDateofBirth(LocalDate dateofBirth) {
 		this.dateofBirth = dateofBirth;
 	}
 
@@ -176,13 +148,6 @@ public Users(String userName, String encryptedPassword, String fullName, String 
 		this.image = image;
 	}
 
-//	public Roles getRole() {
-//		return role;
-//	}
-//
-//	public void setRole(Roles role) {
-//		this.role = role;
-//	}
 
 	public Set<Orders> getOrders() {
 		return orders;

@@ -2,6 +2,7 @@ package mock.project.frontend.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -49,7 +50,7 @@ public class Products implements Serializable{
 	private int quantity;
 	
 	@Column(name="date")
-	private Date date;
+	private LocalDate date;
 	
 	@Column(name="brand", length = 50)
 	private String brand;
@@ -59,20 +60,10 @@ public class Products implements Serializable{
 	private Categories category;
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="product")
-	private Set<OrderDetails> orderDetails;
+	private Set<Items> items;
 	
-	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy="product")
-	private Set<Images> images;
-	
-//	@OneToMany(cascade = CascadeType.ALL,mappedBy="product")
-//	private Set<ProductSize> productSize;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "product_size", schema = "dbo",
-	joinColumns = {@JoinColumn(name="product_id",referencedColumnName = "product_id") },
-	inverseJoinColumns = { @JoinColumn(name="size_id",referencedColumnName = "size_id") })
-	private List<Sizes> sizes;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="product")
+	private Set<Images> images;	
 
 	public Products() {
 	super();
@@ -92,7 +83,7 @@ public class Products implements Serializable{
 	}
 	
 	public Products(String productName, double price, String description, String type, String color, int quantity,
-			Date date, String brand, Categories category) {
+			LocalDate date, String brand, Categories category, Set<Images> images) {
 		super();
 		this.productName = productName;
 		this.price = price;
@@ -103,6 +94,7 @@ public class Products implements Serializable{
 		this.date = date;
 		this.brand = brand;
 		this.category = category;
+		this.images = images;
 	}
 
 	public Integer getProductId() {
@@ -177,14 +169,6 @@ public class Products implements Serializable{
 		this.category = category;
 	}
 
-	public Set<OrderDetails> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(Set<OrderDetails> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
-
 	public Set<Images> getImages() {
 		return images;
 	}
@@ -193,20 +177,21 @@ public class Products implements Serializable{
 		this.images = images;
 	}
 
-	public List<Sizes> getSizes() {
-		return sizes;
-	}
 
-	public void setSizes(List<Sizes> sizes) {
-		this.sizes = sizes;
-	}
-
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
+
+	public Set<Items> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<Items> items) {
+		this.items = items;
+	}
+
 }

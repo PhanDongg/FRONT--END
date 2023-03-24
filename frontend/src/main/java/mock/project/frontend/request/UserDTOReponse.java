@@ -5,7 +5,7 @@ import java.util.Date;
 import mock.project.frontend.entities.Roles;
 
 public class UserDTOReponse {
-	
+	private Integer userId;
 	private String userName;
 	private String fullName;
 	private String email;
@@ -61,6 +61,12 @@ public class UserDTOReponse {
 	}
 	public void setRole(Roles role) {
 		this.role = role;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
 }

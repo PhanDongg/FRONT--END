@@ -201,7 +201,8 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<div class="price-prod d-flex">
-										<p class="price-prod-new dbPrice" th:text="${product.price}"></p><span style="color:red;" class="fw-bold currency">đ</span>
+										<p class="price-prod-new dbPrice" th:text="${product.price}"></p>
+										<span style="color: red;" class="fw-bold currency">đ</span>
 										<p class="price-prod-old">2.633.000đ</p>
 										<p class="price-prod-percent">-17%</p>
 									</div>
@@ -215,7 +216,8 @@
 										<p>
 											Màu sắc: <span th:text="${product.color}"></span>
 										</p>
-										<p class="form-group justify-content-start align-items-center size-selection">
+										<p
+											class="form-group justify-content-start align-items-center size-selection">
 											<label for="department">Kích thước:</label> <select
 												class="form-control" id="size" name="size">
 												<option value="0" selected="selected">select option</option>
@@ -305,62 +307,14 @@
 								<div class="carousel-inner">
 									<div class="carousel-item active">
 										<div class="d-flex justify-content-between">
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">JORDAN</div>
-													<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-														SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
+											<div class="content-products-item"
+												th:each="product : ${listProducts1}">
+												<a href="#"> <img th:src="${product.images[0].link}">
+													<div class="name-brand" th:text="${product.brand}"></div>
+													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-													<div class="name-brand">VANS VAULT</div>
-													<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX -
-														NAVY</h6>
-												</a>
-												<div class="price-prod">2.163.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
+												<div class="price-prod"
+													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 												<div class="buy-or-cart d-flex justify-content-between">
 													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
 												</div>
@@ -369,130 +323,36 @@
 									</div>
 									<div class="carousel-item">
 										<div class="d-flex justify-content-between">
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">JORDAN</div>
-													<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-														SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
+											<div class="content-products-item"
+												th:each="product : ${listProducts2}">
+												<a href="#"> <img th:src="${product.images[0].link}">
+													<div class="name-brand" th:text="${product.brand}"></div>
+													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
-												<div class="price-prod">3.245.000₫</div>
+												<div class="price-prod"
+													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 												<div class="buy-or-cart d-flex justify-content-between">
 													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
 												</div>
 											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-													<div class="name-brand">VANS VAULT</div>
-													<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX -
-														NAVY</h6>
-												</a>
-												<div class="price-prod">2.163.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
+
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="d-flex justify-content-between">
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">JORDAN</div>
-													<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-														SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
+											<div class="content-products-item"
+												th:each="product : ${listProducts3}">
+												<a href="#"> <img th:src="${product.images[0].link}">
+													<div class="name-brand" th:text="${product.brand}"></div>
+													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
-												<div class="price-prod">3.245.000₫</div>
+												<div class="price-prod"
+													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 												<div class="buy-or-cart d-flex justify-content-between">
 													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
 												</div>
 											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-													<div class="name-brand">VANS VAULT</div>
-													<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX -
-														NAVY</h6>
-												</a>
-												<div class="price-prod">2.163.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
@@ -514,32 +374,29 @@
 							<div class="product-description-content">
 								<h4>Mô tả sản phẩm</h4>
 								<div class="product-desc-container">
-									<p class="product-description-text">Lorem ipsum dolor sit,
-										amet consectetur adipisicing elit. Fugiat reiciendis minus
-										aperiam velit sit soluta modi assumenda tempore? Rem aperiam
-										eius ut incidunt repellendus omnis! Dolore ab placeat in
-										harum. Lorem, ipsum dolor sit amet consectetur adipisicing
-										elit. Soluta minima esse quo laborum quibusdam iste velit quod
-										tempore libero unde? Dicta ab voluptatibus doloribus sunt
-										repellendus sit assumenda. Error, ipsam?</p>
-									<img
-										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fd5d3a-14072022170551.jpg"
-										alt="">
+									<img th:src="${product.images[0].link}">
 									<h5>Về thương hiệu</h5>
-									<p class="product-description-text">Lorem ipsum, dolor sit
-										amet consectetur adipisicing elit. Corporis esse modi
-										voluptatem voluptatibus maxime facilis eum recusandae optio
-										numquam nesciunt provident, eaque omnis atque harum earum
-										accusamus laudantium! Assumenda, accusantium?</p>
+									<p class="product-description-text">
+										- Thương hiệu của Đức.<br> - Được thành lập vào năm 1924.<br>
+										- Thành tựu: Thương hiệu giày thể thao đứng thứ 2 thế giới chỉ
+										sau Nike, tính đến năm 2020.<br> - Các dòng sản phẩm
+										chính: giày thể thao, quần áo thể thao và phụ kiện thể thao
+										phục vụ cho nhu cầu luyện tập các môn thể thao phổ biến, ở mọi
+										độ tuổi và giới tính.
+									</p>
 									<img
 										src="https://www.bostonmagazine.com/wp-content/uploads/sites/2/2021/09/style_store-1.jpg"
 										alt="">
 									<h5>Đặc điểm sản phẩm</h5>
-									<p class="product-description-text">Lorem ipsum, dolor sit
-										amet consectetur adipisicing elit. Corporis esse modi
-										voluptatem voluptatibus maxime facilis eum recusandae optio
-										numquam nesciunt provident, eaque omnis atque harum earum
-										accusamus laudantium! Assumenda, accusantium?</p>
+									<p class="product-description-text">Phần thân giày sử dụng
+										chất liệu vải dệt có độ bền cao cùng khả năng chống phai màu
+										tốt, dễ dàng vệ sinh lại khi cần thiết. Sử dụng công nghệ
+										Boost có cơ chế đàn hồi và hoàn trả năng lượng tối ưu giúp tạo
+										cảm giác thoải mái cho đôi chân. Đế giày Adidas làm bằng cao
+										su có khả năng chống mài mòn cao cùng độ bám dính với đất tốt,
+										tốc độ biến dạng thấp. Với chất liệu và công nghệ thoáng khí,
+										giày Adidas FX0031 sẽ là lựa chọn phù hợp của các bạn nam chạy
+										bộ vào những ngày nóng</p>
 									<img
 										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fc99d2-14072022170551.jpg"
 										alt="">
@@ -552,20 +409,27 @@
 										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fdc8ff-14072022170551.jpg"
 										alt="">
 									<h5>Cách bảo quản</h5>
-									<p class="product-description-text">Lorem ipsum, dolor sit
-										amet consectetur adipisicing elit. Corporis esse modi
-										voluptatem voluptatibus maxime facilis eum recusandae optio
-										numquam nesciunt provident, eaque omnis atque harum earum
-										accusamus laudantium! Assumenda, accusantium?</p>
-									<h5>Thông tin chung</h5>
+									<ul>
+										<li>Không dùng thuốc tẩy</li>
+										<li>Tránh phơi trực tiếp dưới ánh nắng mặt trời</li>
+										<li>Giặt tay</li>
+										<li>Ủi với nhiệt độ thấp</li>
+										<li>Giặt bằng nước có nhiệt độ khoảng 40 độ C</li>
+										<li>Không ngâm trong xà phòng quá 1h trước khi giặt</li>
+										<li>Không sấy khô</li>
+										<li>Không ủi lên hình in</li>
+										<li>Không giặt chung với sản phẩm khác màu</li>
+										<li>Chỉ sử dụng chất tẩy rửa nhẹ</li>
+									</ul>
+									<h5>Thông tin chi tiết</h5>
 									<table class="product-general-info-table">
 										<tr>
 											<td>Thương hiệu</td>
-											<td>XYZ</td>
+											<td th:text="${product.brand}"></td>
 										</tr>
 										<tr>
 											<td>Xuất xứ</td>
-											<td>Mỹ</td>
+											<td>Đức</td>
 										</tr>
 										<tr>
 											<td>Màu sắc</td>
@@ -573,15 +437,19 @@
 										</tr>
 										<tr>
 											<td>Chất liệu</td>
-											<td>Da cao cấp</td>
+											<td>Vải dệt</td>
 										</tr>
 										<tr>
 											<td>Giới tính</td>
 											<td>Unisex</td>
 										</tr>
 										<tr>
-											<td>Kích cỡ</td>
-											<td>36, 37, 38, 39, 40, 41</td>
+											<td>Loại giày</td>
+											<td>Thể thao chuyên dụng</td>
+										</tr>
+										<tr>
+											<td>Kiểu dáng</td>
+											<td>Giày cổ thấp</td>
 										</tr>
 									</table>
 								</div>
@@ -764,49 +632,20 @@
 
 							<div class="similar-product">
 								<h5>Sản phẩm tương tự</h5>
-								<div class="similar-product-item d-flex flex-column">
+								<div class="similar-product-item"
+									th:each="product : ${listProducts4}">
 									<a href="#" class="d-flex">
 										<div>
-											<img
-												src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
+											<img th:src="${product.images[0].link}">
 										</div>
 										<div>
-											<p class="name-brand">JORDAN</p>
-											<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-												SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
-											<p class="price-prod">3.245.000₫</p>
+											<p class="name-brand" th:text="${product.brand}"></p>
+											<h6 class="name-prod" th:text="${product.productName}"></h6>
+											<p class="price-prod"
+												th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></p>
 										</div>
 									</a>
 								</div>
-								<div class="similar-product-item">
-									<a href="#" class="d-flex">
-										<div>
-											<img
-												src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-										</div>
-										<div>
-											<p class="name-brand">VANS VAULT</p>
-											<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX - NAVY</h6>
-											<p class="price-prod">2.163.000₫</p>
-										</div>
-									</a>
-								</div>
-								<div class="similar-product-item">
-									<a href="#" class="d-flex">
-										<div>
-											<img
-												src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-										</div>
-										<div>
-											<p class="name-brand">NIKE</p>
-											<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-												WHITE/BLACK</h6>
-											<p class="price-prod">3.245.000₫</p>
-										</div>
-									</a>
-								</div>
-
-
 							</div>
 						</div>
 					</div>
@@ -829,62 +668,14 @@
 								<div class="carousel-inner">
 									<div class="carousel-item active">
 										<div class="d-flex justify-content-between">
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">JORDAN</div>
-													<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-														SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
+											<div class="content-products-item"
+												th:each="product : ${listProducts1}">
+												<a href="#"> <img th:src="${product.images[0].link}">
+													<div class="name-brand" th:text="${product.brand}"></div>
+													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-													<div class="name-brand">VANS VAULT</div>
-													<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX -
-														NAVY</h6>
-												</a>
-												<div class="price-prod">2.163.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
+												<div class="price-prod"
+													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 												<div class="buy-or-cart d-flex justify-content-between">
 													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
 												</div>
@@ -893,130 +684,36 @@
 									</div>
 									<div class="carousel-item">
 										<div class="d-flex justify-content-between">
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">JORDAN</div>
-													<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-														SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
+											<div class="content-products-item"
+												th:each="product : ${listProducts2}">
+												<a href="#"> <img th:src="${product.images[0].link}">
+													<div class="name-brand" th:text="${product.brand}"></div>
+													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
-												<div class="price-prod">3.245.000₫</div>
+												<div class="price-prod"
+													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 												<div class="buy-or-cart d-flex justify-content-between">
 													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
 												</div>
 											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-													<div class="name-brand">VANS VAULT</div>
-													<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX -
-														NAVY</h6>
-												</a>
-												<div class="price-prod">2.163.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
+
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="d-flex justify-content-between">
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">JORDAN</div>
-													<h6 class="name-prod">AIR JORDAN 1 WOMEN'S ELEVATE LOW
-														SALT LAKE CITY - WHITE/BALTIC BLUE/OIL GREEN</h6>
+											<div class="content-products-item"
+												th:each="product : ${listProducts3}">
+												<a href="#"> <img th:src="${product.images[0].link}">
+													<div class="name-brand" th:text="${product.brand}"></div>
+													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
-												<div class="price-prod">3.245.000₫</div>
+												<div class="price-prod"
+													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 												<div class="buy-or-cart d-flex justify-content-between">
 													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
 												</div>
 											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/vans-vault-og-old-skool-lx-navy.jpg?v=1596116407&width=1280">
-													<div class="name-brand">VANS VAULT</div>
-													<h6 class="name-prod">VANS VAULT OG OLD SKOOL LX -
-														NAVY</h6>
-												</a>
-												<div class="price-prod">2.163.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/DD1399-105-Nike-Dunk-High-Retro---White-Black---08-18-22---Feature-VR.jpg?v=1660942117&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Adidas-Yeezy-Boost-350-V2---Flax-FX9028---10-14-22---Feature--DV-JP.jpg?v=1666041848&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
-											<div class="content-products-item">
-												<a href="#"> <img
-													src="https://cdn.shopify.com/s/files/1/0408/9909/products/Air-Jordan-1-Women_s-Elevate-Low-SE---White-Baltic-Blue-Oil-Green-FD1028-100---02-01-23---Feature--JP.jpg?v=1675887184&width=1280">
-													<div class="name-brand">NIKE</div>
-													<h6 class="name-prod">NIKE DUNK HIGH RETRO 'PANDA' -
-														WHITE/BLACK</h6>
-												</a>
-												<div class="price-prod">3.245.000₫</div>
-												<div class="buy-or-cart d-flex justify-content-between">
-													<a href="#">Mua ngay</a> <a href="#">Thêm giỏ hàng</a>
-												</div>
-											</div>
+
 										</div>
 									</div>
 								</div>
@@ -1103,7 +800,7 @@
 			</footer>
 		</div>
 	</form>
-	
+
 	<script type="text/javascript" th:src="@{/js/convert-price.js}"></script>
 </body>
 

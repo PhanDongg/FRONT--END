@@ -1,6 +1,13 @@
 package mock.project.frontend.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.Gson;
+
 import mock.project.frontend.request.ProductDTO;
+import mock.project.frontend.request.SizeDTO;
 
 @Controller
 public class ProductController {
@@ -49,8 +59,19 @@ public class ProductController {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
+		
+		String urlProduct = productApi ;
+		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(urlProduct, ProductDTO[].class);
+		ProductDTO[] listProducts = response.getBody();
+		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
+		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
+		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));
+		
+		model.addAttribute("listProducts4", limitList(listProducts, 6, 3));
+		
 		return "product-detail-page";
 	}
+
 
 	@PostMapping("/product/{id}")
 	public String getSize(Model model, @PathVariable(name = "id", required = false) Integer id,
@@ -58,8 +79,8 @@ public class ProductController {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
-		model.addAttribute("item-cart", product);
 		System.out.println(size);
+		
 		return "product-detail-page";
 	}
 }

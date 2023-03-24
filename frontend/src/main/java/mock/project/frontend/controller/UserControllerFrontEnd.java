@@ -30,21 +30,21 @@ public class UserControllerFrontEnd {
 //  public String home() {
 //    return "home-page";
 //  }
-	
-	@GetMapping("/register")
-	public String register() {
-		return "register-page";
-	}
-
-	@GetMapping("/login")
-	public String login() {
-		return "login-page";
-	}
-
-	@PostMapping("/login")
-	public String checkLogintest() {
-		return "redirect:/home";
-	}
+//	
+//	@GetMapping("/register")
+//	public String register() {
+//		return "register-page";
+//	}
+//
+//	@GetMapping("/login")
+//	public String login() {
+//		return "login-page";
+//	}
+//
+//	@PostMapping("/login")
+//	public String checkLogintest() {
+//		return "redirect:/home";
+//	}
 
 //	@GetMapping("/collection")
 //	public String collection() {

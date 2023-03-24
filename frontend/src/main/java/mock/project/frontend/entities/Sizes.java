@@ -22,9 +22,9 @@ public class Sizes {
 
 	private double size;
 
-	@JsonIgnore
-	@ManyToMany(mappedBy = "sizes")
-	private List<Products> products;
+//	@JsonIgnore
+//	@ManyToMany(mappedBy = "sizes")
+//	private List<Products> products;
 	
 	public Sizes() {
 		super();
@@ -51,13 +51,13 @@ public class Sizes {
 		this.size = size;
 	}
 
-	public List<Products> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Products> products) {
-		this.products = products;
-	}
+//	public List<Products> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(List<Products> products) {
+//		this.products = products;
+//	}
 
 	@Override
 	public String toString() {

@@ -29,7 +29,7 @@ public class Categories implements Serializable {
 	private String categoryName;
 	
 
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy="category")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="category")
 	private Set<Products> products;
 	
 	public Categories() {
