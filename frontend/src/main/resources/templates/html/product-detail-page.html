@@ -200,9 +200,8 @@
 											class="fa fa-star checked"></span> <span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 									</div>
-									<div class="price-prod d-flex">
-										<p class="price-prod-new dbPrice" th:text="${product.price}"></p>
-										<span style="color: red;" class="fw-bold currency">đ</span>
+									<div class="price-prod d-flex align-items-center">
+										<p class="price-prod-new dbPrice" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></p>
 										<p class="price-prod-old">2.633.000đ</p>
 										<p class="price-prod-percent">-17%</p>
 									</div>
@@ -232,7 +231,7 @@
 											</select>
 										</p>
 										<p>
-											Gọi đặt mua: <span>19001999</span>
+											Gọi đặt mua: <span style="color: red;" class="fw-bold">19001999</span>
 										</p>
 										<p>
 											Ưu đãi: <span>Freeship khu vực HCM</span>
@@ -369,7 +368,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="product-description d-flex">
+					<div class="product-description d-flex justify-content-between">
 						<section>
 							<div class="product-description-content">
 								<h4>Mô tả sản phẩm</h4>
@@ -398,15 +397,11 @@
 										giày Adidas FX0031 sẽ là lựa chọn phù hợp của các bạn nam chạy
 										bộ vào những ngày nóng</p>
 									<img
-										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fc99d2-14072022170551.jpg"
+										th:src="${product.images[1].link}"
 										alt="">
-									<p class="product-description-text">Lorem ipsum, dolor sit
-										amet consectetur adipisicing elit. Corporis esse modi
-										voluptatem voluptatibus maxime facilis eum recusandae optio
-										numquam nesciunt provident, eaque omnis atque harum earum
-										accusamus laudantium! Assumenda, accusantium?</p>
+									<p class="product-description-text">Đôi giày Adidas với họa tiết hình tròn được thiết kế hấp dẫn khiến bạn sẽ có cảm giác thoải mái sử dụng khi tập thể thao và dạo phố gặp bạn bè</p>
 									<img
-										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fdc8ff-14072022170551.jpg"
+										th:src="${product.images[2].link}"
 										alt="">
 									<h5>Cách bảo quản</h5>
 									<ul>
@@ -634,7 +629,7 @@
 								<h5>Sản phẩm tương tự</h5>
 								<div class="similar-product-item"
 									th:each="product : ${listProducts4}">
-									<a href="#" class="d-flex">
+									<a href="#" class="d-flex align-items-center">
 										<div>
 											<img th:src="${product.images[0].link}">
 										</div>
@@ -801,7 +796,6 @@
 		</div>
 	</form>
 
-	<script type="text/javascript" th:src="@{/js/convert-price.js}"></script>
 </body>
 
 </html>

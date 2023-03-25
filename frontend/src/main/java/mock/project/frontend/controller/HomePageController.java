@@ -28,7 +28,7 @@ public class HomePageController {
 
 	@GetMapping("/home")
 	public String homePage(Model model) {
-		String url = productApi ;
+		String url = productApi +"/products" ;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		
@@ -43,11 +43,11 @@ public class HomePageController {
 		return "home-page";
 	}
 	
-
+	
 	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemStartIndex, int numberOfItem) {
 		List<ProductDTO> listNew = new ArrayList<>();
-		for (int i = itemStartIndex ; i<(itemStartIndex + numberOfItem); i++) {
-			 listNew.add(listProducts[i]);
+		for (int i = itemStartIndex; i < (itemStartIndex + numberOfItem); i++) {
+			listNew.add(listProducts[i]);
 		}
 		return listNew;
 	}

@@ -117,9 +117,12 @@
 									<td class="product-status"><span class="sell">sell</span>
 									</td>
 									<td class="product-btns">
-										<button class="edit-btn">
+										<a th:href="@{/edit/product/{id}(id=${product.productId})}">
 											<i class="fa-solid fa-pen-to-square"></i>
-										</button>
+										</a>
+										<!-- <a th:href="@{/delete/product/{id}(id=${product.productId})}">
+											<i class="fa-solid fa-trash"></i>
+										</a> -->
 										<button class="remove-btn">
 											<i class="fa-solid fa-trash"></i>
 										</button>

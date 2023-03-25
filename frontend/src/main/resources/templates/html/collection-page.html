@@ -142,6 +142,7 @@
 							</ul>
 						</div>
 					</div>
+					<form th:action="@{/product/filter}" method="post">
 					<div class="d-flex">
 						<aside class="container-left">
 							<div class="search-facet-container">
@@ -216,6 +217,8 @@
 										value="" id="flexCheckDefault"> <span>3000 +</span>
 									</label>
 								</div>
+								<button type="submit" class="reset-facet btn btn-secondary">Chọn
+								</button>
 								<button type="reset" class="reset-facet btn btn-secondary">Xóa
 									lọc</button>
 							</div>
@@ -227,22 +230,16 @@
 										<div class="name-brand" th:text="${product.brand}"></div>
 										<h6 class="name-prod" th:text="${product.productName}"></h6>
 									</a>
-									<div class="price-prod" th:text="${product.price}"></div>
+									<div class="price-prod" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 									<div class="buy-or-cart d-flex justify-content-between align-item-center">
 										<a href="#">Mua ngay</a>
 										<a href="#">Thêm giỏ hàng</a>
 									</div>
 								</div>
-								
-								
-								
-								
-								
-							
-								
 							</div>
 						</div>
 					</div>
+					</form>
 				</div>
 			</main>
 			<footer>

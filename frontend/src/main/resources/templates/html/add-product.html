@@ -13,7 +13,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<form th:action="@{/add-product}" method="post">
+	<form th:action="@{/add/product}" th:object="${product}" method="post">
 
 		<div class="body-container">
 			<div class="dashboard__side-menu">
@@ -74,7 +74,7 @@
 								<div class="mb-3">
 									<label for="productNewPrice" class="form-label">Product
 										New Price</label> <input type="text" class="form-control"
-										id="productNewPrice">
+										id="productNewPrice" th:field="*{price}">
 								</div>
 								<div class="mb-3">
 									<label for="productCoupon" class="form-label">Product
@@ -83,7 +83,7 @@
 								</div>
 							</div>
 
-							<div class="add-product__status">
+							<!-- <div class="add-product__status">
 								<h4>Tình trạng sản phẩm</h4>
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
@@ -102,7 +102,7 @@
 										name="product-status" id="hidenStatus" checked> <label
 										class="form-check-label" for="hidenStatus"> Ẩn </label>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="add-product__size">
 								<h4>Size sản phẩm</h4>
@@ -174,28 +174,13 @@
 									</div>
 								</div>
 							</div>
-							<div class="add-product__inventory-info">
-								<h4>Kho</h4>
-								<div class="mb-3">
-									<label for="productOldPrice" class="form-label">SKU</label> <input
-										type="text" class="form-control" id="productOldPrice">
-								</div>
-								<div class="mb-3">
-									<label for="" class="form-label">Tổng hàng trong kho</label> <input
-										type="text" class="form-control" id="">
-								</div>
-							</div>
 						</div>
 						<div class="add-product__right-side">
 							<div class="add-product-form row">
 								<h4>Mô tả sản phẩm</h4>
-								<div class="col-6">
+								<div class="col-12">
 									<label class="form-label" for="">Tên sản phẩm</label> <input
-										type="text" class="form-control">
-								</div>
-								<div class="col-6">
-									<label class="form-label" for="">Tiêu đề</label> <input
-										type="text" class="form-control">
+										type="text" class="form-control" th:field="*{productName}">
 								</div>
 								<div class="col-12">
 									<label class="form-label" for="autoSizingInputGroup">Sản
@@ -220,11 +205,11 @@
 								<div class="col-12">
 									<label for="exampleColorInput" class="form-label">Màu
 										sắc</label> <input type="text" class="form-control"
-										id="exampleColorInput" value="">
+										id="exampleColorInput"th:field="*{color}">
 								</div>
 								<div class="col-6">
 									<label for="" class="form-label">Số lượng</label> <input
-										type="text" name="" id="" class="form-control">
+										type="text" name="" id="" class="form-control" th:field="*{productName}">
 								</div>
 								<div class="col-6">
 									<label for="" class="form-label">Ngày đăng</label> <input

@@ -60,16 +60,23 @@ public class ProductController {
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
 		
-		String urlProduct = productApi ;
+		String urlProduct = productApi +"/products" ;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(urlProduct, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
 		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
-		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));
-		
+		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));	
 		model.addAttribute("listProducts4", limitList(listProducts, 6, 3));
 		
 		return "product-detail-page";
+	}
+	
+	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemStartIndex, int numberOfItem) {
+		List<ProductDTO> listNew = new ArrayList<>();
+		for (int i = itemStartIndex; i < (itemStartIndex + numberOfItem); i++) {
+			listNew.add(listProducts[i]);
+		}
+		return listNew;
 	}
 
 
@@ -83,4 +90,23 @@ public class ProductController {
 		
 		return "product-detail-page";
 	}
+	
+	@GetMapping("/edit/product/{id}")
+	public String getProductDetailsEdit(@PathVariable(name="id", required=false) Integer id, Model model) {
+//		String url = adminApi + "/" + id;
+		String url = productApi + "/" + id; 
+		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
+		model.addAttribute("editedProduct", product);
+		return "edit-product";
+	}
+	
+	@PostMapping("/edit/product/{id}")
+	public String getProductDetailsEdited(@PathVariable(name="id", required=false) Integer id, Model model) {
+//		String url = adminApi + "/" + id;
+		String url = productApi + "/" + id; 
+		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
+		model.addAttribute("editedProduct", product);
+		return "edit-product";
+	}
+	
 }

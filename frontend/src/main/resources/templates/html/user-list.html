@@ -30,7 +30,7 @@
 </head>
 <body>
 
-	<form th:action="@{/user-list}" method="get">
+	<form th:action="@{/user/list}" method="get">
 		<div class="body-container">
 			<div class="dashboard__side-menu">
 				<h3>ABC Store</h3>
@@ -112,18 +112,19 @@
 									<th>Tài khoản</th>
 									<th>Email</th>
 									<th>Ngày sinh</th>
-									<th>Số lượng đơn</th>
+									<th>Điện thoại</th>
+									<th>Địa chỉ</th>
 									<th></th>
 								</thead>
 								<tbody class="align-middle">
-									<tr class="user-row" id="user-row-1">
-										<td class="user-id fw-bold">#C1</td>
-										<td class="user-name"><a href="" class="product-link">Nguyễn
-												Thị A</a></td>
-										<td class="user-account">nta</td>
-										<td class="user-email">nta@gmail.com</td>
-										<td class="user-dob">24-06-1999</td>
-										<td class="user-order-qty">10</td>
+									<tr class="user-row" id="user-row-1" th:each="user : ${listUsers}">
+										<td class="user-id fw-bold" th:text="${user.userId}"></td>
+										<td class="user-name" th:text="${user.fullName}"></td>
+										<td class="user-account" th:text="${user.userName}"></td>
+										<td class="user-email" th:text="${user.email}"></td>
+										<td class="user-dob" th:text="${user.dateofBirth}"></td>
+										<td class="user-phone" th:text="${user.phone}"></td>
+										<td class="user-address" th:text="${user.address}"></td>
 										<td class="user-btns">
 											<button class="edit-btn">
 												<i class="fa-solid fa-pen-to-square"></i>
