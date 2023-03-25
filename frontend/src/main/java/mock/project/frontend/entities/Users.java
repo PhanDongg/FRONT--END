@@ -2,7 +2,6 @@ package mock.project.frontend.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,9 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -165,4 +162,11 @@ public class Users implements Serializable {
 		this.enabled = enabled;
 	}
 
+	@Override
+	public String toString() {
+		return "Users [userId=" + userId + ", userName=" + userName + ", encryptedPassword=" + encryptedPassword
+				+ ", fullName=" + fullName + ", email=" + email + ", address=" + address + ", phone=" + phone
+				+ ", dateofBirth=" + dateofBirth + ", image=" + image + ", enabled=" + enabled + "]";
+	}
+	
 }

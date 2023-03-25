@@ -34,48 +34,83 @@ public class ProductController {
 
 	@Value("${product.api.url}")
 	private String productApi;
-
-	@GetMapping("/product/list")
-	public String viewProductList(Model model) {
-		String url = productApi;
+	
+	//search product
+	@GetMapping("/search")
+	public String listProductBySearch(@RequestParam(name="searchField",required = false)String searchField,Model model) {
+		if(searchField == null) {
+			ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(productApi, ProductDTO[].class);
+			ProductDTO[] listProducts = response.getBody();
+			model.addAttribute("listProducts", listProducts);
+			model.addAttribute("category", "Search");
+			return "collection-page";
+			}
+		String url = productApi+"/search?searchField="+searchField;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
+		if (listProducts.length == 0) {
+			model.addAttribute("msg","Have no items matches ");
+			model.addAttribute("category", "Search");
+			return "collection-page";
+		}
 		model.addAttribute("listProducts", listProducts);
-		return "product-list";
-
-	}
-
-	@GetMapping("/category/{id}")
-	public String getProductByCategory(@PathVariable(name = "id", required = false) Integer id, Model model) {
-		String url = productApi + "/category/" + id;
-		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
-		ProductDTO[] listProducts = response.getBody();
-		model.addAttribute("listProducts", listProducts);
+		model.addAttribute("category", "Search");
 		return "collection-page";
 	}
 
+	//get list product by brand
+	@GetMapping("/category/{id}")
+	public String getProductByCategory(@PathVariable(name="id", required = false)Integer id, Model model) {
+		String url = productApi + "/category/" + id;
+		String category = null;
+		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
+		ProductDTO[] listProducts = response.getBody();
+		for(ProductDTO pro: listProducts ) {
+			category = pro.getBrand();
+		}
+		model.addAttribute("listProducts", listProducts);
+		model.addAttribute("category", category);
+		return "collection-page";
+	}
+	//get product detail
 	@GetMapping("/product/{id}")
 	public String getProductDetails(@PathVariable(name = "id", required = false) Integer id, Model model) {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
 		
-		String urlProduct = productApi ;
+		String urlProduct = productApi + "/products" ;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(urlProduct, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
 		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
 		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));
-		
 		model.addAttribute("listProducts4", limitList(listProducts, 6, 3));
-		
 		return "product-detail-page";
 	}
-
-
+	
+	public List<ProductDTO> limitList(ProductDTO[] listProducts, int itemStartIndex, int numberOfItem) {
+		List<ProductDTO> listNew = new ArrayList<>();
+		for (int i = itemStartIndex ; i<(itemStartIndex + numberOfItem); i++) {
+			 listNew.add(listProducts[i]);
+		}
+		return listNew;
+	}
+	
+	//sort by price
+	@GetMapping("/search/sort")
+	public String sortProductByPrice(@RequestParam(name="sort",required = false)String sort,Model model) {
+		
+		String url = productApi+"/price?sort="+ sort;
+		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
+		ProductDTO[] listProducts = response.getBody();
+		model.addAttribute("listProducts", listProducts);
+		return "collection-page";
+	}
+	
 	@PostMapping("/product/{id}")
 	public String getSize(Model model, @PathVariable(name = "id", required = false) Integer id,
-			@RequestParam(name = "size") String size) {
+			@RequestParam(name = "sizes") String size) {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);

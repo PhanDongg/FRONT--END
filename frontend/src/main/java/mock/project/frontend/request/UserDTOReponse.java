@@ -68,5 +68,11 @@ public class UserDTOReponse {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	@Override
+	public String toString() {
+		return "UserDTOReponse [userId=" + userId + ", userName=" + userName + ", fullName=" + fullName + ", email="
+				+ email + ", address=" + address + ", phone=" + phone + ", dateofBirth=" + dateofBirth + ", image="
+				+ image + ", role=" + role + "]";
+	}
 	
 }

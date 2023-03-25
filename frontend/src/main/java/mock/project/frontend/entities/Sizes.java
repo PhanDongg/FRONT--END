@@ -19,18 +19,15 @@ public class Sizes {
 	@Column(name = "size_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer sizeId;
-
-	private double size;
-
-//	@JsonIgnore
-//	@ManyToMany(mappedBy = "sizes")
-//	private List<Products> products;
 	
+	@Column(name = "size")
+	private int size;
+
 	public Sizes() {
 		super();
 	}
 
-	public Sizes(double size) {
+	public Sizes(int size) {
 		super();
 		this.size = size;
 	}
@@ -43,21 +40,13 @@ public class Sizes {
 		this.sizeId = sizeId;
 	}
 
-	public double getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	public void setSize(double size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
-
-//	public List<Products> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(List<Products> products) {
-//		this.products = products;
-//	}
 
 	@Override
 	public String toString() {

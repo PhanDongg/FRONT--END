@@ -14,15 +14,9 @@ public class MyErrorController implements ErrorController {
 
 	@RequestMapping("/error")
 	public String handleError(HttpServletRequest request, Model model) {
-		// get error status
 		Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-
-		// TODO: log error details here
-
 		if (status != null) {
 			int statusCode = Integer.parseInt(status.toString());
-
-			// display specific error page
 			if (statusCode == HttpStatus.NOT_FOUND.value()) {
 				model.addAttribute("status", "404");
 				model.addAttribute("error", "sorry we couldn't find your link!");
@@ -41,8 +35,6 @@ public class MyErrorController implements ErrorController {
 				return "error";
 			}
 		}
-
-		// display generic error
 		return "error";
 	}
 

@@ -1,8 +1,6 @@
 package mock.project.frontend.request;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Set;
 
 import mock.project.frontend.entities.Products;
 import mock.project.frontend.entities.Status;

@@ -1,13 +1,10 @@
 package mock.project.frontend.request;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,30 +16,23 @@ public class UserDTO {
 	
 	private Integer userId;
 
-	@NotEmpty(message = "Thiếu username")
+	@NotEmpty
 	private String userName;
 	
-    @NotEmpty
+	@NotEmpty
 	private String password;
 	
-	@NotEmpty(message = "Thiếu fullName")
+	@NotEmpty
 	private String fullName;
 	
 	@NotBlank
-	@Email(message = "Email không hợp lệ")
+	@Email
 	private String email;
-	
 	
 	private String address;
 	
-	@Size
 	private String phone;
 	
-//	@DateTimeFormat(pattern = "MM/dd/yyyy")
-////	@JsonFormat(pattern = "MM/dd/yyyy")
-//	private Date dateofBirth;
-	
-	// A Dong viet
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private LocalDate dateofBirth;
 	
@@ -58,7 +48,7 @@ public class UserDTO {
 	public String getUserName() {
 		return userName;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}

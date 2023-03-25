@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <form th:action="@{/account/info}" method="post">
+    <form th:action="@{/user/info/update}" method="post" th:object="${user}">
         <div class="body-container">
             <div class="top-bar">
                 <div class="container-fluid">
@@ -50,24 +50,25 @@
                             </ul>
                         </div>
                         <div>
-                            <ul class="topbar-right d-flex justify-content-end">
-                                <li class="p-2">
-                                    <a th:href="@{/account/order}"><span>Tra cứu đơn hàng</span></a>
-                                </li>
-                                <li class="p-2">
-                                    <a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Sign in</span></a>
-                                </li>
-                                <li class="p-2">
-                                    <a th:href="@{/cart}"><i class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a>
-                                </li>
-                            </ul>
+                           <ul class="topbar-right d-flex justify-content-end">
+								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
+											cứu đơn hàng</span></a></li>
+								<li class="p-2 " th:if="${condition} == 0">
+									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
+								</li>
+								<li  class="p-2 admin-menu" th:unless="${condition} == 0">
+									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
+								</li>
+								<li class="p-2"><a th:href="@{/cart}"><i
+										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
+							</ul>
                         </div>
                     </div>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" th:href="@{/home}">Logo</a>
+                    <a class="navbar-brand" th:href="@{/}">Logo</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -156,32 +157,32 @@
                         <h3>Thông tin tài khoản</h3>
                         <div class="update-info">
                             <div class="row mb-3">
-                                <label for="" class="col-sm-2 col-form-label">Họ tên</label>
+                                <label for="" class="col-sm-2 col-form-label" >Họ tên</label>
                                 <div class="col">
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="" th:value="${user.fullName}">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col">
-                                    <input type="email" class="form-control" id="">
+                                    <input type="email" class="form-control" id="" th:value="${user.email}">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="" class="col-sm-2 col-form-label">Số điện thoại</label>
+                                <label for="" class="col-sm-2 col-form-label" >Số điện thoại</label>
                                 <div class="col">
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id=""  th:value="${user.phone}">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="dateOfBirth" class="col-sm-2 col-form-label">Ngày sinh</label>
+                                <label for="dateOfBirth" class="col-sm-2 col-form-label" >Ngày sinh</label>
                                 <div class="col">
-                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" th:value="${#dates.format(user.dateofBirth, 'dd-MM-yyyy')}">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="gender" class="col-sm-2 col-form-label">Giới tính</label>
+                                <label for="gender" class="col-sm-2 col-form-label" >Giới tính</label>
                                 <div class="col">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="gender" value="0" checked>Nam
@@ -195,9 +196,9 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="" class="col-sm-2 col-form-label">Địa chỉ</label>
+                                <label for="" class="col-sm-2 col-form-label"  >Địa chỉ</label>
                                 <div class="col">
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="" th:value="${user.address}">
                                 </div>
                             </div>
                             <div class="row mb-3">

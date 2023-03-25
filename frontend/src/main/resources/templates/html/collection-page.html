@@ -36,7 +36,7 @@
 </head>
 
 <body>
-	<form th:action="@{/collection}" method="post">
+	
 		<div>
 			<div class="top-bar">
 				<div class="container-fluid">
@@ -49,10 +49,14 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/account/order}"><span>Tra cứu đơn
-											hàng</span></a></li>
-								<li class="p-2"><a th:href="@{/login}"><i
-										class="fa-solid fa-user"></i><span>Đăng nhập</span></a></li>
+								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
+											cứu đơn hàng</span></a></li>
+								<li class="p-2 " th:if="${condition} == 0">
+									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
+								</li>
+								<li  class="p-2 admin-menu" th:unless="${condition} == 0">
+									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
+								</li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -63,7 +67,7 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"
 				data-bs-theme="dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" th:href="@{/home}">Logo</a>
+					<a class="navbar-brand" th:href="@{/}">Logo</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -110,13 +114,14 @@
 							<li class="nav-item dropdown"><a class="nav-link" href="#"
 								aria-expanded="false">TIN TỨC</a></li>
 						</ul>
+						<form th:action="@{/search}" method="get">
 						<div class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
-								placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">
+								placeholder="Search" aria-label="Search" th:name="searchField">
+							<button class="btn btn-outline-success" type="submit" >
 								<i class="fa-solid fa-magnifying-glass"></i>
 							</button>
-						</div>
+						</div></form>
 					</div>
 				</div>
 			</nav>
@@ -126,9 +131,9 @@
 						<nav style="-bs-breadcrumb-divider: '&gt;';"
 							aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item">Adidas</li>
-								<li class="breadcrumb-item active" aria-current="page">Nam</li>
+								<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+								<li class="breadcrumb-item" th:text="${category}" ></li>
+								<!-- <li class="breadcrumb-item active" aria-current="page">Nam</li> -->
 							</ol>
 						</nav>
 						<div class="dropdown-center">
@@ -136,9 +141,8 @@
 								data-bs-toggle="dropdown" aria-expanded="false">Sắp Xếp
 								Theo</div>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Action two</a></li>
-								<li><a class="dropdown-item" href="#">Action three</a></li>
+								<li><a class="dropdown-item" th:href="@{/search/sort?sort=desc}">Giá giảm dần</a></li>
+								<li><a class="dropdown-item" th:href="@{/search/sort?sort=asc}">Giá tăng dần</a></li>
 							</ul>
 						</div>
 					</div>
@@ -222,12 +226,13 @@
 						</aside>
 						<div class="container-right">
 							<div class="d-flex content-product-container" >
+							<span th:text="${msg}"></span>
 								<div class="content-products-item" th:each="product : ${listProducts}">
-									<a href="#"> <img th:src="${product.images[0].link}">
+									<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 										<div class="name-brand" th:text="${product.brand}"></div>
 										<h6 class="name-prod" th:text="${product.productName}"></h6>
 									</a>
-									<div class="price-prod" th:text="${product.price}"></div>
+									<div class="price-prod" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
 									<div class="buy-or-cart d-flex justify-content-between align-item-center">
 										<a href="#">Mua ngay</a>
 										<a href="#">Thêm giỏ hàng</a>
@@ -312,7 +317,7 @@
 				</div>
 			</footer>
 		</div>
-	</form>
+	
 	<script type="text/javascript" th:src="@{/js/convert-price.js}"></script>
 </body>
 

@@ -55,13 +55,17 @@
 										19009191</span></li>
 							</ul>
 						</div>
-						<div>
+							<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a href="#"><span>Tra cứu đơn
-											hàng</span></a></li>
-								<li class="p-2"><a href="#"><i class="fa-solid fa-user"></i><span>Sign
-											in</span></a></li>
-								<li class="p-2"><a href="#"><i
+								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
+											cứu đơn hàng</span></a></li>
+								<li class="p-2 " th:if="${condition} == 0">
+									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
+								</li>
+								<li  class="p-2 admin-menu" th:unless="${condition} == 0">
+									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
+								</li>
+								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
 						</div>
@@ -71,7 +75,7 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"
 				data-bs-theme="dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">Logo</a>
+					<a class="navbar-brand" th:href="@{/}">Logo</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -201,8 +205,7 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<div class="price-prod d-flex">
-										<p class="price-prod-new dbPrice" th:text="${product.price}"></p>
-										<span style="color: red;" class="fw-bold currency">đ</span>
+										<p class="price-prod-new dbPrice" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></p>
 										<p class="price-prod-old">2.633.000đ</p>
 										<p class="price-prod-percent">-17%</p>
 									</div>
@@ -219,7 +222,7 @@
 										<p
 											class="form-group justify-content-start align-items-center size-selection">
 											<label for="department">Kích thước:</label> <select
-												class="form-control" id="size" name="size">
+												class="form-control" id="size" name="sizes">
 												<option value="0" selected="selected">select option</option>
 												<option value="35">35</option>
 												<option value="36">36</option>
@@ -309,7 +312,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -325,7 +328,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -342,7 +345,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -398,7 +401,7 @@
 										giày Adidas FX0031 sẽ là lựa chọn phù hợp của các bạn nam chạy
 										bộ vào những ngày nóng</p>
 									<img
-										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fc99d2-14072022170551.jpg"
+										th:src="${product.images[1].link}"
 										alt="">
 									<p class="product-description-text">Lorem ipsum, dolor sit
 										amet consectetur adipisicing elit. Corporis esse modi
@@ -406,7 +409,7 @@
 										numquam nesciunt provident, eaque omnis atque harum earum
 										accusamus laudantium! Assumenda, accusantium?</p>
 									<img
-										src="https://cdn.vuahanghieu.com/unsafe/0x500/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2022/07/giay-the-thao-nike-air-jordan-1-zoom-cmft-pink-oxford-phoi-mau-size-40-62cfea7fdc8ff-14072022170551.jpg"
+									th:src="${product.images[2].link}"
 										alt="">
 									<h5>Cách bảo quản</h5>
 									<ul>
@@ -634,7 +637,7 @@
 								<h5>Sản phẩm tương tự</h5>
 								<div class="similar-product-item"
 									th:each="product : ${listProducts4}">
-									<a href="#" class="d-flex">
+									<a th:href="@{/product/{id}(id=${product.productId})}" class="d-flex">
 										<div>
 											<img th:src="${product.images[0].link}">
 										</div>
@@ -670,7 +673,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -686,7 +689,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -703,7 +706,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -801,7 +804,6 @@
 		</div>
 	</form>
 
-	<script type="text/javascript" th:src="@{/js/convert-price.js}"></script>
 </body>
 
 </html>

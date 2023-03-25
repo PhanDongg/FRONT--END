@@ -10,7 +10,7 @@
 <!--     <link rel="stylesheet" href="/LAYOUT/CSS/home-page.css"> -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/home-page.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -34,7 +34,7 @@
 </head>
 
 <body>
-	<form th:action="@{/home}" method="get">
+	<form th:action="@{/search}" method="get">
 		<div>
 			<div class="top-bar">
 				<div class="container-fluid">
@@ -47,10 +47,13 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/account/order}"><span>Tra
+								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
 											cứu đơn hàng</span></a></li>
-								<li class="p-2 user-menu">
+								<li class="p-2 " th:if="${condition} == 0">
 									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
+								</li>
+								<li  class="p-2 admin-menu" th:unless="${condition} == 0">
+									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
 								</li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
@@ -62,7 +65,7 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"
 				data-bs-theme="dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" th:href="@{/home}">Logo</a>
+					<a class="navbar-brand" th:href="@{/}">Logo</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -108,8 +111,8 @@
 						</ul>
 						<div class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
-								placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">
+								placeholder="Search" aria-label="Search" th:name="searchField">
+							<button class="btn btn-outline-success" type="submit" >
 								<i class="fa-solid fa-magnifying-glass"></i>
 							</button>
 						</div>
@@ -160,19 +163,19 @@
 				<div class="article-product">
 					<section id="brandContent" class="brands carousel slide">
 						<h5>THƯƠNG HIỆU</h5>
-						<div class="carousel-inner">
+					<div class="carousel-inner">
 							<div class="carousel-item active">
 								<div class="d-flex justify-content-between">
-									<a href="#"><img
+									<a th:href="@{/category/{id}(id=3)}"><img
 										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-1024x1024.png"
-										alt="logo brand"></a> <a href="#"><img
+										alt="logo brand"></a> <a th:href="@{/category/{id}(id=1)}"><img
 										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-2-1024x1024.png"
-										alt="logo brand"></a> <a href="#"><img
-										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-4-1024x1024.png"
-										alt="logo brand"></a> <a href="#"><img
-										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-7-1024x1024.png"
-										alt="logo brand"></a> <a href="#"><img
+										alt="logo brand"></a> <a th:href="@{/category/{id}(id=4)}"><img
+										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-3-1024x1024.png"
+										alt="logo brand"></a> <a th:href="@{/category/{id}(id=2)}"><img
 										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-16-1024x1024.png"
+										alt="logo brand"></a><a href="#"><img
+										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-9-1024x1024.png"
 										alt="logo brand"></a>
 								</div>
 							</div>
@@ -181,9 +184,9 @@
 									<a href="#"><img
 										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-10-1024x1024.png"
 										alt="logo brand"></a> <a href="#"><img
-										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-9-1024x1024.png"
+										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-4-1024x1024.png"
 										alt="logo brand"></a> <a href="#"><img
-										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-3-1024x1024.png"
+										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-7-1024x1024.png"
 										alt="logo brand"></a> <a href="#"><img
 										src="https://trivela.vn/wp-content/uploads/2023/02/Trang-hang-5-1024x1024.png"
 										alt="logo brand"></a> <a href="#"><img
@@ -207,7 +210,7 @@
 					<section class="selling-products">
 						<div class="d-flex justify-content-between">
 							<h4 class="p-2">Sản phẩm bán chạy</h4>
-							<span class="p-2 view-all"><a href="#">Xem thêm</a></span>
+							<span class="p-2 view-all"><a th:href="@{/product?text=more}">Xem thêm</a></span>
 						</div>
 						<div class="content-products">
 							<div id="sellingProducts" class="carousel slide">
@@ -225,7 +228,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -241,7 +244,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -258,7 +261,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -319,7 +322,7 @@
 					<section class="new-arrivals">
 						<div class="d-flex justify-content-between">
 							<h4 class="p-2">Sản phẩm mới</h4>
-							<span class="p-2 view-all"><a href="#">Xem thêm</a></span>
+							<span class="p-2 view-all"><a th:href="@{/product?text=desc}">Xem thêm</a></span>
 						</div>
 						<div class="content-products">
 							<div id="newArrvials" class="carousel slide">
@@ -336,8 +339,8 @@
 									<div class="carousel-item active">
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
-												th:each="product : ${listProducts1}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												th:each="product : ${listProductDESCs1}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -352,8 +355,8 @@
 									<div class="carousel-item">
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
-												th:each="product : ${listProducts2}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												th:each="product : ${listProductDESCs2}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -369,8 +372,8 @@
 									<div class="carousel-item">
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
-												th:each="product : ${listProducts3}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												th:each="product : ${listProductDESCs3}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -418,7 +421,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -434,7 +437,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -451,7 +454,7 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a href="#"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>

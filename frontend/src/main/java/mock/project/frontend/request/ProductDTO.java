@@ -1,6 +1,5 @@
 package mock.project.frontend.request;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -88,4 +87,11 @@ public class ProductDTO {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
+	@Override
+	public String toString() {
+		return "ProductDTO [productId=" + productId + ", productName=" + productName + ", price=" + price
+				+ ", description=" + description + ", type=" + type + ", color=" + color + ", date=" + date + ", sizes="
+				+ sizes + ", quantity=" + quantity + ", brand=" + brand + ", images=" + images + "]";
+	}
+	
 }
