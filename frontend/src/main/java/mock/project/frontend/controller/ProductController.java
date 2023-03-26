@@ -181,6 +181,7 @@ public class ProductController {
 		model.addAttribute("listProducts", response);
 		model.addAttribute("category", "Filter");
 		return "collection-page";
+	}
 
 	public int stringToInt(String sizeString) {
 		int sizeInt = Integer.parseInt(sizeString);  

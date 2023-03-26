@@ -44,7 +44,7 @@
 </head>
 
 <body>
-	<form th:action="@{/cart}" method="get">
+	<form th:action="@{/cart}" method="post">
 		<div class="body-container">
 			<div class="top-bar">
 				<div class="container-fluid">
@@ -188,26 +188,26 @@
 								<div class="col">
 									<label for="fullName" class="form-label">Họ và Tên</label> <input
 										type="text" class="form-control" placeholder="Nhập Họ và Tên"
-										id="fullName">
+										id="fullName" name="fullName" th:value="${user.fullName}">
 								</div>
 								<div class="col">
 									<label for="phone" class="form-label">Số điện thoại</label> <input
 										type="text" class="form-control"
-										placeholder="Nhập Số điện thoại" id="phone">
+										placeholder="Nhập Số điện thoại" id="phone" name="phone" th:value="${user.phone}">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
 									<label for="address" class="form-label">Địa chỉ</label> <input
 										type="text" class="form-control" placeholder="Nhập Địa chỉ"
-										id="address">
+										id="address" name="address" th:value="${user.address}">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
 									<label for="email" class="form-label">Email</label> <input
 										type="email" class="form-control" placeholder="Nhập Email"
-										id="email">
+										id="email" name="email" th:value="${user.email}">
 								</div>
 							</div>
 						</div>
@@ -262,8 +262,8 @@
 						<button class="add-cart-btn" type="button">
 							<a th:href="@{/home}">TIẾP TỤC MUA HÀNG</a>
 						</button>
-						<button class="buy-now-btn" type="button">
-							<a href="#">TIẾN HÀNH ĐẶT HÀNG</a>
+						<button class="buy-now-btn" type="submit">
+							TIẾN HÀNH ĐẶT HÀNG
 						</button>
 					</div>
 				</div>
