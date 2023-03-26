@@ -15,20 +15,20 @@
 <body>
 	<form th:action="@{/product/dashboard}" method="get">
 		<div class="body-container">
-			<div class="dashboard__side-menu">
-				<h3>ABC Store</h3>
+		<div class="dashboard__side-menu">
+				<h3>DPTS Store</h3>
 				<ul class="side-menu-container">
-					<li class=""><a th:href="@{/dashboard}"><i class="fa-solid fa-house"></i>
-							Dashboard</a></li>
-					<li><a th:href="@{/product/dashboard}"><i class="fa-brands fa-shopify"></i> Sản
-							phẩm</a></li>
-					<li><a th:href="@{/order/dashboard}"><i class="fa-solid fa-clipboard"></i> Đơn
-							hàng</a></li>
-					<li><a th:href="@{/user/list}"><i class="fa-solid fa-user"></i> Thành viên</a>
-					</li>
+					<li class=""><a th:href="@{/admin/dashboard}"><i
+							class="fa-solid fa-house"></i> Dashboard</a></li>
+					<li><a th:href="@{/admin/product}"><i
+							class="fa-brands fa-shopify"></i> Sản phẩm</a></li>
+					<li><a th:href="@{/admin/order}"><i
+							class="fa-solid fa-clipboard"></i> Đơn hàng</a></li>
+					<li><a th:href="@{/admin/user}"><i
+							class="fa-solid fa-user"></i> Thành viên</a></li>
 				</ul>
-			</div>
 
+			</div>
 			<div class="dashboard__content">
 				<div
 					class="dashboard-head d-flex align-items-center justify-content-between">
@@ -62,19 +62,19 @@
 						<div class="row gy-5 product-menu">
 							<div class="col-4">
 								<div class="p-3">
-									<button class="view-product-list-btn shadow"><a th:href="@{/product/list}">Danh sách
+									<button class="view-product-list-btn shadow"><a th:href="@{/admin/product}">Danh sách
 										sản phẩm</a></button>
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="p-3">
-									<button class="update-product-btn shadow"><a th:href="@{/edit/product}">Chỉnh sửa
+									<button class="update-product-btn shadow"><a th:href="@{/admin/product/update}">Chỉnh sửa
 										sản phẩm</a></button>
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="p-3">
-									<button class="view-product-detail-btn shadow"><a th:href="@{/add/product}">Thêm
+									<button class="view-product-detail-btn shadow"><a th:href="@{/admin/product/add}">Thêm
 										sản phẩm mới</a></button>
 								</div>
 							</div>

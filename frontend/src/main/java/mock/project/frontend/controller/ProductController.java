@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 import com.google.gson.Gson;
 
 import mock.project.frontend.request.ProductDTO;
+import mock.project.frontend.request.ProductRequest;
 import mock.project.frontend.request.SizeDTO;
 
 @Controller
@@ -114,8 +116,46 @@ public class ProductController {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
-		System.out.println(size);
 		
 		return "product-detail-page";
+	}
+	//search product filter
+	@PostMapping("/search/filter")
+	public String filterProduct(@ModelAttribute("productRq") ProductRequest productRequest, Model model) {
+		String url = productApi+ "/filter";
+		int value = (int) productRequest.getStartRangePrice();
+		switch(value) {
+		  case 12:
+			  productRequest.setStartRangePrice(1000000);
+			  productRequest.setEndRangePrice(2000000);
+		    break;
+		  case 23:
+			  productRequest.setStartRangePrice(2000000);
+				productRequest.setEndRangePrice(3000000);
+		    break;
+		  case 34:
+			  productRequest.setStartRangePrice(3000000);
+				productRequest.setEndRangePrice(4000000);
+			    break;
+		  case 45:
+			  productRequest.setStartRangePrice(4000000);
+				productRequest.setEndRangePrice(5000000);
+			    break;
+		  case 56:
+			  productRequest.setStartRangePrice(5000000);
+				productRequest.setEndRangePrice(6000000);
+			    break;
+		  case 610:
+			  productRequest.setStartRangePrice(6000000);
+				productRequest.setEndRangePrice(10000000);
+			    break;
+		  default:
+			  productRequest.setStartRangePrice(1000000);
+				productRequest.setEndRangePrice(10000000);
+		}
+		ProductDTO[] response = restTemplate.postForObject(url, productRequest,ProductDTO[].class);
+		model.addAttribute("listProducts", response);
+		model.addAttribute("category", "Filter");
+		return "collection-page";
 	}
 }

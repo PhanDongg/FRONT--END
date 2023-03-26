@@ -3,6 +3,7 @@ package mock.project.frontend.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -53,7 +55,7 @@ public class AdminController {
 	@Value("${admin.api.url}")
 	private String adminApi;
 
-	String jwt;
+	 static String jwt;
 
 	// welcome admin
 	@GetMapping("/dashboard")
@@ -81,7 +83,6 @@ public class AdminController {
 	public String listOfUser(Model model) {
 		logger.info("List of all user ");
 		String url = adminApi + "/user";
-		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
@@ -91,10 +92,6 @@ public class AdminController {
 			UserDTO[] listUsers = responseAPI.getBody();
 			model.addAttribute("listUsers", listUsers);
 			return "user-list";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
 	}
 
 	// list order
@@ -102,7 +99,6 @@ public class AdminController {
 	public String viewOrderList(Model model) {
 		logger.info("List of orders");
 		String url = adminApi + "/order";
-		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
@@ -112,10 +108,6 @@ public class AdminController {
 			OrderDTO[] listOrders = responseAPI.getBody();
 			model.addAttribute("listOrders", listOrders);
 			return "order-list";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
 	}
 
 	// add new product view
@@ -130,7 +122,6 @@ public class AdminController {
 	@PostMapping("/product/add")
 	public String addNewProduct(@ModelAttribute("product") ProductDTO product, Model model) {
 		String url = adminApi + "/product";
-		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
@@ -145,11 +136,6 @@ public class AdminController {
 			model.addAttribute("product", productTDO);
 			model.addAttribute("msg", "Add successful");
 			return "add-product";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
-
 	}
 
 	// update product view
@@ -172,7 +158,6 @@ public class AdminController {
 	@PutMapping
 	public String udpateProduct(@ModelAttribute("product") ProductDTO product, Model model) {
 		String url = adminApi + "/product";
-		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
@@ -181,35 +166,26 @@ public class AdminController {
 					ProductDTO.class, product);
 			model.addAttribute("product", response.getBody());
 			return "edit-product";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
 	}
 	//get  product list
 	@GetMapping("/product")
 	public String viewProductList(Model model, HttpServletRequest request) {
-		String url = adminApi + "/product";
-		try {
+		logger.info("viewProductList -> jwt: " + jwt);
+		String url = adminApi + "/products";
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
 			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
-			ResponseEntity<ProductDTO[]> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity,
-					ProductDTO[].class);
-			ProductDTO[] listProducts = responseAPI.getBody();
-			model.addAttribute("listProducts", listProducts);
+			ParameterizedTypeReference<List<ProductDTO>> typeRef = new ParameterizedTypeReference<List<ProductDTO>>() {};
+			ResponseEntity<List<ProductDTO>> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity,typeRef);
+			List<ProductDTO> listProducts = responseAPI.getBody();
+			model.addAttribute("listProducts",listProducts);
 			return "product-list";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
 	}
 	//delete product
 	@GetMapping("/product/delele/{id}")
 	public String viewProductList(@PathVariable(name = "id", required = false) Integer id ,Model model, HttpServletRequest request) {
 		String url = adminApi + "/product/"+ id;
-		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
@@ -218,10 +194,6 @@ public class AdminController {
 					ProductDTO.class);
 			model.addAttribute("msg", "Deleted successful!");
 			return "product-list";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
 	}
 
 }

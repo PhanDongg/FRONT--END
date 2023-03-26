@@ -59,10 +59,10 @@
 							<ul class="topbar-right d-flex justify-content-end">
 								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
 											cứu đơn hàng</span></a></li>
-								<li class="p-2 " th:if="${condition} == 0">
+								<li class="p-2 " th:if="${session.username} == null">
 									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
 								</li>
-								<li  class="p-2 admin-menu" th:unless="${condition} == 0">
+								<li  class="p-2 admin-menu" th:unless="${session.username} == null">
 									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
 								</li>
 								<li class="p-2"><a th:href="@{/cart}"><i
@@ -804,6 +804,7 @@
 		</div>
 	</form>
 
+	<script type="text/javascript" th:src="@{/js/navbar.js}"></script>
 </body>
 
 </html>

@@ -64,6 +64,10 @@ public class Products implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="product")
 	private Set<Images> images;	
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="product")
+	private Set<ProductSize> productSizes;	
+
 
 	public Products() {
 	super();

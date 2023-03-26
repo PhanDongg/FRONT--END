@@ -17,9 +17,9 @@ public class Items implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "item_ids")
+	@Column(name = "item_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer orderDetailId;
+	private Integer itemId;
 	
 	@Column(name="quantity", length = 50, columnDefinition = "nvarchar(50)")
 	private int quantity;
@@ -37,14 +37,6 @@ public class Items implements Serializable {
 
 	public Items() {
 		super();
-	}
-
-	public Integer getOrderDetailId() {
-		return orderDetailId;
-	}
-
-	public void setOrderDetailId(Integer orderDetailId) {
-		this.orderDetailId = orderDetailId;
 	}
 
 	public int getQuantity() {
@@ -79,4 +71,12 @@ public class Items implements Serializable {
 		this.order = order;
 	}
 
+	public Integer getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(Integer itemId) {
+		this.itemId = itemId;
+	}
+	
 }
