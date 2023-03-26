@@ -33,7 +33,11 @@ table a:hover {
 }
 
 .my-cart tr td:nth-child(1) {
-    width: 70%;
+    width: 65%;
+}
+
+.my-cart tr td:nth-child(4) {
+    width: 10.5%;
 }
 
 .my-cart .product-info .d-flex>div {
@@ -96,4 +100,39 @@ table a:hover {
 .btn-cart>*:hover a {
     background-color: white !important;
     color: black !important;
+}
+
+/* add new */
+.buttons_added {
+    display:-ms-inline-flexbox;
+    white-space: nowrap;
+}
+.is-form {
+    background-color:#f9f9f9;
+    height: 2rem;
+    width: 2rem;
+    border:1px solid #ddd;
+}
+.is-form:focus,.input-text:focus {
+    outline:none;
+}
+.is-form.minus {
+    border-radius:4px 0 0 4px;
+}
+.is-form.plus {
+    border-radius:0 4px 4px 0;
+}
+.input-qty {
+    background-color:#ffffff;
+    width: 30%;
+    text-align: center;
+    font-size: 1rem;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 0;
+    border-right: 0;
+}
+.input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance:none;
+    margin:0;
 }

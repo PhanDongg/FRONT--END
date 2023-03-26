@@ -1,59 +1,135 @@
+
+const userName = $('#userName');
+const fullName = $("#fullName");
+const email = $("#email");
+const phone = $("#phone");
+const password = $("#password");
+const passwordconfirm = $("#passwordconfirm");
+const inputItem = $('.input-item');
+
+
 //show password
-$(document).ready(function(){
-    $('#eye').click(function(){
-        $(this).toggleClass('open');
-        $(this).children('i').toggleClass('fa-eye-slash fa-eye');
-        if($(this).hasClass('open')) {
-            $(this).prev().attr('type', 'text');
-        } else {
-            $(this).prev().attr('type', 'password');
-        }
-    });
+$(document).ready(function() {
+
+
+	$('.eye-icon').click(function() {
+		$(this).children('i').toggleClass('bi bi-eye');
+
+		if (!$(this).hasClass('show')) {
+			$(this).prev().attr('type', 'text');
+			$(this).addClass('show');
+		} else if ($(this).hasClass('show')) {
+			$(this).prev().attr('type', 'password');
+			$(this).removeClass('show');
+		}
+	});
+
+
+
+	$('#register').click(function() {
+		Array.from(inputItem).map((ele) =>
+			ele.classList.remove('success', 'error')
+		);
+		let isValid = checkValidate();
+
+		if (isValid) {
+			alert('Đăng ký thành công');
+		}
+	});
+
 });
 
+
 //validation bằng js
-$('#register').click(function validate() {
+function checkValidate() {
+	let usernameValue = userName.val();
+	let fullnameValue = fullName.val();
+	let emailValue = email.val();
+	let phoneValue = phone.val();
+	let passwordValue = password.val();
+	let passwordconfirmValue = passwordconfirm.val();
+
+	let isCheck = true;
 	
-    var firstName = document.getElementById("userName").value;
-    if (firstName.length === 0) {
-        $('#error1').html("Vui lòng nhập tên tài khoản.");
-    }
-    
-    var lastName = document.getElementById("fullName").value;
-    if (lastName.length === 0) {
-        $('#error2').html("Vui lòng nhập Họ và Tên.");
-    }
-    
-    var email = document.getElementById("email").value;
-    if (email.length === 0) {
-        $('#error3').html("Vui lòng nhập địa chỉ email chính xác của bạn.");
-       
-    }
-    
-    var email = document.getElementById("email").value;
-    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailRegex.test(email)) {
-        $('#error3').html("Vui lòng nhập địa chỉ email chính xác của bạn.");
-       
-    }
-    var phone = document.getElementById("phone").value;
-    var phoneRegex = /^\d{3}-\d{3}-\d{6}$/;
-    if (!phoneRegex.test(phone)) {
-        $('#error4').html("Vui lòng nhập đúng số điện thoại của bạn.");
-        
-    }
+	console.log(usernameValue);
+	console.log(fullnameValue);
+	console.log(emailValue);
+	console.log(phoneValue);
+	console.log(passwordValue);
+	console.log(passwordconfirmValue);
 
-    var password = document.getElementById("password").value;
-    if (password.length === 0) {
-        $('#error5').html("Vui lòng nhập mật khẩu.");
-        
-    }
+	if (usernameValue == '') {
+		setError(userName, 'Vui lòng nhập Tên tài khoản');
+		isCheck = false;
+	} else {
+		setSuccess(userName);
+	}
 
-    var passwordconfirm = document.getElementById("passwordconfirm").value;
-    if (passwordconfirm.length === 0) {
-        $('#error6').html("Vui lòng nhập lại để xác nhận mật khẩu.");
-        
-    }
-    
+	if (fullnameValue == '') {
+		setError(fullName, 'Vui lòng nhập Họ và Tên');
+		isCheck = false;
+	} else {
+		setSuccess(fullName);
+	}
+
+	if (emailValue == '') {
+		setError(email, 'Vui lòng nhập Email');
+		isCheck = false;
+	} else if (!isEmail(emailValue)) {
+		setError(email, 'Email không đúng định dạng');
+		isCheck = false;
+	} else {
+		setSuccess(email);
+	}
+
+	if (phoneValue == '') {
+		setError(phone, 'Số điện thoại không được để trống');
+		isCheck = false;
+	} else if (!isPhone(phoneValue)) {
+		setError(phone, 'Số điện thoại không đúng định dạng');
+		isCheck = false;
+	} else {
+		setSuccess(phone);
+	}
+
+	if (passwordValue == '') {
+		setError(password, 'Vui lòng nhập Mật khẩu');
+		isCheck = false;
+	} else {
+		setSuccess(password);
+	}
+
+	if (passwordconfirmValue == '' || passwordconfirmValue != passwordValue) {
+		setError(passwordconfirm, 'Vui lòng xác nhận lại Mật khẩu');
+		isCheck = false;
+	} else {
+		setSuccess(passwordconfirm);
+	}
+
+	return isCheck;
+
+};
+
+
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
-);
+
+function isPhone(number) {
+	return /(0[3|5|7|8|9])+([0-9]{8})\b/.test(number);
+}
+
+function setSuccess(e) {
+	// e.parentNode.classList.add('success');
+    e.closest('.input-item').addClass('success');
+}
+
+function setError(e, message) {
+	// let parentEle = e.closest('.input-item');
+	// parentEle.classList.add('error');
+	e.closest('.input-item').find('.valid-message').html(message);
+    e.closest('.input-item').addClass('error');
+}
+
+
+
