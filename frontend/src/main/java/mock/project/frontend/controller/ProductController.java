@@ -2,7 +2,9 @@ package mock.project.frontend.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -22,7 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import mock.project.frontend.LocalDateSerializer;
+import mock.project.frontend.entities.Sizes;
 import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.SizeDTO;
 
@@ -34,6 +39,8 @@ public class ProductController {
 
 	@Value("${product.api.url}")
 	private String productApi;
+	
+	List<ProductDTO> dtos = new ArrayList<>();
 	
 	//search product
 	@GetMapping("/search")
@@ -78,7 +85,6 @@ public class ProductController {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
-		
 		String urlProduct = productApi + "/products" ;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(urlProduct, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
@@ -110,12 +116,34 @@ public class ProductController {
 	
 	@PostMapping("/product/{id}")
 	public String getSize(Model model, @PathVariable(name = "id", required = false) Integer id,
-			@RequestParam(name = "sizes") String size) {
+			@RequestParam(name = "sizes") String size, HttpServletRequest request, HttpServletResponse response) {
 		String url = productApi + "/" + id;
 		ProductDTO product = restTemplate.getForObject(url, ProductDTO.class);
 		model.addAttribute("product", product);
 		System.out.println(size);
 		
+		Sizes sizeSet = new Sizes(stringToInt(size));
+		List<Sizes> sizes = new ArrayList<>();
+		sizes.add(sizeSet);
+		product.setSizes(sizes);
+		
+		dtos.add(product);
+		String jsonProduct = new GsonBuilder().setPrettyPrinting()
+				.registerTypeAdapter(LocalDate.class, new LocalDateSerializer()).create().toJson(dtos);
+
+		String encode = Base64.getEncoder().encodeToString(jsonProduct.getBytes());
+		Cookie cookie = new Cookie("cookieProduct", encode);
+		cookie.setMaxAge(24 * 60 * 60);
+		cookie.setSecure(true);
+		cookie.setHttpOnly(true);
+		cookie.setPath("/"); // global cookie accessible every where
+		response.addCookie(cookie);
+
 		return "product-detail-page";
+	}
+	
+	public int stringToInt(String sizeString) {
+		int sizeInt = Integer.parseInt(sizeString);  
+		return sizeInt;
 	}
 }
