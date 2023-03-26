@@ -7,6 +7,10 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 import mock.project.frontend.request.OrderDTO;
+import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.UserDTO;
 import mock.project.frontend.request.UserDTOReponse;
 
@@ -66,6 +71,14 @@ public class UserController {
 		String url = userApi + "/info?username="+ username;
 		UserDTOReponse userInfo = restTemplate.getForObject(url, UserDTOReponse.class);
 		model.addAttribute("user", userInfo);
+		return "customer-detail-page";
+	}
+	//update userinfo
+	@PostMapping("/user/info")
+	public String updateUserInfo(@ModelAttribute("user")UserDTO userDTO ,Model model) {
+		String url = userApi + "/update";
+			ResponseEntity<UserDTO> response = restTemplate.exchange(url, HttpMethod.PUT,new HttpEntity<>(userDTO) ,UserDTO.class);
+			model.addAttribute("user", response.getBody());
 		return "customer-detail-page";
 	}
 

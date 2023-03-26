@@ -73,11 +73,11 @@ public class LoginAndRegisterController {
 				model.addAttribute("msg", token.getBody());
 				return "login-page";
 			} else {
-				Cookie tokenCookie = new Cookie("Authorization", URLEncoder.encode("Bearer " + token, "UTF-8"));
+				Cookie tokenCookie = new Cookie("Authorization", URLEncoder.encode("Bearer " + token.getBody(), "UTF-8"));
 				request.getSession().setAttribute("username", user.getUsername());
 				tokenCookie.setMaxAge(24 * 60 * 60);
 				response.addCookie(tokenCookie);
-				return "home-page";
+				return "redirect:/";
 			}
 	}
 	//load login form
@@ -97,6 +97,7 @@ public class LoginAndRegisterController {
 		Cookie[] cookies = null;
 		cookies = request.getCookies();
 		session.removeAttribute("username");
+		AdminController.jwt = null;
 		if (cookies != null) {
 			for (int i = 0; i < cookies.length; i++) {
 				cookie = cookies[i];

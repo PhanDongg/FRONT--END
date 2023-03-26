@@ -21,6 +21,10 @@ public class MyErrorController implements ErrorController {
 				model.addAttribute("status", "404");
 				model.addAttribute("error", "sorry we couldn't find your link!");
 				return "error";
+			} else if (statusCode == HttpStatus.UNAUTHORIZED.value()) {
+				model.addAttribute("status", "401");
+				model.addAttribute("error", "Unauthorized error!");
+				return "error";
 			} else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
 				model.addAttribute("status", "500");
 				model.addAttribute("error", "sorry we've got internal server error!");
@@ -28,6 +32,10 @@ public class MyErrorController implements ErrorController {
 			} else if (statusCode == HttpStatus.FORBIDDEN.value()) {
 				model.addAttribute("status", "403");
 				model.addAttribute("error", "forbidden error!");
+				return "error";
+			} else if (statusCode == HttpStatus.FORBIDDEN.value()) {
+				model.addAttribute("status", "400");
+				model.addAttribute("error", "Unauthorized error!");
 				return "error";
 			} else if (statusCode == HttpStatus.FORBIDDEN.value()) {
 				model.addAttribute("status", "405");

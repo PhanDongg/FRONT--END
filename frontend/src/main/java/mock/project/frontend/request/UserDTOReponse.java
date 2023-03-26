@@ -1,5 +1,6 @@
 package mock.project.frontend.request;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import mock.project.frontend.entities.Roles;
@@ -11,7 +12,7 @@ public class UserDTOReponse {
 	private String email;
 	private String address;
 	private String phone;
-	private Date dateofBirth;
+	private LocalDate dateofBirth;
 	private String image;
 	private Roles role;
 	public String getUserName() {
@@ -44,10 +45,10 @@ public class UserDTOReponse {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getDateofBirth() {
+	public LocalDate getDateofBirth() {
 		return dateofBirth;
 	}
-	public void setDateofBirth(Date dateofBirth) {
+	public void setDateofBirth(LocalDate dateofBirth) {
 		this.dateofBirth = dateofBirth;
 	}
 	public String getImage() {

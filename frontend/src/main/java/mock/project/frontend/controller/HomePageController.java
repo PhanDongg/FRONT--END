@@ -35,11 +35,6 @@ public class HomePageController {
 	public String homePage(Model model,  HttpSession session) {
 		String url = productApi + "/products";
 		String url1 = productApi + "/desc";
-		if(session.getAttribute("username") == null){
-			model.addAttribute("condition", 0);
-		}else {
-			model.addAttribute("condition", 1);
-		}
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		ResponseEntity<ProductDTO[]> responseDESC = restTemplate.getForEntity(url1, ProductDTO[].class);
