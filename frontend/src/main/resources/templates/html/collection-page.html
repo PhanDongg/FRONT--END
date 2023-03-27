@@ -155,10 +155,9 @@
 				<div class="d-flex">
 					<form th:action="@{/search/filter}" method="post"
 						th:object="${productRq}">
-						<aside class="container-left">
 							<div class="search-facet-container">
 								<div class="widget-block d-flex flex-column">
-									<h6 class="widget-title">Thương hiệu</h6>
+									<h6 class="widget-title" style="height: 30px;">Thương hiệu</h6>
 									<label class="widget-item"> <input type="checkbox"
 										name="categoryName" id="flexCheckDefault" value="Adidas">
 										<span>Adidas</span>
@@ -186,7 +185,7 @@
 									</label>
 								</div>
 								<div class="widget-block d-flex flex-column">
-									<h6 class="widget-title">Giới tính</h6>
+									<h6 class="widget-title" style="height: 30px;">Giới tính</h6>
 									<label class="widget-item"> <input type="checkbox"
 										name="type" value="Nam" id="flexCheckDefault"> <span>Nam</span>
 									</label> <label class="widget-item"> <input type="checkbox"
@@ -196,7 +195,7 @@
 									</label>
 								</div>
 								<div class="widget-block d-flex flex-column">
-									<h6 class="widget-title">Kích thước</h6>
+									<h6 class="widget-title" style="height: 30px;">Kích thước</h6>
 									<label class="widget-item"> <input type="checkbox"
 										value="36" id="flexCheckDefault"> <span>36</span>
 									</label> <label class="widget-item"> <input type="checkbox"
@@ -216,7 +215,7 @@
 									</label>
 								</div>
 								<div class="widget-block d-flex flex-column">
-									<h6 class="widget-title">Màu sắc</h6>
+									<h6 class="widget-title" style="height: 30px;">Màu sắc</h6>
 									<label class="widget-item"> <input type="checkbox"
 										name="color" value="trắng" id="flexCheckDefault"> <span>Trắng</span>
 									</label> <label class="widget-item"> <input type="checkbox"
@@ -230,7 +229,7 @@
 								</div>
 
 								<div class="widget-block d-flex flex-column">
-									<h6 class="widget-title">Khoảng giá</h6>
+									<h6 class="widget-title" style="height: 30px;">Khoảng giá</h6>
 									<label class="widget-item"> <input type="checkbox"
 										name="startRangePrice" value="12" id="flexCheckDefault">
 										<span>1000 - 2000</span>
@@ -267,7 +266,7 @@
 								<a th:href="@{/product/{id}(id=${product.productId})}"> <img
 									th:src="${product.images[0].link}">
 									<div class="name-brand" th:text="${product.brand}"></div>
-									<h6 class="name-prod" th:text="${product.productName}"></h6>
+									<h6 class="name-prod" style="height: 30px;" th:text="${product.productName}"></h6>
 								</a>
 								<div class="price-prod"
 									th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>

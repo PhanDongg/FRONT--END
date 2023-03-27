@@ -36,8 +36,9 @@ body {
 }
 
 .input-item {
+	display: block;
     width: 100%;
-    margin: 0 3%;
+    margin: 0 auto;
     color: black !important;
 }
 
@@ -57,7 +58,7 @@ input {
 }
 
 .login-btns {
-    margin-top: 10%;
+    margin-top: 50px;
 }
 
 .login-btns button {
@@ -108,4 +109,8 @@ input {
 
 .sign-in a:hover {
     color: goldenrod !important;
+}
+
+.return-hp a:hover {
+	color: goldenrod !important;
 }
