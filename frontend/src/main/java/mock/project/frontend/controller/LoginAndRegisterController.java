@@ -98,6 +98,7 @@ public class LoginAndRegisterController {
 		cookies = request.getCookies();
 		session.removeAttribute("username");
 		AdminController.jwt = null;
+		System.out.println(AdminController.jwt);
 		if (cookies != null) {
 			for (int i = 0; i < cookies.length; i++) {
 				cookie = cookies[i];

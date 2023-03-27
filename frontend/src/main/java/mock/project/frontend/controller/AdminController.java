@@ -75,6 +75,20 @@ public class AdminController {
 			}
 		}
 		jwt = URLDecoder.decode(token, "UTF-8");
+		try {
+		String url = adminApi + "/check";
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set("Authorization", jwt);
+		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+		ResponseEntity<String> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity,
+				String.class);
+		}catch(Exception e){
+			
+			model.addAttribute("error", "forbidden");
+			model.addAttribute("status", "403");
+			return "error";
+		}
 		return "dashboard";
 	}
 
@@ -95,7 +109,7 @@ public class AdminController {
 	}
 
 	// list order
-	@GetMapping("/order")
+	@GetMapping("/order/list")
 	public String viewOrderList(Model model) {
 		logger.info("List of orders");
 		String url = adminApi + "/order";
@@ -108,6 +122,11 @@ public class AdminController {
 			OrderDTO[] listOrders = responseAPI.getBody();
 			model.addAttribute("listOrders", listOrders);
 			return "order-list";
+	}
+	@GetMapping("/order")
+	public String viewOrderDashboard(Model model, HttpServletRequest request) {
+		logger.info("Loading view product dashboard.....");
+		return "order-dashboard";
 	}
 
 	// add new product view
@@ -155,20 +174,22 @@ public class AdminController {
 	}
 
 	// udpate product
-	@PutMapping
-	public String udpateProduct(@ModelAttribute("product") ProductDTO product, Model model) {
-		String url = adminApi + "/product";
+	@PostMapping("/product/update/{id}")
+	public String udpateProduct(@PathVariable(value="id",required = false)Integer id,@ModelAttribute("product") ProductDTO product, Model model) {
+		String url = adminApi + "/product/"+ id;
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			headers.set("Authorization", jwt);
-			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+			headers.set("Authorization", AdminController.jwt);
+			product.setProductId(id);
+			System.out.println(product);
+			HttpEntity<ProductDTO> jwtEntity = new HttpEntity<ProductDTO>(product,headers);
 			ResponseEntity<ProductDTO> response = restTemplate.exchange(url, HttpMethod.PUT, jwtEntity,
-					ProductDTO.class, product);
+					ProductDTO.class);
 			model.addAttribute("product", response.getBody());
 			return "edit-product";
 	}
 	//get  product list
-	@GetMapping("/product")
+	@GetMapping("/product/list")
 	public String viewProductList(Model model, HttpServletRequest request) {
 		logger.info("viewProductList -> jwt: " + jwt);
 		String url = adminApi + "/products";
@@ -182,16 +203,41 @@ public class AdminController {
 			model.addAttribute("listProducts",listProducts);
 			return "product-list";
 	}
-	//delete product
-	@GetMapping("/product/delele/{id}")
-	public String viewProductList(@PathVariable(name = "id", required = false) Integer id ,Model model, HttpServletRequest request) {
-		String url = adminApi + "/product/"+ id;
+	//load view product dashboard
+	@GetMapping("/product")
+	public String viewProductDashboard(Model model, HttpServletRequest request) {
+		logger.info("Loading view product dashboard.....");
+		try {
+			String url = adminApi + "/check";
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("Authorization", jwt);
 			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
-			ResponseEntity<ProductDTO> responseAPI = restTemplate.exchange(url, HttpMethod.DELETE, jwtEntity,
+			ResponseEntity<String> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity,
+					String.class);
+			}catch(Exception e){
+				
+				model.addAttribute("error", "forbidden");
+				model.addAttribute("status", "403");
+				return "error";
+			}
+		return "product-dashboard";
+	}
+	//delete product
+	@GetMapping("/product/delete/{id}")
+	public String viewProductList(@PathVariable(name = "id", required = false) Integer id ,Model model, HttpServletRequest request) {
+			String url = adminApi + "/product/"+ id;
+			String url1 = adminApi + "/products";
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			headers.set("Authorization", jwt);
+			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+			ResponseEntity<ProductDTO> responseAPIDelete = restTemplate.exchange(url, HttpMethod.DELETE, jwtEntity,
 					ProductDTO.class);
+			ParameterizedTypeReference<List<ProductDTO>> typeRef = new ParameterizedTypeReference<List<ProductDTO>>() {};
+			ResponseEntity<List<ProductDTO>> responseAPI = restTemplate.exchange(url1, HttpMethod.GET, jwtEntity,typeRef);
+			List<ProductDTO> listProducts = responseAPI.getBody();
+			model.addAttribute("listProducts",listProducts);
 			model.addAttribute("msg", "Deleted successful!");
 			return "product-list";
 	}

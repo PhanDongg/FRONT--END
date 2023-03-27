@@ -16,9 +16,20 @@
     display: block;
 }
 
+#orderTable .order-btns button a {
+	color: black !important;
+	display: block;
+	width: 100%;
+}
+
+#orderTable .order-btns button i {
+	color: black !important;
+	display: block;
+	text-align: center;
+}
+
 #orderTable .order-btns button:hover {
-    background-color: black;
-    color: white;
+    border: 1px solid black;
 }
 
 .pagination li a {

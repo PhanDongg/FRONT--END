@@ -43,6 +43,7 @@
 							class="fa-solid fa-clipboard"></i> Đơn hàng</a></li>
 					<li><a th:href="@{/admin/user}"><i
 							class="fa-solid fa-user"></i> Thành viên</a></li>
+					<li><a th:href="@{/}"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
 				</ul>
 
 			</div>
@@ -64,13 +65,19 @@
 							<i class="fa-solid fa-bell"></i>
 						</div>
 						<div class="dashboard-head__user-info text-end">
-							<span class="d-block fw-bold fs-6">Nguyen Van A</span> <span
+							<span class="d-block fw-bold fs-6" th:text="${session.username}"></span> <span
 								class="d-block">Admin</span>
 						</div>
 						<img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
 							alt="">
-						<div class="dashboard-head__setting">
-							<i class="fa-solid fa-gear"></i>
+						<div class="dropdown dashboard-head__setting">
+							<a class="text-black dropdown-toggle" href="#"
+								role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fa-solid fa-gear"></i></a>
+
+							<ul class="dropdown-menu">
+								<li><a class="text-black dropdown-item" th:href="@{/logout}">Đăng xuất</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>

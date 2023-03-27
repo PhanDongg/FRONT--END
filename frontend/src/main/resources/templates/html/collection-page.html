@@ -49,8 +49,8 @@
 					</div>
 					<div>
 						<ul class="topbar-right d-flex justify-content-end">
-							<li class="p-2"><a th:href="@{/user/order}"><span>Tra
-										cứu đơn hàng</span></a></li>
+							<li class="p-2"><a th:href="@{/check-order}"><span>Tra
+											cứu đơn hàng</span></a></li>
 							<li class="p-2 " th:if="${session.username} == null"><a
 								th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng
 										nhập</span></a></li>
@@ -258,7 +258,7 @@
 						</aside>
 					</form>
 					<div class="container-right">
-						<div class="d-flex content-product-container">
+						<div class="d-flex align-items-start content-product-container">
 							<span th:text="${msg}"></span>
 							<div class="content-products-item"
 								th:each="product : ${listProducts}">

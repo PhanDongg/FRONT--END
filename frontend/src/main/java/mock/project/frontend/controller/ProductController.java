@@ -177,11 +177,17 @@ public class ProductController {
 			  productRequest.setStartRangePrice(1000000);
 				productRequest.setEndRangePrice(10000000);
 		}
-		ProductDTO[] response = restTemplate.postForObject(url, productRequest,ProductDTO[].class);
-		model.addAttribute("listProducts", response);
+		ProductDTO[] listProducts = restTemplate.postForObject(url, productRequest,ProductDTO[].class);
+		if (listProducts.length == 0) {
+			model.addAttribute("msg","Have no items matches ");
+			model.addAttribute("category", "Filter");
+			return "collection-page";
+		}
+		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("category", "Filter");
 		return "collection-page";
-
+	}
+	
 	public int stringToInt(String sizeString) {
 		int sizeInt = Integer.parseInt(sizeString);  
 		return sizeInt;

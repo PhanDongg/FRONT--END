@@ -75,4 +75,14 @@ public class HomePageController {
 		model.addAttribute("category", "Sản phẩm bán chạy");
 		return "collection-page";
 	}
+	
+	@GetMapping("/check-order")
+	public String checkOrder() {
+		return "check-order-page";
+	}
+	
+	@GetMapping("/order/details")
+	public String viewOrderDetails() {
+		return "order-view-page";
+	}
 }

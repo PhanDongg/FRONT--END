@@ -50,7 +50,7 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
+								<li class="p-2"><a th:href="@{/check-order}"><span>Tra
 											cứu đơn hàng</span></a></li>
 								<li class="p-2 " th:if="${session.username} == null">
 									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
@@ -171,7 +171,7 @@
 										<td>26/04/2019</td>
 										<td>Đơn hàng đã giao</td>
 										<td>7.660.000đ</td>
-										<td><button><a th:href="@{/account/order/detail}">Xem chi tiết</a></button></td>
+										<td><button><a th:href="@{/order/details}">Xem chi tiết</a></button></td>
 									</tr>
 								</tbody>
 							</table>

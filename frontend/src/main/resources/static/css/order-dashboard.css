@@ -12,6 +12,8 @@
 
 .order-menu button a {
 	color: white !important;
+	display: block;
+	width: 100%;
 }
 
 .recent-order-table {

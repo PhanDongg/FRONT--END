@@ -10,6 +10,11 @@
     border: none;
 }
 
+.product-menu button a {
+	display: block;
+	width: 100%;
+}
+
 .best-selling-product-table {
     padding: 20px;
 }

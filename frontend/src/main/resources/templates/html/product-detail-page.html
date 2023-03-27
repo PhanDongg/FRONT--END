@@ -57,7 +57,7 @@
 						</div>
 							<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/user/order}"><span>Tra
+								<li class="p-2"><a th:href="@{/check-order}"><span>Tra
 											cứu đơn hàng</span></a></li>
 								<li class="p-2 " th:if="${session.username} == null">
 									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
@@ -372,10 +372,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="product-description d-flex">
+					<div class="product-description d-flex justify-content-between">
 						<section>
 							<div class="product-description-content">
-								<h4>Mô tả sản phẩm</h4>
+								<h4 class="text-start">Mô tả sản phẩm</h4>
 								<div class="product-desc-container">
 									<img th:src="${product.images[0].link}">
 									<h5>Về thương hiệu</h5>
@@ -403,11 +403,7 @@
 									<img
 										th:src="${product.images[1].link}"
 										alt="">
-									<p class="product-description-text">Lorem ipsum, dolor sit
-										amet consectetur adipisicing elit. Corporis esse modi
-										voluptatem voluptatibus maxime facilis eum recusandae optio
-										numquam nesciunt provident, eaque omnis atque harum earum
-										accusamus laudantium! Assumenda, accusantium?</p>
+									<p class="product-description-text">Đôi giày Adidas với họa tiết hình tròn được thiết kế hấp dẫn khiến bạn sẽ có cảm giác thoải mái sử dụng khi tập thể thao và dạo phố gặp bạn bè</p>
 									<img
 									th:src="${product.images[2].link}"
 										alt="">
@@ -654,7 +650,7 @@
 					</div>
 					<div class="other-product">
 						<div class="d-flex justify-content-between">
-							<h4 class="p-2">Sản phẩm tương tự</h4>
+							<h4 class="p-2">Sản phẩm khác</h4>
 							<span class="p-2 view-all"><a href="#">Xem thêm</a></span>
 						</div>
 						<div class="content-products">

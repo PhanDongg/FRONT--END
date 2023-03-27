@@ -44,6 +44,12 @@
     color: white;
 }
 
+#productTable .product-btns button a {
+	color: black !important;
+	display: block;
+	width: 100%;
+}
+
 #productTable .product-btns button {
     width: 50px;
     height: 30px;
@@ -53,9 +59,14 @@
     display: block;
 }
 
+#productTable .product-btns button i {
+	color: black !important;
+	display: block;
+	text-align: center;
+}
+
 #productTable .product-btns button:hover {
-    background-color: black;
-    color: white;
+    border: 1px solid black;
 }
 
 .pagination li a {

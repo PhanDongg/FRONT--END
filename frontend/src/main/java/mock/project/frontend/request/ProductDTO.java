@@ -3,6 +3,8 @@ package mock.project.frontend.request;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import mock.project.frontend.entities.Images;
 import mock.project.frontend.entities.Sizes;
 
@@ -14,6 +16,7 @@ public class ProductDTO {
 	private String description;
 	private String type;
 	private String color;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private List<Sizes> sizes;
 	private int quantity;
