@@ -6,7 +6,9 @@ const phone = $("#phone");
 const password = $("#password");
 const passwordconfirm = $("#passwordconfirm");
 const inputItem = $('.input-item');
+const form = $('form');
 
+var check = true;
 
 //show password
 $(document).ready(function() {
@@ -24,17 +26,33 @@ $(document).ready(function() {
 		}
 	});
 
+	form.submit(function(event) {
+		let isValid = checkValidate();
+		if (isValid) {
+			console.log(check);
+		} else {
+			event.preventDefault();
+			check = false;
+			console.log(check);
 
+		}
+	});
 
 	$('#register').click(function() {
 		Array.from(inputItem).map((ele) =>
-			ele.classList.remove('success', 'error')
+			ele.classList.remove('success')
 		);
 		let isValid = checkValidate();
 
 		if (isValid) {
 			alert('Đăng ký thành công');
+		} else {
+			alert('Đăng ký thất bại');
+			check = false;
+			console.log(check);
+
 		}
+
 	});
 
 });
@@ -50,7 +68,7 @@ function checkValidate() {
 	let passwordconfirmValue = passwordconfirm.val();
 
 	let isCheck = true;
-	
+
 	console.log(usernameValue);
 	console.log(fullnameValue);
 	console.log(emailValue);
@@ -121,14 +139,14 @@ function isPhone(number) {
 
 function setSuccess(e) {
 	// e.parentNode.classList.add('success');
-    e.closest('.input-item').addClass('success');
+	e.closest('.input-item').addClass('success');
 }
 
 function setError(e, message) {
 	// let parentEle = e.closest('.input-item');
 	// parentEle.classList.add('error');
 	e.closest('.input-item').find('.valid-message').html(message);
-    e.closest('.input-item').addClass('error');
+	e.closest('.input-item').addClass('error');
 }
 
 

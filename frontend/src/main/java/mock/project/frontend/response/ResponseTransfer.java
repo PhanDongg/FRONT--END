@@ -1,13 +1,17 @@
 package mock.project.frontend.response;
 
 public class ResponseTransfer {
+	private String text;
 	
 	public ResponseTransfer(String text) {
 		super();
 		this.text = text;
 	}
 
-	private String text;
+	public ResponseTransfer() {
+		super();
+	}
+
 
 	public String getText() {
 		return text;
