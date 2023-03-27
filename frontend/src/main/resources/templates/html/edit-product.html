@@ -46,8 +46,8 @@
 							<i class="fa-solid fa-bell"></i>
 						</div>
 						<div class="dashboard-head__user-info text-end">
-							<span class="d-block fw-bold fs-6" th:text="${session.username}"></span> <span
-								class="d-block">Admin</span>
+							<span class="d-block fw-bold fs-6" th:text="${user.fullName}"></span> <span
+								class="d-block"th:text="${session.username}"></span>
 						</div>
 						<img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
 							alt="">
@@ -78,7 +78,7 @@
 									<label for="productOldPrice" class="form-label mt-2 fw-bold">Product
 										Price</label> <input type="text" class="form-control"
 										id="productOldPrice" name="price"
-										th:value="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}">
+										th:value="${product.price}">
 								</div>
 								<div class="mb-3">
 									<label for="productCoupon" class="form-label mt-2 fw-bold">Product

@@ -61,7 +61,7 @@ public class HomePageController {
 	// get more product
 	@GetMapping("/product")
 	public String getMoreProduct(@RequestParam(name = "text", required = false) String text, Model model) {
-		if (text.contains("desc")) {
+		if (text=="desc") {
 			String url = productApi + "/desc";
 			ResponseEntity<ProductDTO[]> responseDESC = restTemplate.getForEntity(url, ProductDTO[].class);
 			ProductDTO[] listProductDESC = responseDESC.getBody();

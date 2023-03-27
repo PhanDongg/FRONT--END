@@ -61,9 +61,9 @@
 						<div class="dashboard-head__noti">
 							<i class="fa-solid fa-bell"></i>
 						</div>
-						<div class="dashboard-head__user-info text-end">
-							<span class="d-block fw-bold fs-6" th:text="${session.username}"></span> <span
-								class="d-block">Admin</span>
+					<div class="dashboard-head__user-info text-end">
+							<span class="d-block fw-bold fs-6" th:text="${user.fullName}"></span> <span
+								class="d-block"th:text="${session.username}"></span>
 						</div>
 						<img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
 							alt="">
