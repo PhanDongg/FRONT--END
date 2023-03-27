@@ -60,7 +60,7 @@ public class LoginAndRegisterController {
         	String url = userApi + "/register";
         	ResponseEntity<ResponseTransfer> response = restTemplate.postForEntity(url, user, ResponseTransfer.class);
         	model.addAttribute("msg", response);
-        	return "login-page";
+        	return "redirect:/login";
 		}
 	}
 	//check login
