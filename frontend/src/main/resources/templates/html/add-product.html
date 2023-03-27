@@ -13,7 +13,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<form th:action="@{/add-product}" method="post">
+	<form th:action="@{/admin/product/add}" method="post" th:object="${product}">
 
 		<div class="body-container">
 			<div class="dashboard__side-menu">
@@ -48,8 +48,8 @@
 							<i class="fa-solid fa-bell"></i>
 						</div>
 						<div class="dashboard-head__user-info text-end">
-							<span class="d-block fw-bold fs-6" th:text="${session.username}"></span> <span
-								class="d-block">Admin</span>
+							<span class="d-block fw-bold fs-6" th:text="${user.fullName}"></span> <span
+								class="d-block"th:text="${session.username}"></span>
 						</div>
 						<img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
 							alt="">
@@ -76,7 +76,7 @@
 								<h4>Thông tin giá</h4>
 								<div class="mb-3">
 									<label for="productOldPrice" class="form-label">Product
-										Old Price</label> <input type="text" class="form-control"
+										Old Price</label> <input type="text"  name="price" class="form-control"
 										id="productOldPrice">
 								</div>
 								<div class="mb-3">
@@ -86,7 +86,7 @@
 								</div>
 								<div class="mb-3">
 									<label for="productCoupon" class="form-label">Product
-										Coupon</label> <input type="text" class="form-control"
+										Coupon</label> <input type="text" value="SALE50" class="form-control"
 										id="productCoupon">
 								</div>
 							</div>
@@ -116,7 +116,7 @@
 								<h4>Size sản phẩm</h4>
 								<div
 									class="size-container d-flex justify-content-around align-items-center">
-									<div class="size-item">
+									<div class="size-item" >
 										<div class="form-check">
 											<input class="form-check-input" type="checkbox" value=""
 												id="flexCheckDefault"> <label
@@ -199,7 +199,7 @@
 								<h4>Mô tả sản phẩm</h4>
 								<div class="col-6">
 									<label class="form-label" for="">Tên sản phẩm</label> <input
-										type="text" class="form-control">
+										type="text" class="form-control" name="productName">
 								</div>
 								<div class="col-6">
 									<label class="form-label" for="">Tiêu đề</label> <input
@@ -218,43 +218,33 @@
 									<label for="exampleFormControlTextarea1" class="form-label">Mô
 										tả sản phẩm</label>
 									<textarea class="form-control" id="exampleFormControlTextarea1"
-										rows="3"></textarea>
+										rows="3" name="description"></textarea>
 								</div>
 								<div class="col-12">
 									<label for="formFileMultiple" class="form-label">Chọn
 										hình</label> <input class="form-control" type="file"
-										id="formFileMultiple" multiple>
+										id="formFileMultiple" multiple name="images">
 								</div>
 								<div class="col-12">
 									<label for="exampleColorInput" class="form-label">Màu
 										sắc</label> <input type="text" class="form-control"
-										id="exampleColorInput" value="">
+										id="exampleColorInput" name="color">
 								</div>
 								<div class="col-6">
 									<label for="" class="form-label">Số lượng</label> <input
-										type="text" name="" id="" class="form-control">
+										type="text" name="quantity" id="" class="form-control">
 								</div>
 								<div class="col-6">
 									<label for="" class="form-label">Ngày đăng</label> <input
-										type="date" name="" id="" class="form-control">
+										type="date" name="date" id="" class="form-control">
 								</div>
 								<div class="col-6">
-									<label for="" class="form-label">Danh mục</label> <select
-										name="" id="" class="form-control">
-										<option value="">Giày nam</option>
-										<option value="">Giày nữ</option>
-										<option value="">Giày trẻ em</option>
-										<option value="">Unisex</option>
-									</select>
+									<label for="" class="form-label">Danh mục</label> 
+									<input type="text" name="type" id="" class="form-control">
 								</div>
 								<div class="col-6">
-									<label for="" class="form-label">Thương hiệu</label> <select
-										name="" id="" class="form-control">
-										<option value="">NIKE</option>
-										<option value="">ADIDAS</option>
-										<option value="">GUCCI</option>
-										<option value="">VANS</option>
-									</select>
+									<label for="" class="form-label">Thương hiệu</label> 
+									<input type="text" name="brand" id="" class="form-control">
 								</div>
 								<div class="col-12">
 									<button class="save-btn" type="submit">LƯU</button>

@@ -33,7 +33,7 @@ public class UserDTO {
 	
 	private String phone;
 	
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateofBirth;
 	
 	private String image;

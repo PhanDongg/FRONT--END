@@ -3,6 +3,8 @@ package mock.project.frontend.request;
 import java.time.LocalDate;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import mock.project.frontend.entities.Roles;
 
 public class UserDTOReponse {
@@ -12,6 +14,7 @@ public class UserDTOReponse {
 	private String email;
 	private String address;
 	private String phone;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateofBirth;
 	private String image;
 	private Roles role;

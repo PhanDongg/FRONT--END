@@ -6,8 +6,10 @@ import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -21,17 +23,22 @@ import com.google.gson.reflect.TypeToken;
 
 import mock.project.frontend.LocalDateDeserializer;
 import mock.project.frontend.request.ProductDTO;
+import mock.project.frontend.request.UserDTO;
+import mock.project.frontend.request.UserDTOReponse;
 
 @Controller
 public class CartController {
 
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Value("${user.api.url}")
+	private String userApi;
 
 	@GetMapping("/cart")
 	public String viewCart(
 			@CookieValue(value = "cookieProduct", defaultValue = "defaultCookieValue") String cookieProduct,
-			Model model, HttpServletRequest request) {
+			Model model, HttpServletRequest request, HttpSession session) {
 		String decodeCookieProduct = new String(Base64.getDecoder().decode(cookieProduct.getBytes()));
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Type productListType = new TypeToken<List<ProductDTO>>() {}.getType();
@@ -48,7 +55,15 @@ public class CartController {
 		for (ProductDTO productDTO : listItemCart) {
 			System.out.println(productDTO);
 		}
-
+		
+		String username = (String)session.getAttribute("username");
+		if(username !=null) {
+		String url = userApi + "/info?username="+ username;
+		UserDTOReponse userInfo = restTemplate.getForObject(url, UserDTOReponse.class);
+		model.addAttribute("user", userInfo);
+		}else {
+			model.addAttribute("user",new UserDTO());
+		}
 		return "cart-page";
 	}
 }

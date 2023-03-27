@@ -40,7 +40,8 @@
 	<script type="text/javascript" th:src="@{/js/login.js}"></script> -->
 <script src="https://kit.fontawesome.com/c39bd3b109.js"
 	crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -57,14 +58,17 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/check-order}"><span>Tra
-											cứu đơn hàng</span></a></li>
-								<li class="p-2 " th:if="${session.username} == null">
-									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
-								</li>
-								<li  class="p-2 admin-menu" th:unless="${session.username} == null">
-									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
-								</li>
+								<li class="p-2" th:unless="${session.username} == null"><a
+									th:href="@{/check-order}"><span>Tra cứu đơn hàng</span></a></li>
+								<li class="p-2" th:if="${session.username} == null"><a
+									th:href="@{/login}"><span>Tra cứu đơn hàng</span></a></li>
+								<li class="p-2 " th:if="${session.username} == null"><a
+									th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng
+											nhập</span></a></li>
+								<li class="p-2 admin-menu"
+									th:unless="${session.username} == null"><a><i
+										class="fa-solid fa-user"></i><span
+										th:text="${session.username}"></span></a></li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -188,26 +192,26 @@
 								<div class="col">
 									<label for="fullName" class="form-label">Họ và Tên</label> <input
 										type="text" class="form-control" placeholder="Nhập Họ và Tên"
-										id="fullName">
+										id="fullName" th:value="${user.fullName}" > 
 								</div>
 								<div class="col">
 									<label for="phone" class="form-label">Số điện thoại</label> <input
 										type="text" class="form-control"
-										placeholder="Nhập Số điện thoại" id="phone">
+										placeholder="Nhập Số điện thoại" id="phone" th:value="${user.phone}">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
 									<label for="address" class="form-label">Địa chỉ</label> <input
 										type="text" class="form-control" placeholder="Nhập Địa chỉ"
-										id="address">
+										id="address" th:value="${user.address}">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
 									<label for="email" class="form-label">Email</label> <input
 										type="email" class="form-control" placeholder="Nhập Email"
-										id="email">
+										id="email" th:value="${user.email}">
 								</div>
 							</div>
 						</div>
@@ -260,7 +264,7 @@
 					</div>
 					<div class="btn-cart d-flex justify-content-center">
 						<button class="add-cart-btn" type="button">
-							<a th:href="@{/home}">TIẾP TỤC MUA HÀNG</a>
+							<a th:href="@{/}">TIẾP TỤC MUA HÀNG</a>
 						</button>
 						<button class="buy-now-btn" type="button">
 							<a href="#">TIẾN HÀNH ĐẶT HÀNG</a>

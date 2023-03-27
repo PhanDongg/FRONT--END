@@ -66,19 +66,21 @@ public class UserController {
 	//user infor
 	@GetMapping("/user/info")
 	public String getUserInfo(Model model,HttpSession session) {
-		logger.info("Loading order list views.....");
+		logger.info("Loading userinfo view.....");
 		String username = (String)session.getAttribute("username");
 		String url = userApi + "/info?username="+ username;
-		UserDTOReponse userInfo = restTemplate.getForObject(url, UserDTOReponse.class);
+		UserDTO userInfo = restTemplate.getForObject(url, UserDTO.class);
 		model.addAttribute("user", userInfo);
 		return "customer-detail-page";
 	}
 	//update userinfo
 	@PostMapping("/user/info")
-	public String updateUserInfo(@ModelAttribute("user")UserDTO userDTO ,Model model) {
-		String url = userApi + "/update";
-			ResponseEntity<UserDTO> response = restTemplate.exchange(url, HttpMethod.PUT,new HttpEntity<>(userDTO) ,UserDTO.class);
-			model.addAttribute("user", response.getBody());
+	public String updateUserInfo(@ModelAttribute("user") UserDTO userDTO, Model model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		String url = userApi + "/update?username=" + username;
+		ResponseEntity<UserDTO> response = restTemplate.exchange(url, HttpMethod.PUT, new HttpEntity<>(userDTO),
+				UserDTO.class);
+		model.addAttribute("user", response.getBody());
 		return "customer-detail-page";
 	}
 

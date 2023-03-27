@@ -47,7 +47,9 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/check-order}"><span>Tra
+								<li class="p-2" th:unless="${session.username} == null"><a th:href="@{/check-order}"><span>Tra
+											cứu đơn hàng</span></a></li>
+								<li class="p-2" th:if="${session.username} == null"><a th:href="@{/login}"><span>Tra
 											cứu đơn hàng</span></a></li>
 								<li class="p-2 " th:if="${session.username} == null">
 									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
@@ -296,8 +298,8 @@
 								</div>
 							</div>
 							<div class="two-banner-item">
-								<img
-									src="https://img.freepik.com/free-photo/young-stylish-blond-woman-big-hat-sunglasses-holding-glass-champagne-happy-party_285396-1129.jpg?w=360&t=st=1678597322~exp=1678597922~hmac=88389837729a670300bda825b7eaedd39f379c7352fd6e2619b9de1c7980c1b0"
+								<img style="width:400px"
+									src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/327749512_5816850688429002_4833706801407813073_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_ohc=VzELynMfPOMAX9uz30Q&_nc_ht=scontent.fsgn8-2.fna&oh=00_AfAXgegGrrAY2MkNE7tw4YkU8NjWRbbv2O16DgT8yBV_WA&oe=6425E63F"
 									alt="">
 								<div>
 									<h3>NỮ</h3>

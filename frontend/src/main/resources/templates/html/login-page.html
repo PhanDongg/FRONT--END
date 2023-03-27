@@ -56,29 +56,29 @@
 					<div class="valid-message"></div>
 				</div>
 
-				<div class="input-item">
-					<div class="d-flex">
-						<input type="password" name="passwordconfirm" id="passwordconfirm"
-							placeholder="Xác nhận mật khẩu" class="password-input">
-						<div class="eye-icon">
-							<i class="bi bi-eye-slash"></i>
-						</div>
-					</div>
-					<div class="valid-message"></div>
-				</div>
-				<div class="login-btns">
-					<button type="submit" class="sign-up-btn">Đăng Nhập</button>
-					<button type="submit" class="facebook-sign-up-btn">
-						<i class="fa-brands fa-facebook"></i> Đăng Nhập Bằng Facebook
-					</button>
-				</div>
-			</div>
-			<div class="sign-in">
-				<span>Chưa có tài khoản? <a th:href="@{/register}">Đăng
-						ký ngay</a></span>
-			</div>
-		</form>
 
+                <div class="d-flex">
+                    <div class="input-item">
+                        <input type="password" name="password" id="" placeholder="Mật khẩu" class="password-input">
+                    </div>
+                    <div class="eye-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                </div>
+                <div class="login-btns">
+                    <button type="submit" class="sign-up-btn">Đăng Nhập</button>
+                    <button type="submit" class="facebook-sign-up-btn">
+                        <i class="fa-brands fa-facebook"></i> Đăng Nhập Bằng Facebook
+                    </button>
+                </div>
+            </div>
+            <div class="sign-in">
+                <span>Chưa có tài khoản? <a th:href="@{/register}">Đăng ký ngay</a></span>
+            </div>
+            <div class="return-hp text-center mt-4">
+                <a class="text-dark" th:href="@{/}"><i class="fa-solid fa-house"></i> Quay về trang chủ</a>
+            </div>
+        </form>
 
 	</div>
 

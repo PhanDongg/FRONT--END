@@ -52,11 +52,13 @@
 			<div class="register-form">
 				<div class="d-flex justify-content-between">
 					<div class="input-item">
-						<input type="text" name="userName" id="userName" placeholder="Tên tài khoản">
+						<input type="text" name="userName" id="userName"
+							placeholder="Tên tài khoản">
 						<div class="valid-message"></div>
 					</div>
 					<div class="input-item">
-						<input type="text" name="fullName" id="fullName" placeholder="Họ và Tên">
+						<input type="text" name="fullName" id="fullName"
+							placeholder="Họ và Tên">
 						<div class="valid-message"></div>
 					</div>
 				</div>
@@ -66,15 +68,16 @@
 						<div class="valid-message"></div>
 					</div>
 					<div class="input-item">
-						<input type="text" name="phone" id="phone" placeholder="Số điện thoại">
+						<input type="text" name="phone" id="phone"
+							placeholder="Số điện thoại">
 						<div class="valid-message"></div>
 					</div>
 				</div>
 				<div class="d-flex justify-content-between">
 					<div class="input-item">
 						<div class="d-flex">
-							<input type="password" name="password" id="password" placeholder="Mật khẩu"
-								class="password-input">
+							<input type="password" name="password" id="password"
+								placeholder="Mật khẩu" class="password-input">
 							<div class="eye-icon">
 								<i class="bi bi-eye-slash"></i>
 							</div>
@@ -84,8 +87,9 @@
 
 					<div class="input-item">
 						<div class="d-flex">
-							<input type="password" name="passwordconfirm" id="passwordconfirm"
-								placeholder="Xác nhận mật khẩu" class="password-input">
+							<input type="password" name="passwordconfirm"
+								id="passwordconfirm" placeholder="Xác nhận mật khẩu"
+								class="password-input">
 							<div class="eye-icon">
 								<i class="bi bi-eye-slash"></i>
 							</div>
@@ -104,6 +108,10 @@
 				<div class="sign-in">
 					<span>Bạn đã có tài khoản? <a th:href="@{/login}">Đăng
 							nhập</a></span>
+				</div>
+				<div class="return-hp text-center mt-4">
+					<a class="text-dark" th:href="@{/}"><i
+						class="fa-solid fa-house"></i> Quay về trang chủ</a>
 				</div>
 			</div>
 		</form>

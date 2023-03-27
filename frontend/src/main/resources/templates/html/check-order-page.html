@@ -33,7 +33,8 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/cart-page.js}"></script>
 <script type="text/javascript" th:src="@{/js/login.js}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -50,14 +51,17 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2"><a th:href="@{/check-order}"><span>Tra
-											cứu đơn hàng</span></a></li>
-								<li class="p-2 " th:if="${session.username} == null">
-									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
-								</li>
-								<li  class="p-2 admin-menu" th:unless="${session.username} == null">
-									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
-								</li>
+								<li class="p-2" th:unless="${session.username} == null"><a
+									th:href="@{/check-order}"><span>Tra cứu đơn hàng</span></a></li>
+								<li class="p-2" th:if="${session.username} == null"><a
+									th:href="@{/login}"><span>Tra cứu đơn hàng</span></a></li>
+								<li class="p-2 " th:if="${session.username} == null"><a
+									th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng
+											nhập</span></a></li>
+								<li class="p-2 admin-menu"
+									th:unless="${session.username} == null"><a><i
+										class="fa-solid fa-user"></i><span
+										th:text="${session.username}"></span></a></li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -69,7 +73,7 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"
 				data-bs-theme="dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" th:href="@{/home}">Logo</a>
+					<a class="navbar-brand" th:href="@{/}">Logo</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -134,12 +138,12 @@
 								<a><i class="bi bi-person-circle"></i>Tên tài khoản</a>
 							</div>
 							<div class="account-info-item">
-								<a th:href="@{/account/info}"><i class="fa-solid fa-user"></i>Thông tin tài
-									khoản</a>
+								<a th:href="@{/account/info}"><i class="fa-solid fa-user"></i>Thông
+									tin tài khoản</a>
 							</div>
 							<div class="account-info-item">
-								<a th:href="@{/account/order}"><i class="fa-solid fa-clipboard"></i>Tra cứu đơn
-									hàng</a>
+								<a th:href="@{/account/order}"><i
+									class="fa-solid fa-clipboard"></i>Tra cứu đơn hàng</a>
 							</div>
 							<div class="account-info-item">
 								<a href="#"><i class="fa-solid fa-heart"></i>Sản phẩm yêu
@@ -149,8 +153,8 @@
 								<a href="#"><i class="fa-solid fa-ticket"></i>Mã giảm giá</a>
 							</div>
 							<div class="account-info-item">
-								<a th:href="@{/home}"><i class="fa-solid fa-house"></i>Quay về trang
-									chủ</a>
+								<a th:href="@{/home}"><i class="fa-solid fa-house"></i>Quay
+									về trang chủ</a>
 							</div>
 						</div>
 					</div>
@@ -171,7 +175,9 @@
 										<td>26/04/2019</td>
 										<td>Đơn hàng đã giao</td>
 										<td>7.660.000đ</td>
-										<td><button><a th:href="@{/order/details}">Xem chi tiết</a></button></td>
+										<td><button>
+												<a th:href="@{/order/details}">Xem chi tiết</a>
+											</button></td>
 									</tr>
 								</tbody>
 							</table>
