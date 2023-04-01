@@ -16,9 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import mock.project.frontend.request.CategoryDTO;
 import mock.project.frontend.request.ProductDTO;
 
 @Controller
@@ -29,12 +31,20 @@ public class HomePageController {
 
 	@Value("${product.api.url}")
 	private String productApi;
-
+	
+	@ModelAttribute("listCategory") // 
+	public CategoryDTO[] listCategory() {
+		String url3 = productApi + "/categories";
+		ResponseEntity<CategoryDTO[]> categories = restTemplate.getForEntity(url3, CategoryDTO[].class);
+		return categories.getBody(); //gia tri tra ve gan cho "listCategory" == model.addAttribute("listCategory", categories.getBody());
+	}
+	
 	// get list product, and list product date DESC for home-page
 	@GetMapping("/")
 	public String homePage(Model model,  HttpSession session) {
 		String url = productApi + "/products";
 		String url1 = productApi + "/desc";
+		
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		ResponseEntity<ProductDTO[]> responseDESC = restTemplate.getForEntity(url1, ProductDTO[].class);
@@ -47,6 +57,7 @@ public class HomePageController {
 		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
 		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
 		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));
+		
 		return "home-page";
 	}
 

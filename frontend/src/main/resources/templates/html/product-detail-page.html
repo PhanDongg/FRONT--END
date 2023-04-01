@@ -93,27 +93,15 @@
 										class="dropdown-item" href="#">Action</a> <a
 										class="dropdown-item" href="#">Action</a>
 								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">ADIDAS</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">NIKE</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">PUMA</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
-								</div></li>
+							<li class="nav-item dropdown"  th:each="cate : ${listCategory}">
+							<a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" th:text="${cate.categoryName}" ></a>
+								<div class="dropdown-menu" > <!-- {cateId} phai giong vs pathvariable o controller fe -->
+									<a class="dropdown-item" th:href="@{/product/category/{cateId}/type?ttype=nam(cateId=${cate.categoryId})}">Nam</a> <a 
+									class="dropdown-item" th:href="@{/product/category/{cateId}/type?ttype=nữ(cateId=${cate.categoryId})}">Nu</a> <a
+									class="dropdown-item" th:href="@{/product/category/{cateId}/type?ttype=Unisex(cateId=${cate.categoryId})}">Unisex</a>
+								</div>
+							</li>
+							
 							<li class="nav-item dropdown"><a class="nav-link" href="#"
 								data-bs-toggle="dropdown" aria-expanded="false">SALE</a>
 								<div class="dropdown-menu">
@@ -208,7 +196,7 @@
 									</div>
 									<div class="price-prod d-flex">
 										<p class="price-prod-new dbPrice" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></p>
-										<p class="price-prod-old">2.633.000đ</p>
+										<p class="price-prod-old">4.000.000đ</p>
 										<p class="price-prod-percent">-17%</p>
 									</div>
 									<div class="general-prod">

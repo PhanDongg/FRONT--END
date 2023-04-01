@@ -92,7 +92,7 @@
 									alt="" class=""> <span>Tổng thành viên</span>
 							</div>
 
-							<span class="fw-bold">500</span>
+							<span class="fw-bold" th:text="${numberUsers}"></span>
 						</div>
 					</div>
 
@@ -120,18 +120,17 @@
 									<th>Tài khoản</th>
 									<th>Email</th>
 									<th>Ngày sinh</th>
-									<th>Số lượng đơn</th>
+
 									<th></th>
 								</thead>
 								<tbody class="align-middle">
-									<tr class="user-row" id="user-row-1">
-										<td class="user-id fw-bold">#C1</td>
-										<td class="user-name"><a href="" class="product-link">Nguyễn
-												Thị A</a></td>
-										<td class="user-account">nta</td>
-										<td class="user-email">nta@gmail.com</td>
-										<td class="user-dob">24-06-1999</td>
-										<td class="user-order-qty">10</td>
+									<tr class="user-row" id="user-row-1" th:each="user : ${listUsers}">
+										<td class="user-id fw-bold" th:text="${user.userId}"></td>
+										<td class="user-name"><a href="" class="product-link" th:text="${user.fullName}"></a></td>
+										<td class="user-account" th:text="${user.userName}"></td>
+										<td class="user-email" th:text="${user.email}"></td>
+										<td class="user-dob" th:text="${user.dateofBirth}"></td>
+								
 										<td class="user-btns">
 											<button class="edit-btn">
 												<i class="fa-solid fa-pen-to-square"></i>
@@ -141,74 +140,7 @@
 											</button>
 										</td>
 									</tr>
-									<tr class="user-row" id="user-row-1">
-										<td class="user-id fw-bold">#C1</td>
-										<td class="user-name"><a href="" class="product-link">Nguyễn
-												Thị A</a></td>
-										<td class="user-account">nta</td>
-										<td class="user-email">nta@gmail.com</td>
-										<td class="user-dob">24-06-1999</td>
-										<td class="user-order-qty">10</td>
-										<td class="user-btns">
-											<button class="edit-btn">
-												<i class="fa-solid fa-pen-to-square"></i>
-											</button>
-											<button class="remove-btn">
-												<i class="fa-solid fa-trash"></i>
-											</button>
-										</td>
-									</tr>
-									<tr class="user-row" id="user-row-1">
-										<td class="user-id fw-bold">#C1</td>
-										<td class="user-name"><a href="" class="product-link">Nguyễn
-												Thị A</a></td>
-										<td class="user-account">nta</td>
-										<td class="user-email">nta@gmail.com</td>
-										<td class="user-dob">24-06-1999</td>
-										<td class="user-order-qty">10</td>
-										<td class="user-btns">
-											<button class="edit-btn">
-												<i class="fa-solid fa-pen-to-square"></i>
-											</button>
-											<button class="remove-btn">
-												<i class="fa-solid fa-trash"></i>
-											</button>
-										</td>
-									</tr>
-									<tr class="user-row" id="user-row-1">
-										<td class="user-id fw-bold">#C1</td>
-										<td class="user-name"><a href="" class="product-link">Nguyễn
-												Thị A</a></td>
-										<td class="user-account">nta</td>
-										<td class="user-email">nta@gmail.com</td>
-										<td class="user-dob">24-06-1999</td>
-										<td class="user-order-qty">10</td>
-										<td class="user-btns">
-											<button class="edit-btn">
-												<i class="fa-solid fa-pen-to-square"></i>
-											</button>
-											<button class="remove-btn">
-												<i class="fa-solid fa-trash"></i>
-											</button>
-										</td>
-									</tr>
-									<tr class="user-row" id="user-row-1">
-										<td class="user-id fw-bold">#C1</td>
-										<td class="user-name"><a href="" class="product-link">Nguyễn
-												Thị A</a></td>
-										<td class="user-account">nta</td>
-										<td class="user-email">nta@gmail.com</td>
-										<td class="user-dob">24-06-1999</td>
-										<td class="user-order-qty">10</td>
-										<td class="user-btns">
-											<button class="edit-btn">
-												<i class="fa-solid fa-pen-to-square"></i>
-											</button>
-											<button class="remove-btn">
-												<i class="fa-solid fa-trash"></i>
-											</button>
-										</td>
-									</tr>
+									
 								</tbody>
 
 							</table>

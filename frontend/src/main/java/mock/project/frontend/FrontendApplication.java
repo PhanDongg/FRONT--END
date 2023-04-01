@@ -14,7 +14,7 @@ public class FrontendApplication {
 	
 	@Bean
 	public RestTemplate restTemplate() {
-		return new RestTemplate();
+		return new RestTemplate(); // tuong tu postman
 	}
 	
 }

@@ -86,27 +86,15 @@
 									class="dropdown-item" href="#">Action</a> <a
 									class="dropdown-item" href="#">Action</a>
 							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">ADIDAS</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">NIKE</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">PUMA</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
+						<li class="nav-item dropdown"  th:each="cate : ${listCategory}">
+							<a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" th:text="${cate.categoryName}" ></a>
+								<div class="dropdown-menu" > <!-- {cateId} phai giong vs pathvariable o controller fe -->
+									<a class="dropdown-item" th:href="@{/product/category/{cateId}/type?ttype=nam(cateId=${cate.categoryId})}">Nam</a> <a 
+									class="dropdown-item" th:href="@{/product/category/{cateId}/type?ttype=nữ(cateId=${cate.categoryId})}">Nu</a> <a
+									class="dropdown-item" th:href="@{/product/category/{cateId}/type?ttype=Unisex(cateId=${cate.categoryId})}">Unisex</a>
+								</div>
+							</li>
+						
 						<li class="nav-item dropdown"><a class="nav-link" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">SALE</a>
 							<div class="dropdown-menu">
@@ -159,31 +147,11 @@
 							<div class="search-facet-container">
 								<div class="widget-block d-flex flex-column">
 									<h6 class="widget-title">Thương hiệu</h6>
-									<label class="widget-item"> <input type="checkbox"
-										name="categoryName" id="flexCheckDefault" value="Adidas">
-										<span>Adidas</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="Nike" id="flexCheckDefault">
-										<span>Nike</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="Puma" id="flexCheckDefault">
-										<span>Puma</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="vansVault" id="flexCheckDefault">
-										<span>Vans Vault</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="newBanlance" id="flexCheckDefault">
-										<span>New Banlance</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="jordan" id="flexCheckDefault">
-										<span>Jordan</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="Reebok" id="flexCheckDefault">
-										<span>Reebok</span>
-									</label> <label class="widget-item"> <input type="checkbox"
-										name="categoryName" value="fila" id="flexCheckDefault">
-										<span>Fila</span>
-									</label>
+									<div class="brands" th:each="brand : ${listCategory}">
+										<label class="widget-item"></label>
+										<input type="checkbox" value="${brand.categoryName}" id="flexCheckDefault"> <span th:text="${brand.categoryName}"></span>
+									</div>
+									
 								</div>
 								<div class="widget-block d-flex flex-column">
 									<h6 class="widget-title">Giới tính</h6>
@@ -267,7 +235,8 @@
 								<a th:href="@{/product/{id}(id=${product.productId})}"> <img
 									th:src="${product.images[0].link}">
 									<div class="name-brand" th:text="${product.brand}"></div>
-									<h6 class="name-prod" th:text="${product.productName}"></h6>
+									<h6 class="name-prod" style="height: 30px;"
+									 th:text="${product.productName}"></h6>
 								</a>
 								<div class="price-prod"
 									th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>

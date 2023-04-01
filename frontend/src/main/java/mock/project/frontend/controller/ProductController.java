@@ -29,6 +29,7 @@ import com.google.gson.GsonBuilder;
 
 import mock.project.frontend.LocalDateSerializer;
 import mock.project.frontend.entities.Sizes;
+import mock.project.frontend.request.CategoryDTO;
 import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.ProductRequest;
 import mock.project.frontend.request.SizeDTO;
@@ -43,6 +44,13 @@ public class ProductController {
 	private String productApi;
 	
 	List<ProductDTO> dtos = new ArrayList<>();
+	
+	@ModelAttribute("listCategory") // 
+	public CategoryDTO[] listCategory() {
+		String url3 = productApi + "/categories";
+		ResponseEntity<CategoryDTO[]> categories = restTemplate.getForEntity(url3, CategoryDTO[].class);
+		return categories.getBody(); //gia tri tra ve gan cho "listCategory" == model.addAttribute("listCategory", categories.getBody());
+	}
 	
 	//search product
 	@GetMapping("/search")
@@ -70,7 +78,8 @@ public class ProductController {
 	//get list product by brand
 	@GetMapping("/category/{id}")
 	public String getProductByCategory(@PathVariable(name="id", required = false)Integer id, Model model) {
-		String url = productApi + "/category/" + id;
+//		String url = productApi + "/category/" + id;
+		String url = "http://localhost:8081/api/product/category/"+id; 
 		String category = null;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
@@ -81,6 +90,32 @@ public class ProductController {
 		model.addAttribute("category", category);
 		return "collection-page";
 	}
+	
+	// get products by type
+	@GetMapping("/product/category/{cateId}/type")
+	public String getProductByType( @PathVariable(name="cateId")Integer id,@RequestParam(value="ttype", required=false)String type, Model model) {
+		String url = productApi + "/category/" + id + "/type?ttype=" + type; //dai dien api ben be
+		ProductDTO[] products = restTemplate.getForObject(url, ProductDTO[].class);
+		if (products == null || products.length == 0) {
+			model.addAttribute("msg", "Khong co san pham nao!");
+			return "collection-page";
+		}
+		model.addAttribute("listProducts", products);
+		return "collection-page";
+	}
+	
+	@GetMapping("/product/type")
+	public String getProductByType(@RequestParam(value="ttype", required=false)String type, Model model) {
+		String url = productApi + "/type?ttype=" + type; //dai dien api ben be
+		ProductDTO[] products = restTemplate.getForObject(url, ProductDTO[].class);
+		if (products == null || products.length == 0) {
+			model.addAttribute("msg", "Khong co san pham nao!");
+			return "collection-page";
+		}
+		model.addAttribute("listProducts", products);
+		return "collection-page";
+	}
+	
 	//get product detail
 	@GetMapping("/product/{id}")
 	public String getProductDetails(@PathVariable(name = "id", required = false) Integer id, Model model) {
@@ -192,4 +227,7 @@ public class ProductController {
 		int sizeInt = Integer.parseInt(sizeString);  
 		return sizeInt;
 	}
+	
+	
+	
 }

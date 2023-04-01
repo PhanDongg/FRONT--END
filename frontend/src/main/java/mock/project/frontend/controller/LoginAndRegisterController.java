@@ -29,9 +29,9 @@ import mock.project.frontend.response.ResponseTransfer;
 
 @Controller
 public class LoginAndRegisterController {
-	
+
 	private Logger logger = Logger.getLogger(LoginAndRegisterController.class);
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
 
@@ -48,49 +48,66 @@ public class LoginAndRegisterController {
 		model.addAttribute("user", new UserDTO());
 		return "register-page";
 	}
-	
-	//register new member
+
+	// register new member
+//	@PostMapping("/register")
+//	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user, BindingResult bindingResult) {
+//			logger.info("Processing...");
+//		if (bindingResult.hasErrors()) {
+//			model.addAttribute("msg", "Make sure you have filled out all the fields");
+//            return "register-page";
+//        } else {
+//        	String url = userApi + "/register";
+//        	ResponseEntity<ResponseTransfer> response = restTemplate.postForEntity(url, user, ResponseTransfer.class);
+//        	model.addAttribute("msg", response);
+//        	return "redirect:/login";
+//		}
+//	}
+
 	@PostMapping("/register")
-	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user, BindingResult bindingResult) {
-			logger.info("Processing...");
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("msg", "Make sure you have filled out all the fields");
-            return "register-page";
-        } else {
-        	String url = userApi + "/register";
-        	ResponseEntity<ResponseTransfer> response = restTemplate.postForEntity(url, user, ResponseTransfer.class);
-        	model.addAttribute("msg", response);
-        	return "redirect:/login";
+	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user,
+			BindingResult bindingResult) {
+		logger.info("Processing...");
+		String url = userApi + "/register";
+		ResponseEntity<String> response = restTemplate.postForEntity(url, user, String.class);//send to be
+		if (response.getBody().contains("Username has been used")) {
+			model.addAttribute("msg", response.getBody());
+			model.addAttribute("user", new UserDTO());
+			return "register-page";
 		}
+		model.addAttribute("msg", response.getBody());
+		return "login-page";
 	}
-	//check login
+
+	// check login
 	@PostMapping("/login")
 	public String checkLogin(@ModelAttribute("user") User user, HttpServletRequest request,
 			HttpServletResponse response, Model model) throws UnsupportedEncodingException {
 		String url = authenticationApi + "/login";
 		ResponseEntity<String> token = restTemplate.postForEntity(url, user, String.class);
 		if (token.getBody().contains("Incorrect")) {
-				model.addAttribute("msg", token.getBody());
-				return "login-page";
-			} else {
-				Cookie tokenCookie = new Cookie("Authorization", URLEncoder.encode("Bearer " + token.getBody(), "UTF-8"));
-				request.getSession().setAttribute("username", user.getUsername());
-				tokenCookie.setMaxAge(24 * 60 * 60);
-				response.addCookie(tokenCookie);
-				return "redirect:/";
-			}
+			model.addAttribute("msg", token.getBody());
+			return "login-page";
+		} else {
+			Cookie tokenCookie = new Cookie("Authorization", URLEncoder.encode("Bearer " + token.getBody(), "UTF-8"));
+			request.getSession().setAttribute("username", user.getUsername());
+			tokenCookie.setMaxAge(24 * 60 * 60);
+			response.addCookie(tokenCookie);
+			return "redirect:/";
+		}
 	}
-	//load login form
+
+	// load login form
 	@GetMapping("/login")
 	public String loginForm(Model model) {
-			logger.info("Loading login form.....");
+		logger.info("Loading login form.....");
 		model.addAttribute("user", new User());
 		return "login-page";
 	}
-	
-	//logout
+
+	// logout
 	@GetMapping("/logout")
-	public String logout(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+	public String logout(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String url = authenticationApi + "/logout";
 		String msg = restTemplate.getForObject(url, String.class);
 		Cookie cookie = null;

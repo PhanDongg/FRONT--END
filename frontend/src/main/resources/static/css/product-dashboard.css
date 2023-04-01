@@ -3,7 +3,7 @@
 
 .product-menu button {
     width: 100%;
-    padding: 10px;
+/*     padding: 10px; */
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -13,6 +13,7 @@
 .product-menu button a {
 	display: block;
 	width: 100%;
+	padding: 10px;
 }
 
 .best-selling-product-table {

@@ -2,23 +2,19 @@ package mock.project.frontend.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,16 +23,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import mock.project.frontend.request.OrderDTO;
 import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.UserDTO;
 import mock.project.frontend.request.UserDTOReponse;
-import mock.project.frontend.response.ResponseTransfer;
 
 @Controller
 @RequestMapping("/admin")
@@ -104,19 +97,19 @@ public class AdminController {
 	}
 
 	// list user
-	@GetMapping("/user")
-	public String listOfUser(Model model) {
-		logger.info("List of all user ");
-		String url = adminApi + "/user";
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Authorization", jwt);
-		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
-		ResponseEntity<UserDTO[]> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, UserDTO[].class);
-		UserDTO[] listUsers = responseAPI.getBody();
-		model.addAttribute("listUsers", listUsers);
-		return "user-list";
-	}
+//	@GetMapping("/user")
+//	public String listOfUser(Model model) {
+//		logger.info("List of all user ");
+//		String url = adminApi + "/user";
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setContentType(MediaType.APPLICATION_JSON);
+//		headers.set("Authorization", jwt);
+//		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+//		ResponseEntity<UserDTO[]> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, UserDTO[].class);
+//		UserDTO[] listUsers = responseAPI.getBody();
+//		model.addAttribute("listUsers", listUsers);
+//		return "user-list";
+//	}
 
 	// list order
 	@GetMapping("/order/list")
@@ -275,5 +268,26 @@ public class AdminController {
 		}
 		return "product-list";
 	}
+	
+	@GetMapping("/user")
+	public String viewUserList(Model model) {
+		String url = adminApi + "/user";
+//		ResponseEntity<UserDTOReponse[]> response = restTemplate.getForEntity(url, UserDTOReponse[].class);//= ResponseEntity<List<UserDTOReponse>> -> gia tri be tra ve
+//		model.addAttribute("listUsers", response.getBody());
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set("Authorization", jwt);
+		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+		ParameterizedTypeReference<List<UserDTOReponse>> typeRef = new ParameterizedTypeReference<List<UserDTOReponse>>() {
+		};
+		ResponseEntity<List<UserDTOReponse>> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, typeRef);
+		List<UserDTOReponse> listUsers = responseAPI.getBody();
+		listUsers.remove(0);
+		model.addAttribute("listUsers", listUsers);
+		model.addAttribute("numberUsers", listUsers.size());
+		return "user-list";
+	}
+	
 
 }
