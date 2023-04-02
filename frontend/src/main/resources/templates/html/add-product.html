@@ -92,23 +92,22 @@
 							</div>
 
 							<div class="add-product__status">
-								<h4>Tình trạng sản phẩm</h4>
+								<h4>Phân loại</h4>
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
-										name="product-status" id="publishedStatus"> <label
-										class="form-check-label" for="publishedStatus"> Công
-										bố </label>
+										name="type" id="publishedStatus" value="Nam"> <label
+										class="form-check-label" for="publishedStatus">Nam  </label>
 								</div>
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
-										name="product-status" id="scheduledStatus" checked> <label
-										class="form-check-label" for="scheduledStatus"> Lên
-										lịch </label>
+										name="type" id="scheduledStatus" checked value="Nữ"> <label
+										class="form-check-label" for="scheduledStatus"> Nữ
+										 </label>
 								</div>
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
-										name="product-status" id="hidenStatus" checked> <label
-										class="form-check-label" for="hidenStatus"> Ẩn </label>
+										name="type" id="hidenStatus" checked value="Unisex"> <label
+										class="form-check-label" for="hidenStatus"> Unisex </label>
 								</div>
 							</div>
 
@@ -117,66 +116,10 @@
 								<div
 									class="size-container d-flex justify-content-around align-items-center">
 									<div class="size-item" >
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> 35
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> 36
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 37
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 38
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 39
-											</label>
-										</div>
-									</div>
-									<div class="size-item">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 40
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 41
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 42
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 43
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 44
+										<div class="form-check" th:each="size : ${sizes}"  >
+											<input class="form-check-input" type="checkbox" 
+												id="flexCheckDefault" name="sizeArr" th:value="${size.sizeId}"> <label
+												class="form-check-label" for="flexCheckDefault" th:text="${size.size}"> 
 											</label>
 										</div>
 									</div>
@@ -202,8 +145,8 @@
 										type="text" class="form-control" name="productName">
 								</div>
 								<div class="col-6">
-									<label class="form-label" for="">Tiêu đề</label> <input
-										type="text" class="form-control">
+									<label class="form-label" for="">Mô tả</label> <input
+										type="text" class="form-control" name="description">
 								</div>
 								<div class="col-12">
 									<label class="form-label" for="autoSizingInputGroup">Sản
@@ -211,14 +154,14 @@
 									<div class="input-group">
 										<div class="input-group-text">https://abcstore.com/</div>
 										<input type="text" class="form-control"
-											id="autoSizingInputGroup">
+											id="autoSizingInputGroup" >
 									</div>
 								</div>
 								<div class="col-12">
-									<label for="exampleFormControlTextarea1" class="form-label">Mô
-										tả sản phẩm</label>
+									<label for="exampleFormControlTextarea1" class="form-label">
+										Hình ảnh sản phẩm</label>
 									<textarea class="form-control" id="exampleFormControlTextarea1"
-										rows="3" name="description"></textarea>
+										rows="3"  name="images"></textarea>
 								</div>
 								<div class="col-12">
 									<label for="formFileMultiple" class="form-label">Chọn
@@ -240,11 +183,14 @@
 								</div>
 								<div class="col-6">
 									<label for="" class="form-label">Danh mục</label> 
-									<input type="text" name="type" id="" class="form-control">
-								</div>
-								<div class="col-6">
-									<label for="" class="form-label">Thương hiệu</label> 
 									<input type="text" name="brand" id="" class="form-control">
+								</div>
+								
+								<div class="col-6">
+									<label for="" class="form-label">Thương hiệu</label> <select
+										name="category" id="category" class="form-control" >
+										<option  th:each="cat : ${categories}" th:value="${cat.categoryId}" th:text="${cat.categoryName}" ></option>
+									</select>
 								</div>
 								<div class="col-12">
 									<button class="save-btn" type="submit">LƯU</button>

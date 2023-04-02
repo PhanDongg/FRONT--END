@@ -55,18 +55,19 @@
 										19009191</span></li>
 							</ul>
 						</div>
-							<div>
+						<div>
 							<ul class="topbar-right d-flex justify-content-end">
 								<li class="p-2" th:unless="${session.username} == null"><a
 									th:href="@{/check-order}"><span>Tra cứu đơn hàng</span></a></li>
 								<li class="p-2" th:if="${session.username} == null"><a
 									th:href="@{/login}"><span>Tra cứu đơn hàng</span></a></li>
-								<li class="p-2 " th:if="${session.username} == null">
-									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
-								</li>
-								<li  class="p-2 admin-menu" th:unless="${session.username} == null">
-									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
-								</li>
+								<li class="p-2 " th:if="${session.username} == null"><a
+									th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng
+											nhập</span></a></li>
+								<li class="p-2 admin-menu"
+									th:unless="${session.username} == null"><a><i
+										class="fa-solid fa-user"></i><span
+										th:text="${session.username}"></span></a></li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -93,33 +94,18 @@
 										class="dropdown-item" href="#">Action</a> <a
 										class="dropdown-item" href="#">Action</a>
 								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">ADIDAS</a>
+							<li class="nav-item dropdown"
+								th:each="category : ${listCategories}"><a class="nav-link"
+								th:href="@{/category/{id}(id=${category.categoryId})}"
+								data-bs-toggle="dropdown" aria-expanded="false"
+								th:text="${category.categoryName}"></a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">NIKE</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">PUMA</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">SALE</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a> <a
-										class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item"
+										th:href="@{/category/{id}?type=Nam(id=${category.categoryId})}">Nam</a>
+									<a class="dropdown-item"
+										th:href="@{/category/{id}?type=Nữ(id=${category.categoryId})}">Nữ</a>
+									<a class="dropdown-item"
+										th:href="@{/category/{id}?type=Unisex(id=${category.categoryId})}">Unisex</a>
 								</div></li>
 							<li class="nav-item dropdown"><a class="nav-link" href="#"
 								aria-expanded="false">TIN TỨC</a></li>
@@ -207,7 +193,8 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<div class="price-prod d-flex">
-										<p class="price-prod-new dbPrice" th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></p>
+										<p class="price-prod-new dbPrice"
+											th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></p>
 										<p class="price-prod-old">2.633.000đ</p>
 										<p class="price-prod-percent">-17%</p>
 									</div>
@@ -314,7 +301,8 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -330,7 +318,8 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -347,7 +336,8 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -402,13 +392,11 @@
 										tốc độ biến dạng thấp. Với chất liệu và công nghệ thoáng khí,
 										giày Adidas FX0031 sẽ là lựa chọn phù hợp của các bạn nam chạy
 										bộ vào những ngày nóng</p>
-									<img
-										th:src="${product.images[1].link}"
-										alt="">
-									<p class="product-description-text">Đôi giày Adidas với họa tiết hình tròn được thiết kế hấp dẫn khiến bạn sẽ có cảm giác thoải mái sử dụng khi tập thể thao và dạo phố gặp bạn bè</p>
-									<img
-									th:src="${product.images[2].link}"
-										alt="">
+									<img th:src="${product.images[1].link}" alt="">
+									<p class="product-description-text">Đôi giày Adidas với họa
+										tiết hình tròn được thiết kế hấp dẫn khiến bạn sẽ có cảm giác
+										thoải mái sử dụng khi tập thể thao và dạo phố gặp bạn bè</p>
+									<img th:src="${product.images[2].link}" alt="">
 									<h5>Cách bảo quản</h5>
 									<ul>
 										<li>Không dùng thuốc tẩy</li>
@@ -635,7 +623,8 @@
 								<h5>Sản phẩm tương tự</h5>
 								<div class="similar-product-item"
 									th:each="product : ${listProducts4}">
-									<a th:href="@{/product/{id}(id=${product.productId})}" class="d-flex">
+									<a th:href="@{/product/{id}(id=${product.productId})}"
+										class="d-flex">
 										<div>
 											<img th:src="${product.images[0].link}">
 										</div>
@@ -671,7 +660,8 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -687,7 +677,8 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>
@@ -704,7 +695,8 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
 													<h6 class="name-prod" th:text="${product.productName}"></h6>
 												</a>

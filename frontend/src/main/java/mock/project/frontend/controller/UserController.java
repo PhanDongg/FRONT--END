@@ -1,5 +1,10 @@
 package mock.project.frontend.controller;
 
+import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.util.Base64;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -14,11 +19,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import mock.project.frontend.LocalDateDeserializer;
 import mock.project.frontend.request.OrderDTO;
 import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.UserDTO;
@@ -82,6 +92,19 @@ public class UserController {
 				UserDTO.class);
 		model.addAttribute("user", response.getBody());
 		return "customer-detail-page";
+	}
+	//Thanh toán 
+	@PostMapping("/order/check")
+	public String makePayment(@CookieValue(value = "cookieProduct", defaultValue = "defaultCookieValue") String cookieProduct,
+			Model model, HttpServletRequest request, HttpSession session) {
+		String decodeCookieProduct = new String(Base64.getDecoder().decode(cookieProduct.getBytes()));
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		Type productListType = new TypeToken<List<ProductDTO>>() {}.getType();
+		List<ProductDTO> listItemCart = gsonBuilder.setPrettyPrinting()
+				.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer()).create()
+				.fromJson(decodeCookieProduct, productListType);
+		
+		return "order-view-page";
 	}
 
 }

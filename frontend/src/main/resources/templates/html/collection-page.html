@@ -86,34 +86,21 @@
 									class="dropdown-item" href="#">Action</a> <a
 									class="dropdown-item" href="#">Action</a>
 							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">ADIDAS</a>
+						<li class="nav-item dropdown"
+							th:each="category : ${listCategories}"><a class="nav-link"
+							th:href="@{/category/{id}(id=${category.categoryId})}"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							th:text="${category.categoryName}"></a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item"
+									th:href="@{/category/{id}?type=Nam(id=${category.categoryId})}">Nam</a>
+								<a class="dropdown-item"
+									th:href="@{/category/{id}?type=Nữ(id=${category.categoryId})}">Nữ</a>
+								<a class="dropdown-item"
+									th:href="@{/category/{id}?type=Unisex(id=${category.categoryId})}">Unisex</a>
 							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">NIKE</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">PUMA</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">SALE</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
+
+
 						<li class="nav-item dropdown"><a class="nav-link" href="#"
 							aria-expanded="false">TIN TỨC</a></li>
 					</ul>
@@ -136,8 +123,7 @@
 						aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-							<li class="breadcrumb-item" th:text="${category}"></li>
-							<!-- <li class="breadcrumb-item active" aria-current="page">Nam</li> -->
+							<li class="breadcrumb-item" ><a th:href="@{/category/{id}(id=${categoryId})}" th:text="${category}" ></a></li>
 						</ol>
 					</nav>
 					<div class="dropdown-center">
@@ -267,7 +253,8 @@
 								<a th:href="@{/product/{id}(id=${product.productId})}"> <img
 									th:src="${product.images[0].link}">
 									<div class="name-brand" th:text="${product.brand}"></div>
-									<h6 class="name-prod" th:text="${product.productName}"></h6>
+									<h6 class="name-prod" style="height: 30px;"
+										th:text="${product.productName}"></h6>
 								</a>
 								<div class="price-prod"
 									th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>

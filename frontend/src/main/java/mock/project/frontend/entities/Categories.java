@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="category")
@@ -28,7 +30,7 @@ public class Categories implements Serializable {
 	@Column(name="category_name",columnDefinition = "nvarchar(50)")
 	private String categoryName;
 	
-
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="category")
 	private Set<Products> products;
 	
@@ -64,5 +66,9 @@ public class Categories implements Serializable {
 	public void setProducts(Set<Products> products) {
 		this.products = products;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Categories [categoryId=" + categoryId + ", categoryName=" + categoryName + "]";
+	}
 }

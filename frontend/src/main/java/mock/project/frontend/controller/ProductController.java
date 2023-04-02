@@ -28,7 +28,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import mock.project.frontend.LocalDateSerializer;
+import mock.project.frontend.entities.Categories;
 import mock.project.frontend.entities.Sizes;
+import mock.project.frontend.request.CategoryDTO;
 import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.ProductRequest;
 import mock.project.frontend.request.SizeDTO;
@@ -43,6 +45,14 @@ public class ProductController {
 	private String productApi;
 	
 	List<ProductDTO> dtos = new ArrayList<>();
+	
+	@ModelAttribute("listCategories")
+	public CategoryDTO[] getCategory() {
+		String url2 = productApi + "/categories";
+		ResponseEntity<CategoryDTO[]> responseCategories= restTemplate.getForEntity(url2, CategoryDTO[].class);
+		CategoryDTO[] listCategories = responseCategories.getBody();
+		return listCategories;
+	}
 	
 	//search product
 	@GetMapping("/search")
@@ -69,16 +79,47 @@ public class ProductController {
 
 	//get list product by brand
 	@GetMapping("/category/{id}")
-	public String getProductByCategory(@PathVariable(name="id", required = false)Integer id, Model model) {
+	public String getProductByCategory(@PathVariable(name = "id", required = false) Integer id,
+			@RequestParam(name = "type", required = false) String type, Model model) {
 		String url = productApi + "/category/" + id;
-		String category = null;
-		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
-		ProductDTO[] listProducts = response.getBody();
-		for(ProductDTO pro: listProducts ) {
-			category = pro.getBrand();
+		String url1 = productApi + "/category/" + id + "?type=" + type;
+		String search = null;
+		ProductDTO[] listProducts;
+		if (type == null || type == "") {
+			ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
+			listProducts = response.getBody();
+		} else {
+			ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url1, ProductDTO[].class);
+			listProducts = response.getBody();
 		}
+		if (listProducts.length == 0) {
+			model.addAttribute("msg","Have no items matches ");
+			model.addAttribute("category", "Search");
+			return "collection-page";
+		}
+		if (listProducts != null) {
+			String categoryName = listProducts[0].getCategory().getCategoryName();
+			Integer categoryId = listProducts[0].getCategory().getCategoryId();
+			model.addAttribute("listProducts", listProducts);
+			model.addAttribute("category", categoryName);
+			model.addAttribute("categoryId", categoryId);
+			return "collection-page";
+		}
+
 		model.addAttribute("listProducts", listProducts);
-		model.addAttribute("category", category);
+		model.addAttribute("category", search);
+		return "collection-page";
+	}
+	
+	// get list product by type
+	@GetMapping("/gender")
+	public String getProductByType(@RequestParam(name = "type", required = false) String type, Model model) {
+		String url = productApi + "/gender" + "?type=" + type;
+		ProductDTO[] listProducts;
+		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
+		listProducts = response.getBody();
+		model.addAttribute("listProducts", listProducts);
+		model.addAttribute("category", type);
 		return "collection-page";
 	}
 	//get product detail
@@ -129,9 +170,7 @@ public class ProductController {
 		product.setSizes(sizes);
 		
 		dtos.add(product);
-		String jsonProduct = new GsonBuilder().setPrettyPrinting()
-				.registerTypeAdapter(LocalDate.class, new LocalDateSerializer()).create().toJson(dtos);
-
+		String jsonProduct = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateSerializer()).create().toJson(dtos);
 		String encode = Base64.getEncoder().encodeToString(jsonProduct.getBytes());
 		Cookie cookie = new Cookie("cookieProduct", encode);
 		cookie.setMaxAge(24 * 60 * 60);
@@ -191,5 +230,11 @@ public class ProductController {
 	public int stringToInt(String sizeString) {
 		int sizeInt = Integer.parseInt(sizeString);  
 		return sizeInt;
+	}
+	@GetMapping("/coming")
+	public String commingSoonView(Model model) {
+		model.addAttribute("error", "Coming Soon");
+		model.addAttribute("status", "Hello");
+		return "error";
 	}
 }

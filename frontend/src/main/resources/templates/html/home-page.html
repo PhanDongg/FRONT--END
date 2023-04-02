@@ -10,7 +10,8 @@
 <!--     <link rel="stylesheet" href="/LAYOUT/CSS/home-page.css"> -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/home-page.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -47,16 +48,17 @@
 						</div>
 						<div>
 							<ul class="topbar-right d-flex justify-content-end">
-								<li class="p-2" th:unless="${session.username} == null"><a th:href="@{/check-order}"><span>Tra
-											cứu đơn hàng</span></a></li>
-								<li class="p-2" th:if="${session.username} == null"><a th:href="@{/login}"><span>Tra
-											cứu đơn hàng</span></a></li>
-								<li class="p-2 " th:if="${session.username} == null">
-									<a th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
-								</li>
-								<li  class="p-2 admin-menu" th:unless="${session.username} == null">
-									<a ><i class="fa-solid fa-user" ></i><span th:text="${session.username}"></span></a>
-								</li>
+								<li class="p-2" th:unless="${session.username} == null"><a
+									th:href="@{/check-order}"><span>Tra cứu đơn hàng</span></a></li>
+								<li class="p-2" th:if="${session.username} == null"><a
+									th:href="@{/login}"><span>Tra cứu đơn hàng</span></a></li>
+								<li class="p-2 " th:if="${session.username} == null"><a
+									th:href="@{/login}"><i class="fa-solid fa-user"></i><span>Đăng
+											nhập</span></a></li>
+								<li class="p-2 admin-menu"
+									th:unless="${session.username} == null"><a><i
+										class="fa-solid fa-user"></i><span
+										th:text="${session.username}"></span></a></li>
 								<li class="p-2"><a th:href="@{/cart}"><i
 										class="fa-solid fa-cart-shopping"></i><span>Giỏ hàng</span></a></li>
 							</ul>
@@ -77,40 +79,34 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a class="nav-link" href="#"
-							data-bs-toggle="dropdown" aria-expanded="false">SẢN PHẨM MỚI</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Action</a>
-							</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">ADIDAS</a>
+								data-bs-toggle="dropdown" aria-expanded="false">SẢN PHẨM MỚI</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Nam</a>
-									<a class="dropdown-item" href="#">Nữ</a>
+									<a class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a> <a
+										class="dropdown-item" href="#">Action</a>
+								</div></li>
+							<li class="nav-item dropdown"
+								th:each="category : ${listCategories}"><a class="nav-link"
+								th:href="@{/category/{id}(id=${category.categoryId})}"
+								data-bs-toggle="dropdown" aria-expanded="false"
+								th:text="${category.categoryName}"></a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item"
+										th:href="@{/category/{id}?type=Nam(id=${category.categoryId})}">Nam</a>
+									<a class="dropdown-item"
+										th:href="@{/category/{id}?type=Nữ(id=${category.categoryId})}">Nữ</a>
+									<a class="dropdown-item"
+										th:href="@{/category/{id}?type=Unisex(id=${category.categoryId})}">Unisex</a>
 								</div></li>
 							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">NIKE</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Nam</a>
-									<a class="dropdown-item" href="#">Nữ</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">PUMA</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Nam</a>
-									<a class="dropdown-item" href="#">Nữ</a>
-								</div></li>
-							<li class="nav-item dropdown"><a class="nav-link" href="#"
-								data-bs-toggle="dropdown" aria-expanded="false">SALE</a>
-							</li>
+								data-bs-toggle="dropdown" aria-expanded="false">SALE</a></li>
 							<li class="nav-item dropdown"><a class="nav-link" href="#"
 								aria-expanded="false">TIN TỨC</a></li>
 						</ul>
 						<div class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
 								placeholder="Search" aria-label="Search" th:name="searchField">
-							<button class="btn btn-outline-success" type="submit" >
+							<button class="btn btn-outline-success" type="submit">
 								<i class="fa-solid fa-magnifying-glass"></i>
 							</button>
 						</div>
@@ -161,7 +157,7 @@
 				<div class="article-product">
 					<section id="brandContent" class="brands carousel slide">
 						<h5>THƯƠNG HIỆU</h5>
-					<div class="carousel-inner">
+						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<div class="d-flex justify-content-between">
 									<a th:href="@{/category/{id}(id=3)}"><img
@@ -208,7 +204,8 @@
 					<section class="selling-products">
 						<div class="d-flex justify-content-between">
 							<h4 class="p-2">Sản phẩm bán chạy</h4>
-							<span class="p-2 view-all"><a th:href="@{/product?text=1}">Xem thêm</a></span>
+							<span class="p-2 view-all"><a th:href="@{/product?text=1}">Xem
+									thêm</a></span>
 						</div>
 						<div class="content-products">
 							<div id="sellingProducts" class="carousel slide">
@@ -226,9 +223,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -242,9 +241,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -259,9 +260,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -294,16 +297,16 @@
 									alt="">
 								<div>
 									<h3>NAM</h3>
-									<a href="#">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
+									<a th:href="@{/gender?type=Nam}">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="two-banner-item">
-								<img style="width:400px"
+								<img style="width: 400px"
 									src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/327749512_5816850688429002_4833706801407813073_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_ohc=VzELynMfPOMAX9uz30Q&_nc_ht=scontent.fsgn8-2.fna&oh=00_AfAXgegGrrAY2MkNE7tw4YkU8NjWRbbv2O16DgT8yBV_WA&oe=6425E63F"
 									alt="">
 								<div>
 									<h3>NỮ</h3>
-									<a href="#">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
+									<a th:href="@{/gender?type=Nữ}">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="two-banner-item">
@@ -312,7 +315,7 @@
 									alt="">
 								<div>
 									<h3>TRẺ EM</h3>
-									<a href="#">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
+									<a th:href="@{/coming}">XEM NGAY<i class="fa-solid fa-arrow-right"></i></a>
 								</div>
 							</div>
 						</div>
@@ -320,7 +323,8 @@
 					<section class="new-arrivals">
 						<div class="d-flex justify-content-between">
 							<h4 class="p-2">Sản phẩm mới</h4>
-							<span class="p-2 view-all"><a th:href="@{/product?text=desc}">Xem thêm</a></span>
+							<span class="p-2 view-all"><a
+								th:href="@{/product?text=desc}">Xem thêm</a></span>
 						</div>
 						<div class="content-products">
 							<div id="newArrvials" class="carousel slide">
@@ -338,9 +342,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProductDESCs1}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -354,9 +360,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProductDESCs2}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -371,9 +379,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProductDESCs3}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -419,9 +429,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts1}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -435,9 +447,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts2}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -452,9 +466,11 @@
 										<div class="d-flex justify-content-between">
 											<div class="content-products-item"
 												th:each="product : ${listProducts3}">
-												<a th:href="@{/product/{id}(id=${product.productId})}"> <img th:src="${product.images[0].link}">
+												<a th:href="@{/product/{id}(id=${product.productId})}">
+													<img th:src="${product.images[0].link}">
 													<div class="name-brand" th:text="${product.brand}"></div>
-													<h6 class="name-prod" th:text="${product.productName}"></h6>
+													<h6 class="name-prod" style="height: 30px;"
+														th:text="${product.productName}"></h6>
 												</a>
 												<div class="price-prod"
 													th:text="${#numbers.formatDecimal(product.price,3,'POINT',0,'COMMA')}+đ"></div>
@@ -595,7 +611,7 @@
 			</footer>
 		</div>
 	</form>
-	
+
 	<script type="text/javascript" th:src="@{/js/navbar.js}"></script>
 </body>
 

@@ -50,19 +50,20 @@
 			<h2>Đăng nhập</h2>
 			<div class="login-form">
 				<span style="color: red; margin-left: 1.5em" th:text="${msg}"></span>
-				<div class="input-item">
-					<input type="text" name="userName" id="userName"
-						placeholder="Tên tài khoản">
-					<div class="valid-message"></div>
+				<div class="d-flex">
+					<div class="input-item">
+						<input type="text" class="form-control" name="username" id="userName"
+							placeholder="Tên tài khoản">
+						<div class="valid-message"></div>
+					</div>
 				</div>
-
 
                 <div class="d-flex">
                     <div class="input-item">
-                        <input type="password" name="password" id="" placeholder="Mật khẩu" class="password-input">
+                        <input type="password" name="password" id="" placeholder="Mật khẩu" class="password-input form-control">
                     </div>
-                    <div class="eye-icon">
-                        <i class="fa-solid fa-eye"></i>
+                    <div>
+                        <!-- <i class="fa-solid fa-eye"></i> -->
                     </div>
                 </div>
                 <div class="login-btns">

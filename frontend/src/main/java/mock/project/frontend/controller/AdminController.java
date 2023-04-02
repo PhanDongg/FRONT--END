@@ -1,8 +1,10 @@
 package mock.project.frontend.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -29,11 +31,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import mock.project.frontend.entities.Images;
+import mock.project.frontend.entities.Sizes;
+import mock.project.frontend.request.CategoryDTO;
 import mock.project.frontend.request.OrderDTO;
 import mock.project.frontend.request.ProductDTO;
+import mock.project.frontend.request.SizeDTO;
 import mock.project.frontend.request.UserDTO;
 import mock.project.frontend.request.UserDTOReponse;
 import mock.project.frontend.response.ResponseTransfer;
@@ -69,7 +76,22 @@ public class AdminController {
 		}
 		return new UserDTO();
 	}
-
+	
+	@ModelAttribute("categories")
+	public CategoryDTO[] getCategory() {
+		String url2 = productApi + "/categories";
+		ResponseEntity<CategoryDTO[]> responseCategories= restTemplate.getForEntity(url2, CategoryDTO[].class);
+		CategoryDTO[] listCategories = responseCategories.getBody();
+		return listCategories;
+	}
+	@ModelAttribute("sizes")
+	public List<Sizes> getSizes() {
+		String url2 = productApi + "/sizes";
+		ResponseEntity<Sizes[]> responseCategories= restTemplate.getForEntity(url2, Sizes[].class);
+		List<Sizes> listSizes= Arrays.asList(responseCategories.getBody());
+		return listSizes;
+	}
+	
 	// welcome admin
 	@GetMapping("/dashboard")
 	public String adminViews(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
@@ -87,19 +109,19 @@ public class AdminController {
 				}
 			}
 		}
-		jwt = URLDecoder.decode(token, "UTF-8");
-		try {
-			String url = adminApi + "/check";
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			headers.set("Authorization", jwt);
-			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
-			ResponseEntity<String> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, String.class);
-		} catch (Exception e) {
-			model.addAttribute("error", "forbidden");
-			model.addAttribute("status", "403");
-			return "error";
-		}
+		AdminController.jwt = URLDecoder.decode(token, "UTF-8");
+//		try {
+//			String url = adminApi + "/check";
+//			HttpHeaders headers = new HttpHeaders();
+//			headers.setContentType(MediaType.APPLICATION_JSON);
+//			headers.set("Authorization", jwt);
+//			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+//			ResponseEntity<String> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, String.class);
+//		} catch (Exception e) {
+//			model.addAttribute("error", "forbidden");
+//			model.addAttribute("status", "403");
+//			return "error";
+//		}
 		return "dashboard";
 	}
 
@@ -110,11 +132,12 @@ public class AdminController {
 		String url = adminApi + "/user";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Authorization", jwt);
+		headers.set("Authorization", AdminController.jwt);
 		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 		ResponseEntity<UserDTO[]> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, UserDTO[].class);
 		UserDTO[] listUsers = responseAPI.getBody();
 		model.addAttribute("listUsers", listUsers);
+		model.addAttribute("numberUsers", listUsers.length);
 		return "user-list";
 	}
 
@@ -125,7 +148,7 @@ public class AdminController {
 		String url = adminApi + "/order";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Authorization", jwt);
+		headers.set("Authorization", AdminController.jwt);
 		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 		ResponseEntity<OrderDTO[]> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity,
 				OrderDTO[].class);
@@ -141,7 +164,7 @@ public class AdminController {
 			String url = adminApi + "/check";
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			headers.set("Authorization", jwt);
+			headers.set("Authorization", AdminController.jwt);
 			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 			ResponseEntity<String> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, String.class);
 		} catch (Exception e) {
@@ -162,12 +185,17 @@ public class AdminController {
 
 	// add new product
 	@PostMapping("/product/add")
-	public String addNewProduct(@ModelAttribute("product") ProductDTO product, Model model) {
-		String url = adminApi + "/product";
+	public String addNewProduct(@ModelAttribute("product") ProductDTO product,@RequestParam(name="sizeArr",required = false) String[] size, Model model) {
+		String x;
+		String y=null;
+		for(int i=0;i<size.length;i++) {
+			x= size[i];
+			y=y+","+x;
+		}
+		String url = adminApi + "/product?"+ y;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Authorization", jwt);
-		System.out.println(product);
+		headers.set("Authorization", AdminController.jwt);
 		HttpEntity<ProductDTO> jwtEntity = new HttpEntity<ProductDTO>(product,headers);
 		ResponseEntity<ProductDTO> responseAPI = restTemplate.exchange(url, HttpMethod.POST, jwtEntity,
 				ProductDTO.class);
@@ -188,7 +216,7 @@ public class AdminController {
 		String url = productApi + "/" + id;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Authorization", jwt);
+		headers.set("Authorization", AdminController.jwt);
 		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 		ResponseEntity<ProductDTO> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity,
 				ProductDTO.class);
@@ -219,7 +247,7 @@ public class AdminController {
 		String url = adminApi + "/products";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Authorization", jwt);
+		headers.set("Authorization", AdminController.jwt);
 		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 		ParameterizedTypeReference<List<ProductDTO>> typeRef = new ParameterizedTypeReference<List<ProductDTO>>() {
 		};
@@ -237,7 +265,7 @@ public class AdminController {
 			String url = adminApi + "/check";
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			headers.set("Authorization", jwt);
+			headers.set("Authorization", AdminController.jwt);
 			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 			ResponseEntity<String> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, String.class);
 		} catch (Exception e) {
@@ -257,7 +285,7 @@ public class AdminController {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			headers.set("Authorization", jwt);
+			headers.set("Authorization", AdminController.jwt);
 			HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 			ResponseEntity<ProductDTO> responseAPIDelete = restTemplate.exchange(url, HttpMethod.DELETE, jwtEntity,
 					ProductDTO.class);

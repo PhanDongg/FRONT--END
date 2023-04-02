@@ -47,15 +47,10 @@ public class CartController {
 				.fromJson(decodeCookieProduct, productListType);
 
 		System.out.println("json /n" + decodeCookieProduct);
-		for (ProductDTO productDTO : listItemCart) {
-			System.out.println(productDTO);
-		}
-
+//		for (ProductDTO productDTO : listItemCart) {
+//			System.out.println(productDTO);
+//		}
 		model.addAttribute("listItemCart", listItemCart);
-		for (ProductDTO productDTO : listItemCart) {
-			System.out.println(productDTO);
-		}
-		
 		String username = (String)session.getAttribute("username");
 		if(username !=null) {
 		String url = userApi + "/info?username="+ username;

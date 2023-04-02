@@ -49,20 +49,20 @@ public class LoginAndRegisterController {
 		return "register-page";
 	}
 	
-	//register new member
+	//register new member front-end
 	@PostMapping("/register")
 	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user, BindingResult bindingResult) {
 			logger.info("Processing...");
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("msg", "Make sure you have filled out all the fields");
-            return "register-page";
-        } else {
         	String url = userApi + "/register";
-        	ResponseEntity<ResponseTransfer> response = restTemplate.postForEntity(url, user, ResponseTransfer.class);
-        	model.addAttribute("msg", response);
-        	return "redirect:/login";
+        	ResponseEntity<String> response = restTemplate.postForEntity(url, user, String.class);
+        	if(response.getBody().contains("Username has been used")) {
+        		model.addAttribute("msg", response.getBody());
+        		model.addAttribute("user", new UserDTO());
+            	return "register-page";
+        	}
+        	model.addAttribute("msg", response.getBody());
+        	return "login-page";
 		}
-	}
 	//check login
 	@PostMapping("/login")
 	public String checkLogin(@ModelAttribute("user") User user, HttpServletRequest request,
@@ -98,7 +98,6 @@ public class LoginAndRegisterController {
 		cookies = request.getCookies();
 		session.removeAttribute("username");
 		AdminController.jwt = null;
-		System.out.println(AdminController.jwt);
 		if (cookies != null) {
 			for (int i = 0; i < cookies.length; i++) {
 				cookie = cookies[i];

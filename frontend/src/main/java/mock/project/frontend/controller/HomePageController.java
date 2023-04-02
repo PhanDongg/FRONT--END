@@ -16,9 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import mock.project.frontend.request.CategoryDTO;
 import mock.project.frontend.request.ProductDTO;
 
 @Controller
@@ -29,16 +31,27 @@ public class HomePageController {
 
 	@Value("${product.api.url}")
 	private String productApi;
+	
+	@ModelAttribute("listCategories")
+	public CategoryDTO[] getCategory() {
+		String url2 = productApi + "/categories";
+		ResponseEntity<CategoryDTO[]> responseCategories= restTemplate.getForEntity(url2, CategoryDTO[].class);
+		CategoryDTO[] listCategories = responseCategories.getBody();
+		return listCategories;
+	}
 
 	// get list product, and list product date DESC for home-page
 	@GetMapping("/")
 	public String homePage(Model model,  HttpSession session) {
 		String url = productApi + "/products";
 		String url1 = productApi + "/desc";
+		String url2 = productApi + "/categories";
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(url, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		ResponseEntity<ProductDTO[]> responseDESC = restTemplate.getForEntity(url1, ProductDTO[].class);
 		ProductDTO[] listProductDESC = responseDESC.getBody();
+		ResponseEntity<CategoryDTO[]> responseCategories= restTemplate.getForEntity(url2, CategoryDTO[].class);
+		CategoryDTO[] listCategories = responseCategories.getBody();
 
 		model.addAttribute("listProductDESCs1", limitList(listProductDESC, 0, 5));
 		model.addAttribute("listProductDESCs2", limitList(listProductDESC, 5, 5));
@@ -47,6 +60,9 @@ public class HomePageController {
 		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
 		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
 		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));
+		
+		model.addAttribute("listCategories", listCategories);
+		
 		return "home-page";
 	}
 
@@ -61,7 +77,7 @@ public class HomePageController {
 	// get more product
 	@GetMapping("/product")
 	public String getMoreProduct(@RequestParam(name = "text", required = false) String text, Model model) {
-		if (text=="desc") {
+		if (text.contains("desc")) {
 			String url = productApi + "/desc";
 			ResponseEntity<ProductDTO[]> responseDESC = restTemplate.getForEntity(url, ProductDTO[].class);
 			ProductDTO[] listProductDESC = responseDESC.getBody();
@@ -69,13 +85,13 @@ public class HomePageController {
 			model.addAttribute("category", "Sản phẩm mới");
 			return "collection-page";
 		}
-		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(productApi +"/products", ProductDTO[].class);
+		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(productApi + "/products", ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("category", "Sản phẩm bán chạy");
 		return "collection-page";
 	}
-	
+
 	@GetMapping("/check-order")
 	public String checkOrder() {
 		return "check-order-page";
