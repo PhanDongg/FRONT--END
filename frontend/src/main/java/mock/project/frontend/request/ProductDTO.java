@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import mock.project.frontend.entities.Categories;
 import mock.project.frontend.entities.Images;
 import mock.project.frontend.entities.Sizes;
 
 public class ProductDTO {
 		
 	private Integer productId;
+	private String productCode;
 	private String productName;
 	private double price;
 	private String description;
@@ -22,6 +24,7 @@ public class ProductDTO {
 	private int quantity;
 	private String brand;
 	private List<Images> images;
+	private Categories category;
 	
 	
 	public Integer getProductId() {
@@ -29,6 +32,12 @@ public class ProductDTO {
 	}
 	public void setProductId(Integer productId) {
 		this.productId = productId;
+	}
+	public String getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 	public String getProductName() {
 		return productName;
@@ -90,11 +99,18 @@ public class ProductDTO {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
+	public Categories getCategory() {
+		return category;
+	}
+	public void setCategory(Categories category) {
+		this.category = category;
+	}
 	@Override
 	public String toString() {
-		return "ProductDTO [productId=" + productId + ", productName=" + productName + ", price=" + price
-				+ ", description=" + description + ", type=" + type + ", color=" + color + ", date=" + date + ", sizes="
-				+ sizes + ", quantity=" + quantity + ", brand=" + brand + ", images=" + images + "]";
+		return "ProductDTO [productId=" + productId + ", productCode=" + productCode + ", productName=" + productName
+				+ ", price=" + price + ", description=" + description + ", type=" + type + ", color=" + color
+				+ ", date=" + date + ", sizes=" + sizes + ", quantity=" + quantity + ", brand=" + brand + ", images="
+				+ images + ", category=" + category + "]";
 	}
-	
+
 }

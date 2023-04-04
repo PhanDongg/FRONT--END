@@ -2,6 +2,7 @@ package mock.project.frontend.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -24,8 +25,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import mock.project.frontend.entities.Sizes;
+import mock.project.frontend.request.CategoryDTO;
 import mock.project.frontend.request.OrderDTO;
 import mock.project.frontend.request.ProductDTO;
 import mock.project.frontend.request.UserDTO;
@@ -51,6 +55,21 @@ public class AdminController {
 	private String adminApi;
 
 	static String jwt;
+	
+	@ModelAttribute("listCategory") // 
+	public CategoryDTO[] listCategory() {
+		String url3 = productApi + "/categories";
+		ResponseEntity<CategoryDTO[]> categories = restTemplate.getForEntity(url3, CategoryDTO[].class);
+		return categories.getBody(); //gia tri tra ve gan cho "listCategory" == model.addAttribute("listCategory", categories.getBody());
+	}
+	
+	@ModelAttribute("listSize")
+	public List<Sizes> listSize() {
+		String url = productApi + "/sizes";
+		ResponseEntity<Sizes[]> sizes = restTemplate.getForEntity(url, Sizes[].class);
+		List<Sizes> listSize = Arrays.asList(sizes.getBody());
+		return listSize;
+	}
 	
 	@ModelAttribute("user")
 	public UserDTO userInfo(HttpSession session) {
@@ -149,21 +168,31 @@ public class AdminController {
 	@GetMapping("/product/add")
 	public String viewAddNewProduct(Model model) {
 		logger.info("Loading add new product view..");
-		model.addAttribute("product", new ProductDTO());
+		model.addAttribute("product", new ProductDTO()); //??
 		return "add-product";
 	}
 
 	// add new product
-	@PostMapping("/product/add")
-	public String addNewProduct(@ModelAttribute("product") ProductDTO product, Model model) {
-		String url = adminApi + "/product";
+	@PostMapping("/product/add") // required = false ko bat buoc duong dan phai co ?
+	public String addNewProduct(@RequestParam(name = "sizeArr", required = false)String[] sizeArr, @ModelAttribute("product") ProductDTO product, Model model) {
+		
+		String sizeString = null;
+		for (String size : sizeArr) { // size tuong tu sizeArr[i]
+			sizeString = sizeString + "," + size; //giong nhu nay: null,1,2,3
+		}
+		System.out.println(sizeString);
+	
+		String url = adminApi + "/product?sizeArr=" + sizeString; // = null,1,2,3,4,5,6,7
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("Authorization", jwt);
 		System.out.println(product);
+		System.out.println(product.getCategory().getCategoryId());
 		HttpEntity<ProductDTO> jwtEntity = new HttpEntity<ProductDTO>(product,headers);
+		
 		ResponseEntity<ProductDTO> responseAPI = restTemplate.exchange(url, HttpMethod.POST, jwtEntity,
-				ProductDTO.class);
+				ProductDTO.class); // exchange -> consume the web services for all HTTP methods
 		ProductDTO productTDO = responseAPI.getBody();
 		if (productTDO == null) {
 			model.addAttribute("msg", "Something went wrong ");
@@ -280,6 +309,7 @@ public class AdminController {
 		headers.set("Authorization", jwt);
 		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
 		ParameterizedTypeReference<List<UserDTOReponse>> typeRef = new ParameterizedTypeReference<List<UserDTOReponse>>() {
+		
 		};
 		ResponseEntity<List<UserDTOReponse>> responseAPI = restTemplate.exchange(url, HttpMethod.GET, jwtEntity, typeRef);
 		List<UserDTOReponse> listUsers = responseAPI.getBody();

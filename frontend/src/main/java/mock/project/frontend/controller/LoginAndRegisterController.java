@@ -65,8 +65,7 @@ public class LoginAndRegisterController {
 //	}
 
 	@PostMapping("/register")
-	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user,
-			BindingResult bindingResult) {
+	public String registerNewMember(Model model, @ModelAttribute("user") @Valid UserDTO user) { //??
 		logger.info("Processing...");
 		String url = userApi + "/register";
 		ResponseEntity<String> response = restTemplate.postForEntity(url, user, String.class);//send to be

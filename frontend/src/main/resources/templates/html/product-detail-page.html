@@ -184,7 +184,7 @@
 								<div class="cover-left">
 									<div class="prod-identified d-flex justify-content-between">
 										<p>
-											Mã sản phẩm: <span th:text="${product.productId}"></span>
+											Mã sản phẩm: <span th:text="${product.productCode}"></span>
 										</p>
 										<p>Xuất xứ: Mỹ</p>
 									</div>
@@ -211,17 +211,9 @@
 										</p>
 										<p
 											class="form-group justify-content-start align-items-center size-selection">
-											<label for="department">Kích thước:</label> <select
-												class="form-control" id="size" name="sizes">
-												<option value="0" selected="selected">select option</option>
-												<option value="35">35</option>
-												<option value="36">36</option>
-												<option value="37">37</option>
-												<option value="38">38</option>
-												<option value="39">39</option>
-												<option value="40">40</option>
-												<option value="41">41</option>
-												<option value="42">42</option>
+											<label for="department">Kích thước:</label> 
+											<select class="form-control" id="size" name="sizes">
+												<option th:each="size : ${sizeListByProduct}" th:value="${size}" th:text="${size}"></option>
 											</select>
 										</p>
 										<p>

@@ -73,146 +73,53 @@
 					<div class="add-product__content">
 						<div class="add-product__left-side">
 							<div class="add-product__pricing-info">
+								<h4>Mã sản phẩm</h4>
+								<div class="mb-3">
+									<input type="text" name="productCode" class="form-control" id="productCode" placeholder="Nhập mã sản phẩm" >
+								</div>
+								
+							</div>
+							<div class="add-product__pricing-info">
 								<h4>Thông tin giá</h4>
 								<div class="mb-3">
-									<label for="productOldPrice" class="form-label">Product
-										Old Price</label> <input type="text"  name="price" class="form-control"
+									<label for="productOldPrice" class="form-label">Giá tiền</label> <input type="text" name="price" class="form-control"
 										id="productOldPrice">
 								</div>
+								
 								<div class="mb-3">
-									<label for="productNewPrice" class="form-label">Product
-										New Price</label> <input type="text" class="form-control"
-										id="productNewPrice">
-								</div>
-								<div class="mb-3">
-									<label for="productCoupon" class="form-label">Product
-										Coupon</label> <input type="text" value="SALE50" class="form-control"
+									<label for="productCoupon" class="form-label">Coupon</label> <input type="text" value="SALE50" class="form-control"
 										id="productCoupon">
-								</div>
-							</div>
-
-							<div class="add-product__status">
-								<h4>Tình trạng sản phẩm</h4>
-								<div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="product-status" id="publishedStatus"> <label
-										class="form-check-label" for="publishedStatus"> Công
-										bố </label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="product-status" id="scheduledStatus" checked> <label
-										class="form-check-label" for="scheduledStatus"> Lên
-										lịch </label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="product-status" id="hidenStatus" checked> <label
-										class="form-check-label" for="hidenStatus"> Ẩn </label>
 								</div>
 							</div>
 
 							<div class="add-product__size">
 								<h4>Size sản phẩm</h4>
-								<div
-									class="size-container d-flex justify-content-around align-items-center">
-									<div class="size-item" >
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> 35
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> 36
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 37
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 38
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 39
-											</label>
-										</div>
-									</div>
-									<div class="size-item">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 40
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 41
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 42
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 43
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"> 44
-											</label>
-										</div>
-									</div>
+								<div th:each = "size : ${listSize}">
+									<input name="sizeArr" type="checkbox" th:value="${size.sizeId}" class="form-check-input"><label th:text="${size.size}" class="form-check-label"></label>
 								</div>
 							</div>
-							<div class="add-product__inventory-info">
-								<h4>Kho</h4>
+							
+							<div class="add-product__pricing-info">
+								<h4>Category</h4>
 								<div class="mb-3">
-									<label for="productOldPrice" class="form-label">SKU</label> <input
-										type="text" class="form-control" id="productOldPrice">
+									<select name="category" class="form-select" id="productOldPrice">
+										<option th:each="cate : ${listCategory}" th:text="${cate.categoryName}" th:value="${cate.categoryId}">
+									</select>
 								</div>
-								<div class="mb-3">
-									<label for="" class="form-label">Tổng hàng trong kho</label> <input
-										type="text" class="form-control" id="">
-								</div>
+								
 							</div>
+							
 						</div>
 						<div class="add-product__right-side">
 							<div class="add-product-form row">
 								<h4>Mô tả sản phẩm</h4>
-								<div class="col-6">
+								<div class="col-12">
 									<label class="form-label" for="">Tên sản phẩm</label> <input
 										type="text" class="form-control" name="productName">
 								</div>
-								<div class="col-6">
-									<label class="form-label" for="">Tiêu đề</label> <input
-										type="text" class="form-control">
-								</div>
 								<div class="col-12">
-									<label class="form-label" for="autoSizingInputGroup">Sản
-										phẩm URL</label>
-									<div class="input-group">
-										<div class="input-group-text">https://abcstore.com/</div>
-										<input type="text" class="form-control"
-											id="autoSizingInputGroup">
-									</div>
+									<label class="form-label" for="autoSizingInputGroup">Link hình</label>
+									<textarea name="images" class="form-control" id="autoSizingInputGroup" rows="3"></textarea>
 								</div>
 								<div class="col-12">
 									<label for="exampleFormControlTextarea1" class="form-label">Mô
@@ -239,8 +146,13 @@
 										type="date" name="date" id="" class="form-control">
 								</div>
 								<div class="col-6">
-									<label for="" class="form-label">Danh mục</label> 
-									<input type="text" name="type" id="" class="form-control">
+									<label for="" class="form-label">Loại sản phẩm</label>
+									<select name="" class="form-select" id="">
+										<option th:value="nam">Nam</option>
+										<option th:value="nữ">Nữ</option>
+										<option th:value="unisex">Unisex</option>
+										
+									</select>
 								</div>
 								<div class="col-6">
 									<label for="" class="form-label">Thương hiệu</label> 

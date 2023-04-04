@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -50,6 +51,14 @@ public class ProductController {
 		String url3 = productApi + "/categories";
 		ResponseEntity<CategoryDTO[]> categories = restTemplate.getForEntity(url3, CategoryDTO[].class);
 		return categories.getBody(); //gia tri tra ve gan cho "listCategory" == model.addAttribute("listCategory", categories.getBody());
+	}
+	
+	@ModelAttribute("listSize")
+	public List<Sizes> listSize() {
+		String url = productApi + "/sizes";
+		ResponseEntity<Sizes[]> sizes = restTemplate.getForEntity(url, Sizes[].class);
+		List<Sizes> listSize = Arrays.asList(sizes.getBody());
+		return listSize;
 	}
 	
 	//search product
@@ -125,6 +134,13 @@ public class ProductController {
 		String urlProduct = productApi + "/products" ;
 		ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(urlProduct, ProductDTO[].class);
 		ProductDTO[] listProducts = response.getBody();
+		
+		String url2 = productApi + "/" + id + "/sizes";
+		ResponseEntity<Integer[]> reponseSizeList = restTemplate.getForEntity(url2, Integer[].class);
+		Integer[] sizeList = reponseSizeList.getBody();
+		
+		model.addAttribute("sizeListByProduct", sizeList);
+		
 		model.addAttribute("listProducts1", limitList(listProducts, 0, 5));
 		model.addAttribute("listProducts2", limitList(listProducts, 5, 5));
 		model.addAttribute("listProducts3", limitList(listProducts, 10, 5));

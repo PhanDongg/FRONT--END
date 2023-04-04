@@ -9,6 +9,7 @@
 ul,
 li {
     list-style: none !important;
+    cursor: pointer;
 }
 
 a {
