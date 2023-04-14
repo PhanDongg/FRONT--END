@@ -26,15 +26,15 @@ body {
 }
 
 .register-form {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin: 0% 25%;
+    background-color: rgba(255, 255, 255, 0.7) ;
+    margin: 0% 23%;
     padding: 0.5% 1% 1%;
     position: absolute;
-    width: 50%;
+    width: 54%;
 }
 
 .register-form>.d-flex {
-    margin: 5% 0;
+    margin: 4% 0;
 
 }
 
@@ -64,7 +64,7 @@ input {
 
 
 .register-btns {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .register-btns button {
@@ -106,23 +106,36 @@ input {
 
 }
 
-.sign-in {
+.sign-in, 
+.return-home {
+	padding: 0.7% 0;
     text-align: center;
 }
 
-.sign-in a {
+.sign-in a,
+.return-home a{
     cursor: pointer;
     color: black;
 }
 
-.sign-in a:hover {
+.sign-in a:hover,
+.return-home a:hover {
     color: goldenrod !important;
 }
 
+.return-home i{
+	margin-right: 5px;
+}
+
 /* --mới thêm */
-.valid-message {
+.valid-message,
+.global-err {
     font-size: 15px !important;
 	color: red !important;
+}
+
+.global-err{
+	text-align: center;
 }
 
 .error input{

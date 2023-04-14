@@ -1,116 +1,141 @@
 @charset "UTF-8";
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
+html, body {
+	height: 100%;
 }
 
 .login-form-container {
-    background-image: url("https://sneakernews.com/wp-content/uploads/2021/08/Nike-Dunk-Low-GS-Pink-Velvet-DO6485-600-7.jpg?w=1140");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
+	background-image:
+		url("https://sneakernews.com/wp-content/uploads/2021/08/Nike-Dunk-Low-GS-Pink-Velvet-DO6485-600-7.jpg?w=1140");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+	padding-bottom: 5% !important;
 }
 
 .login-form-container h2 {
-    text-align: center;
-    padding: 2%;
+	text-align: center;
+	padding: 1.5%;
 }
 
 .login-form {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin: 0% 25%;
-    padding: 1% 1% 1%;
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: 0% 23%;
+	padding: 0.5% 1% 1%;
+	position: absolute;
+	width: 54%;
 }
 
-.login-form .d-flex {
-    margin: 5% 0;
-
+.login-form>.d-flex {
+	margin: 4% 0;
+/* 	border: 0.5px solid red; */
 }
 
 .input-item {
-	display: block;
     width: 100%;
-    margin: 0 auto;
+    margin: 0.5% 3%;
     color: black !important;
+/*     border: 0.5px solid blue; */
 }
 
 input {
-    padding: 1%;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.1);
+	padding: 1%;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	outline: none;
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
 .eye-icon {
-    margin-right: 15px;
+    margin-left: 10px;
     cursor: pointer;
-    padding: 2px;
+}
+
+.eye-icon .hide-eye {
+	display: none;
 }
 
 .login-btns {
-    margin-top: 50px;
+	margin-top: 5%;
 }
 
 .login-btns button {
-    margin: 10px 0;
-    cursor: pointer;
+	margin: 10px 0;
+	cursor: pointer;
 }
 
-.sign-up-btn {
-    width: 100%;
-    background-color: #B99B6B;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 30px;
-    font-size: 16px;
-    color: white !important;
-    text-transform: uppercase;
+.sign-in-btn {
+	width: 100%;
+	background-color: #B99B6B;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 30px;
+	font-size: 16px;
+	color: white !important;
+	text-transform: uppercase;
 }
 
-.sign-up-btn:hover {
-    background-color: #F1DBBF;
-    color: black !important;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+.sign-in-btn:hover {
+	background-color: #F1DBBF;
+	color: black !important;
+	box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.facebook-sign-up-btn {
-    width: 100%;
-    border: 1px solid #B99B6B;
-    border-radius: 5px;
-    padding: 10px 30px;
-    background-color: white;
+.facebook-sign-in-btn {
+	width: 100%;
+	border: 1px solid #B99B6B;
+	border-radius: 5px;
+	padding: 10px 30px;
+	background-color: white;
 }
 
-.facebook-sign-up-btn:hover {
-    background-color: #F1DBBF;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+.facebook-sign-in-btn:hover {
+	background-color: #F1DBBF;
+	box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.sign-in {
-    text-align: center;
-    margin-top: 50px;
+.sign-up, .return-home {
+	padding: 0.7% 0;
+	text-align: center;
 }
 
-.sign-in a {
-    color: black;
+.sign-up a, .return-home a {
+	cursor: pointer;
+	color: black;
 }
 
-.sign-in a:hover {
-    color: goldenrod !important;
-}
-
-.return-hp a:hover {
+.sign-up a:hover, .return-home a:hover {
 	color: goldenrod !important;
 }
+
+.return-home i{
+	margin-right: 5px;
+}
+
+/* --mới thêm */
+.valid-message,
+.global-err {
+    font-size: 15px !important;
+	color: red !important;
+}
+
+.global-err{
+	text-align: center;
+}
+
+.error input{
+    border-bottom: 0.5px solid red !important;
+}
+
+.success input{
+    border-bottom: 0.5px solid green !important;
+}
+

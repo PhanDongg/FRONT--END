@@ -31,6 +31,7 @@ public class UserDTO {
 	
 	private String address;
 	
+	@NotEmpty
 	private String phone;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

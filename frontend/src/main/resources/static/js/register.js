@@ -1,5 +1,5 @@
 
-const userName = $('#userName');
+const userName = $("#userName");
 const fullName = $("#fullName");
 const email = $("#email");
 const phone = $("#phone");
@@ -34,7 +34,6 @@ $(document).ready(function() {
 			event.preventDefault();
 			check = false;
 			console.log(check);
-
 		}
 	});
 
@@ -44,13 +43,19 @@ $(document).ready(function() {
 		);
 		let isValid = checkValidate();
 
-		if (isValid) {
-			alert('Đăng ký thành công');
-		} else {
-			alert('Đăng ký thất bại');
-			check = false;
-			console.log(check);
+		//		if (isValid) {
+		////			alert('Đăng ký thành công');
+		//		} else {
+		////			alert('Đăng ký thất bại');
+		//			checkValidate();
+		//		}
 
+		if (isValid == false) {
+			alert('Đăng ký thất bại');
+			checkValidate();
+		} else {
+			alert('Đăng ký thành công');
+			checkValidate();
 		}
 
 	});
@@ -69,29 +74,33 @@ function checkValidate() {
 
 	let isCheck = true;
 
-	console.log(usernameValue);
-	console.log(fullnameValue);
-	console.log(emailValue);
-	console.log(phoneValue);
-	console.log(passwordValue);
-	console.log(passwordconfirmValue);
+	//	console.log(usernameValue);
+	//	console.log(fullnameValue);
+	//	console.log(emailValue);
+	//	console.log(phoneValue);
+	//	console.log(passwordValue);
+	//	console.log(passwordconfirmValue);
 
 	if (usernameValue == '') {
-		setError(userName, 'Vui lòng nhập Tên tài khoản');
+		setError(userName, 'Tên tài khoản không được để trống');
+		isCheck = false;
+	} else if (usernameValue.length < 3) {
+		setError(userName, 'Cần nhập ít nhất 2 kí tự');
 		isCheck = false;
 	} else {
 		setSuccess(userName);
 	}
 
+
 	if (fullnameValue == '') {
-		setError(fullName, 'Vui lòng nhập Họ và Tên');
+		setError(fullName, 'Họ và Tên không được để trống');
 		isCheck = false;
 	} else {
 		setSuccess(fullName);
 	}
 
 	if (emailValue == '') {
-		setError(email, 'Vui lòng nhập Email');
+		setError(email, 'Email không được để trống');
 		isCheck = false;
 	} else if (!isEmail(emailValue)) {
 		setError(email, 'Email không đúng định dạng');
@@ -138,13 +147,13 @@ function isPhone(number) {
 }
 
 function setSuccess(e) {
-	// e.parentNode.classList.add('success');
+	e.closest('.input-item').find('.valid-message').html("");
+	e.closest('.input-item').children(':nth-child(2)').removeClass('valid-message');
 	e.closest('.input-item').addClass('success');
 }
 
 function setError(e, message) {
-	// let parentEle = e.closest('.input-item');
-	// parentEle.classList.add('error');
+	e.closest('.input-item').children(':nth-child(2)').addClass('valid-message');
 	e.closest('.input-item').find('.valid-message').html(message);
 	e.closest('.input-item').addClass('error');
 }

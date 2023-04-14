@@ -1,60 +1,121 @@
 
-const loginTemplate = `<div class="login-container">
-<div id="login-form">
-    <i class="fa-solid fa-xmark close-btn"></i>
-    <h1>Login Member</h1>
-    <form>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="signin-btn">Submit</button>
-        <div class="login-footer">
-            <a href="" class="forget">Forgot your password?</a>
-            <a href="" class="sign-up">Don't have your account?</a>
-        </div>
-    </form>
-</div>
-</div>`;
-const body = document.body;
-body.insertAdjacentHTML("afterbegin", loginTemplate);
+const userName = $("#userName");
+const password = $("#password");
+const inputItem = $('.input-item');
+const form = $('form');
 
-const loginContainer = document.querySelector(".login-container");
-const closeBtn = document.querySelector(".close-btn");
-const signInBtn = document.querySelector(".sign-in");
+var check = true;
 
-signInBtn.addEventListener("click", showLoginForm);
+//show password
+$(document).ready(function() {
 
-function showLoginForm() {
-    if (loginContainer) {
-        setTimeout(function() {
-            loginContainer.classList.add("is-show");
-        }, 500);
-    }
+
+	$('.eye-icon').click(function() {
+		$(this).children('i').toggleClass('bi bi-eye');
+
+		if (!$(this).hasClass('show')) {
+			$(this).prev().attr('type', 'text');
+			$(this).addClass('show');
+		} else if ($(this).hasClass('show')) {
+			$(this).prev().attr('type', 'password');
+			$(this).removeClass('show');
+		}
+	});
+
+	form.submit(function(event) {
+		let isValid = checkValidate();
+		if (isValid) {
+			console.log(check);
+		} else {
+			event.preventDefault();
+			check = false;
+			console.log(check);
+		}
+	});
+
+	$('#login').click(function() {
+		Array.from(inputItem).map((ele) =>
+			ele.classList.remove('success')
+		);
+		let isValid = checkValidate();
+
+		//		if (isValid) {
+		////			alert('Đăng ký thành công');
+		//		} else {
+		////			alert('Đăng ký thất bại');
+		//			checkValidate();
+		//		}
+
+		if (isValid == false) {
+			alert('Đăng nhập thất bại');
+			checkValidate();
+		}
+
+	});
+
+});
+
+
+//validation bằng js
+function checkValidate() {
+	let usernameValue = userName.val();
+	let passwordValue = password.val();
+
+	let isCheck = true;
+
+
+	if (usernameValue == '') {
+		setError(userName, 'Vui lòng nhập Tên tài khoản hoặc Email');
+		isCheck = false;
+	} else if (usernameValue.length < 3) {
+		setError(userName, 'Cần nhập ít nhất 2 kí tự');
+		isCheck = false;
+	} else if (checkSpecialCharacters(usernameValue) == true && !isEmail(usernameValue)) {
+		setError(userName, 'Email không đúng định dạng');
+		isCheck = false;
+	} else {
+		setSuccess(userName);
+	}
+
+
+	if (passwordValue == '') {
+		setError(password, 'Vui lòng nhập Mật khẩu');
+		isCheck = false;
+	} else {
+		setSuccess(password);
+	}
+
+	return isCheck;
+
+};
+
+
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-closeBtn.addEventListener("click", closeLoginForm);
-
-function closeLoginForm() {
-    if (loginContainer) {
-        loginContainer.classList.remove("is-show");
-    }
+function setSuccess(e) {
+	e.closest('.input-item').find('.valid-message').html("");
+	e.closest('.input-item').children(':nth-child(2)').removeClass('valid-message');
+	e.closest('.input-item').addClass('success');
 }
 
-document.addEventListener("click", clickOutsideLoginForm);
-
-function clickOutsideLoginForm(event) {
-    console.log(event.target);
-    if (event.target.matches(".login-container")) {
-        loginContainer.classList.remove("is-show");
-    }
+function setError(e, message) {
+	e.closest('.input-item').children(':nth-child(2)').addClass('valid-message');
+	e.closest('.input-item').find('.valid-message').html(message);
+	e.closest('.input-item').addClass('error');
 }
+
+var specialChars = "@";
+function checkSpecialCharacters(string) {
+	for (i = 0; i < specialChars.length; i++) {
+		if (string.indexOf(specialChars[i]) > -1) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+

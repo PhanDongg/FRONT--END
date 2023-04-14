@@ -47,30 +47,30 @@
 <body>
 	<div class="register-form-container">
 
-		<form th:action="@{/register}" method="post">
+		<form th:action="@{/register}" method="post" th:object="${user}">
 			<h2>Đăng ký thành viên</h2>
 			<div class="register-form">
 				<div class="d-flex justify-content-between">
 					<div class="input-item">
 						<input type="text" name="userName" id="userName"
 							placeholder="Tên tài khoản">
-						<div class="valid-message"></div>
+						<div class="" th:text="${validUserName}" style="color: red;"></div>
 					</div>
 					<div class="input-item">
 						<input type="text" name="fullName" id="fullName"
 							placeholder="Họ và Tên">
-						<div class="valid-message"></div>
+						<div class=""></div>
 					</div>
 				</div>
 				<div class="d-flex justify-content-between">
 					<div class="input-item">
 						<input type="email" name="email" id="email" placeholder="Email">
-						<div class="valid-message"></div>
+						<div class="" th:text="${validEmail}" style="color: red;"></div>
 					</div>
 					<div class="input-item">
 						<input type="text" name="phone" id="phone"
 							placeholder="Số điện thoại">
-						<div class="valid-message"></div>
+						<div class=""></div>
 					</div>
 				</div>
 				<div class="d-flex justify-content-between">
@@ -82,7 +82,7 @@
 								<i class="bi bi-eye-slash"></i>
 							</div>
 						</div>
-						<div class="valid-message"></div>
+						<div class=""></div>
 					</div>
 
 					<div class="input-item">
@@ -94,10 +94,10 @@
 								<i class="bi bi-eye-slash"></i>
 							</div>
 						</div>
-						<div class="valid-message"></div>
+						<div class=""></div>
 					</div>
 				</div>
-
+				<div class="global-err" th:text="${globalErr}"></div>
 				<div class="register-btns">
 					<button type="submit" class="sign-up-btn" id="register">Đăng
 						Ký</button>
@@ -106,12 +106,10 @@
 					</button>
 				</div>
 				<div class="sign-in">
-					<span>Bạn đã có tài khoản? <a th:href="@{/login}">Đăng
-							nhập</a></span>
+					<span>Bạn đã có tài khoản? <a th:href="@{/login}">Đăng nhập</a></span>
 				</div>
-				<div class="return-hp text-center mt-4">
-					<a class="text-dark" th:href="@{/}"><i
-						class="fa-solid fa-house"></i> Quay về trang chủ</a>
+				<div class="return-home">
+					<span><a th:href="@{/}"><i class="fa-solid fa-house"></i>Quay về trang chủ</a></span>
 				</div>
 			</div>
 		</form>
